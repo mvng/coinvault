@@ -7,7 +7,7 @@ function loadTopNav(){
 	document.write("            <\/symbol>");
 	document.write("            <use xlink:href=\"#icon-spinner2\"><\/use>");
 	document.write("        <\/svg>");
-	document.write("        <a href=\"wire2.html\">COINFLIP<\/a>");
+	document.write("        <a href=\"dashboard.html\">COINFLIP<\/a>");
 	document.write("        <svg class=\"icon-cog\">");
 	document.write("            <symbol id=\"icon-cog\" viewBox=\"0 0 1024 1024\">");
 	document.write("                <title>cog<\/title>");
@@ -27,7 +27,7 @@ function loadTopNavPersist(){
 	document.write("            <\/symbol>");
 	document.write("            <use xlink:href=\"#icon-spinner2\"><\/use>");
 	document.write("        <\/svg>");
-	document.write("        <a href=\"wire2.html\">COINFLIP<\/a>");
+	document.write("        <a href=\"dashboard.html\">COINFLIP<\/a>");
 	document.write("        <svg class=\"icon-cog\">");
 	document.write("            <symbol id=\"icon-cog\" viewBox=\"0 0 1024 1024\">");
 	document.write("                <title>cog<\/title>");
@@ -40,7 +40,7 @@ function loadTopNavPersist(){
 
 function loadSideNav(selected){
 	document.write("    <aside>");
-	document.write("        <a href=\"wire2.html\">");
+	document.write("        <a href=\"dashboard.html\">");
 	if(selected == 0)
 		document.write("        <figure class='nav-selected'>");
 	else
@@ -57,7 +57,7 @@ function loadSideNav(selected){
 	document.write("            <figcaption>Home<\/figcaption>");
 	document.write("        <\/figure>       ");
 	document.write("        <\/a> ");
-	document.write("        <a href=\"wire3.html\">");
+	document.write("        <a href=\"goldoverview.html\">");
 	if(selected == 1)
 		document.write("        <figure class='nav-selected'>");
 	else
@@ -66,7 +66,7 @@ function loadSideNav(selected){
 	document.write("            <figcaption>My Gold<\/figcaption>");
 	document.write("        <\/figure>       ");
 	document.write("        <\/a> ");
-	document.write("        <a href=\"wire3.html\">");
+	document.write("        <a href=\"goldoverview.html\">");
 	if(selected == 2)
 		document.write("        <figure class='nav-selected'>");
 	else
@@ -75,7 +75,7 @@ function loadSideNav(selected){
 	document.write("            <figcaption>My Silver<\/figcaption>");
 	document.write("        <\/figure>       ");
 	document.write("        <\/a> ");
-	document.write("        <a href=\"wire3.html\">");
+	document.write("        <a href=\"goldoverview.html\">");
 	if(selected == 3)
 		document.write("        <figure class='nav-selected'>");
 	else
@@ -122,13 +122,13 @@ $(window).load(function() {
 	 *        GRAPHING         *
 	 *                         *
 	 * * * * * * * * * * * * * */
- 	// graph for wire2 page
+ 	// graph for dashboard page
  	var drawGraph = function(){
  		var pointStroke = "rgba(255,255,255,0.6)";
  		var pointHighlightFill = "#fff";
  		var pointHighlightStroke = "#fff";
 
- 		if(page == "wire2.html") {
+ 		if(page == "dashboard.html") {
  			var data = {
  				labels: ["January", "February", "March", "April", "May", "June", "July"],
  				datasets: [
@@ -253,7 +253,7 @@ $(window).load(function() {
 			var coinChart = new Chart(ctx).Line(data,options);
 			coinChart.update();
 		}
-		else if(page =="wire3.html"){
+		else if(page =="goldoverview.html"){
 			var data = {
 				labels: ["January", "February", "March", "April", "May", "June", "July"],
 				datasets: [
@@ -352,7 +352,7 @@ $(window).load(function() {
 	 	$('.graph-panel').removeClass('graph-panel-show');
 	 	$('.market-status').fadeIn(0);
 	 	$('.market-list').fadeIn(0);
-	 	if( page == "wire3.html")
+	 	if( page == "goldoverview.html")
 	 		$('.my_stack').fadeIn(0);
 	 	$('.mtb-2').removeClass('mobile-toggle-selected');
 	 	$('.mtb-1').addClass('mobile-toggle-selected');
@@ -362,7 +362,7 @@ $(window).load(function() {
 	 $('.mtb-2').click(function(){
 	 	$('.market-status').fadeOut(0);
 	 	$('.market-list').fadeOut(0);
-	 	if( page == "wire3.html")
+	 	if( page == "goldoverview.html")
 	 		$('.my_stack').fadeOut(0);
 	 	$('.mtb-1').removeClass('mobile-toggle-selected');
 	 	$('.mtb-2').addClass('mobile-toggle-selected');
@@ -378,7 +378,7 @@ $(window).load(function() {
 	 		$('.graph-panel').removeClass('graph-panel-show');
 	 		$('.market-status').fadeIn(0);
 	 		$('.market-list').fadeIn(0);
-	 		if( page == "wire3.html")
+	 		if( page == "goldoverview.html")
 	 			$('.my_stack').fadeIn(0);
 	 		$('.mtb-2').removeClass('mobile-toggle-selected');
 	 		$('.mtb-1').addClass('mobile-toggle-selected');
