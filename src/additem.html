@@ -11,6 +11,7 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <script src="../js/jquery-1.11.2.min.js"></script>
     <script src="../js/velocity.min.js"></script>
+    
     <script src="../js/main.js"></script>
     <title>New Item - CoinFlip</title>
 </head>
@@ -59,10 +60,10 @@
                         <tr>
                             <td>Metal</td>
                             <td>
-                                <select>
-                                    <option value="gold">Gold</option>
-                                    <option value="silver">Silver</option>
-                                    <option value="platinum">Platinum</option>
+                                <select id="metaltypeselector" onchange="run()">
+                                        <option value="1">Gold </option>
+                                        <option value="2"> Silver</option>
+                                        <option value="3"> Platinum</option>
                                 </select>
                             </td>
                         </tr>
@@ -83,36 +84,36 @@
                         <tr>
                             <td>Qty.</td>
                             <td>
-                                <input name="quantity" value="1" />
+                                <input id="qty" value="1" onchange ="update()"/>
                             </td>
                         </tr>
                         <tr>
                             <td>Premium</td>
                             <td>
-                                <input name="quantity" value="47.00" />
+                                <input id="premium" value="47.00" onchange ="update()" />
                             </td>
                         </tr>
                         <tr>
                             <td>Unit Price</td>
                             <td>
-                                <input name="quantity" value="1250.60" />
+                                <input id="unit" value="1250.60" onchange ="update()"/>
                             </td>
                         </tr>
                         <tr>
-                            <td>Gold %</td>
-                            <td>0.999</td>
+                          <td id="metalDetails"> Gold %</td>
+                  <td>0.999</td>
                         </tr>
                         <tr>
-                            <td>Weight/unit (g)</td>
-                            <td>1.244</td>
+                     <td id="weightDetails">Weight/unit (g)</td>
+                  <td>1.244</td>
                         </tr>
                         <tr>
-                            <td>Gold g/u</td>
-                            <td>1.244</td>
+                               <td id="gu">Gold g/u</td>
+                  <td>1.244</td>
                         </tr>
                         <tr>
-                            <td>Gold ozt/u</td>
-                            <td>0.0400</td>
+                    <td id="oz">Gold ozt/u</td>
+                  <td>0.0400</td>
                         </tr>
                         <tr>
                             <td>Total au (ozt)</td>
@@ -120,7 +121,7 @@
                         </tr>
                         <tr>
                             <td><strong>TOTAL</strong></td>
-                            <td><strong>1199.10</strong></td>
+                  <td id="totalDollarAmount"><strong>1199.10</strong></td>
                         </tr>
                     </table>
                     <a href="goldoverview.html"><span id="save">Save to My Stack</span></a>
