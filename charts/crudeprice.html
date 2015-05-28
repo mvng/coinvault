@@ -1,0 +1,67 @@
+<?php 
+//************  Brent Crude Prices  ****************
+$br_json = file_get_contents('https://www.quandl.com/api/v1/datasets/BUNDESBANK/BBK01_WT5511.json?trim_start=2015-02-22');
+$br_obj = json_decode($br_json, true);
+//Build arrays
+$br_label_arr = array();
+$br_value_arr = array();
+$i = 0;
+	foreach ($br_obj['data'] as $br_data){ //loop through data
+		$br_label_arr[] = date('M j',strtotime($br_data[0])); //pull dates
+		$br_value_arr[] = $br_data[6]; //pull prices
+		if (++$i == 30) break;
+	}
+$br_labels = array_reverse($br_label_arr); //reverse the data for ASC
+$br_values = array_reverse($br_value_arr); //reverse the data for ASC
+$br_labels = implode('","', $br_labels); //comma sep
+$br_values = implode(", ", $br_values); //comma sep
+?>
+
+
+<!doctype html>
+<html>
+	<head>
+		<title>Crude Line Chart</title>
+		<script src="Chart.js"></script>
+	</head>
+	<body>
+		<h1>Quandl Data with Charts.js using JSON and PHP</h1>
+		<p> 
+<script type="text/javascript">
+var myVar = '<?php print $br_labels?>';
+</script>
+		<div style="width:90%">
+			<div>
+				<canvas id="canvas" height="400" width="800"></canvas>
+			</div>
+		</div>
+
+
+	<script>
+		var lineChartData = {
+			labels : ["Apr 15","Apr 16","Apr 17","Apr 20","Apr 21","Apr 22","Apr 23","Apr 24","Apr 27","Apr 28","Apr 29","Apr 30","May 1","May 4","May 5","May 6","May 7","May 8","May 11","May 12","May 13","May 14","May 15","May 18","May 19","May 20","May 21","May 22","May 26","May 27"],
+			datasets : [
+				{
+					label: "Brent Crude",
+					fillColor : "rgba(151,187,205,0.3)",
+					strokeColor : "#999",
+					pointColor : "rgba(151,187,205,1)",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#000",
+					pointHighlightStroke : "rgba(151,187,205,1)",
+data : [60.32, 63.98, 63.45, 63.45, 62.08, 62.73, 64.85, 65.28, 64.83, 64.64, 65.84, 66.78, 66.46, 66.45, 67.52, 67.77, 65.54, 65.39, 64.91, 66.86, 66.81, 66.59, 66.81, 66.27, 64.02, 65.03, 66.54, 65.37, 63.72, 62.06]				}
+			]
+
+		}
+
+	window.onload = function(){
+		var ctx = document.getElementById("canvas").getContext("2d");
+		window.myLine = new Chart(ctx).Line(lineChartData, {
+			responsive: true
+		});
+	}
+
+
+	</script>
+	</body>
+</html>

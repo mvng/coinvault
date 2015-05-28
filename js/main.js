@@ -91,7 +91,6 @@ function loadFooter(){
 	document.write("    <footer>");
 	document.write("        &copy; 2015 CoinFlip");
 	document.write("    <\/footer> ");
-
 }
 
 
