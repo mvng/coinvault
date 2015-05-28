@@ -44,7 +44,7 @@ var query = new Parse.Query(Item);
 
 
 
-function creat() {
+function creat(userObjId) {
     
 var Item = Parse.Object.extend("item");
 var thing = new Item();
@@ -57,7 +57,12 @@ var thing = new Item();
       thing.set("qty", document.getElementById("qtyField").innerHTML); 
    */
     
-    thing.set("type", "GUCCI DOE");
+    
+    
+        thing.set("userObjId", userObjId);
+
+    thing.set("type", "Purple");
+    
     thing.save();
 };
 
