@@ -5,14 +5,22 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta name="description" content="bullion management site, rare coins, gold, silver, platinum">
     <meta name="author" content="CSE134B Dream Team">
-    <link rel="stylesheet" type="text/css" href="./style/style.css">
+    <link rel="stylesheet" type="text/css" href="../style/style.css">
     <meta name=viewport content="width=device-width, initial-scale=.8, minimum-scale = .8, user-scalable=yes">
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-    <script src="./js/jquery-1.11.2.min.js"></script>
-    <script src="./js/velocity.min.js"></script>
-    <script src="./js/main.js"></script>
-    <title>Login - CoinFlip</title>
+    <script src="../js/jquery-1.11.2.min.js"></script>
+    <script src="../js/velocity.min.js"></script>
+    <script src="../js/velocity.ui.min.js"></script>
+    <script src="../js/jquery.velocity.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/mainlogin.js"></script>
+    
+    
+    
+    <!-- bs -->
+
+    <title>Login - Coin Vault</title>
 </head>
 
 <body>
@@ -27,10 +35,8 @@
         <section id="w1-left">
             <h1>COINFLIP</h1>
             <h3>Manage your coin collection with a simple app.</h3>
-            
-            <!-- pass an object into dash -->
-            <a href="./src/dashboard.html"><span id="sign-up-button">Sign up</span></a>
-            <a href="./src/dashboard.html"><span id="log-in-button">Log in</span></a>
+            <a onclick="signup()"><span id="sign-up-button">Sign up</span></a>
+            <a onclick="login()"><span id="log-in-button">Log in</span></a>
         </section>
 
         <section id="w1-right">
@@ -40,11 +46,34 @@
                 <div id="iphone-screen"></div>
                 <div id="iphone-home"></div>
             </div>
-        </section>
 
-    </div>
+            
+            
+        <div id = "doge"> 
+            <div id="login-user" hidden>
+                Username
+                <input type="text">
+            </div>
+            <div id="login-pass" hidden>
+                Password
+                <input type="password">
+            </div>
+            <div id="login-cpass" hidden>
+                Confirm Password
+                <input type="password">
+            </div>
+            
+            </div>
+            
+            </section>
 
-    <script type="text/javascript">loadFooter();</script>
+            
+            
+
+
+    <script type="text/javascript">
+        loadFooter();
+    </script>
 </body>
 
 </html>
