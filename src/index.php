@@ -38,9 +38,17 @@ $br_values = implode(", ", $br_values); //comma sep
 		</div>
 
 
+<script type="text/javascript">
+  var gold_labels = <?php echo '"'.$br_labels.'"'; ?>;
+  var gold_values = <?php echo $br_values; ?>;
+</script>
+<script src="main.js" type="text/javascript"></script>
 	<script>
+
+
+
 		var lineChartData = {
-			labels : [<?php echo '"'.$br_labels.'"'; ?>],
+			labels : [gold_labels],
 			datasets : [
 				{
 					label: "Brent Crude",
@@ -50,7 +58,7 @@ $br_values = implode(", ", $br_values); //comma sep
 					pointStrokeColor : "#fff",
 					pointHighlightFill : "#000",
 					pointHighlightStroke : "rgba(151,187,205,1)",
-					data : [<?php echo $br_values; ?>]
+					data : [gold_values]
 				}
 			]
 
