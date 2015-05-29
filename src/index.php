@@ -43,10 +43,16 @@ $br_values = implode(", ", $br_values); //comma sep
   var gold_values = <?php echo $br_values; ?>;
 </script>
 <script src="main.js" type="text/javascript"></script>
+
+<script>
+document.getElementById("demo").innerHTML = gold_labels;
+document.getElementById("demo").innerHTML = gold_values;
+
+</script>
+
+
+
 	<script>
-
-
-
 		var lineChartData = {
 			labels : [gold_labels],
 			datasets : [
