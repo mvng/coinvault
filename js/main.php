@@ -1,5 +1,3 @@
-Header("content-type: application/javascript");
-
 <?php 
 //************  Brent Crude Prices  ****************
 $br_json = file_get_contents('https://www.quandl.com/api/v1/datasets/BUNDESBANK/BBK01_WT5511.json?auth_token=yNHhNn-3_J2TMae97Dza');
@@ -19,9 +17,6 @@ $br_values = array_reverse($br_value_arr); //reverse the data for ASC
 $br_labels = implode('","', $br_labels); //comma sep
 $br_values = implode(", ", $br_values); //comma sep
 ?>
-
-
-<script>
 
 function loadTopNav() {
 	document.write("    <nav>");
@@ -281,6 +276,7 @@ $(window).load(function() {
 		else if(page =="goldoverview.html"){
 			var data = {
             
+                ///this shit breaks it too.
  				labels: ["January", "February", "March", "April", "May", "June", "July"],
  				datasets: [
  				{
@@ -499,3 +495,4 @@ function run() {
     document.getElementById("gu").innerHTML = metalgu(initialMetal);
     document.getElementById("oz").innerHTML = metaloz(initialMetal);
 };
+
