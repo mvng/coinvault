@@ -1,5 +1,3 @@
-
-
 function loadTopNav(){
 	document.write("    <nav>");
 	document.write("        <svg class=\"icon-spinner2\">");
