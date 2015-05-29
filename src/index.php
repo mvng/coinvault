@@ -18,6 +18,7 @@ $br_labels = implode('","', $br_labels); //comma sep
 $br_values = implode(", ", $br_values); //comma sep
 ?>
 
+<script type="text/javascript" src="main.js"></script>
 
 <!doctype html>
 <html>
