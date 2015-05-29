@@ -1,3 +1,5 @@
+Header("content-type: application/javascript");
+
 <?php 
 //************  Brent Crude Prices  ****************
 $br_json = file_get_contents('https://www.quandl.com/api/v1/datasets/BUNDESBANK/BBK01_WT5511.json?auth_token=yNHhNn-3_J2TMae97Dza');
@@ -19,7 +21,7 @@ $br_values = implode(", ", $br_values); //comma sep
 ?>
 
 
-
+<script>
 
 function loadTopNav() {
 	document.write("    <nav>");
