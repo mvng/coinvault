@@ -21,23 +21,18 @@ function register() {
 };
 
 function login() {
-    var username = document.getElementById('user').value;
     var mail = document.getElementById('email').value;
     var pw = document.getElementById('password').value;
-    var person = new Parse.User();
 
-    person.set("username", username);
-    person.set("password", pw);
-    person.set("email", mail);
-
-    person.signUp(null, {success: function(user){
-        console.log("Sign up Success");
-    },
-    error: function(user,error){
-        console.log(error);
-    }});
-    
-     event.preventDefault(); 
+    Parse.User.logIn(mail, pw, {
+      success: function(user) {
+        console.log("Successful login");
+        window.location.assign("dashboard.html");
+      },
+      error: function(user, error) {
+        console.log("Failed login");
+      }
+    });
 };
 
 function signup() {
