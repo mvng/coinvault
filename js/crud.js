@@ -3,15 +3,27 @@
 Parse.initialize("uuMKgtd7piSYYS1OIicbKekLesPHKKerHp21X3Zk", "J10xkBbtYfn4EPD9TQzp0BNJI7sQ2UXmJqY0Dkgu");
 
 
-function get() {
+function get(objectId) {
+     //event.preventDefault();
+    // window.localStorage.setItem("option", optionch);
+    var objectId2 = objectId;
+
+
+     //window.location.href = 'myitem.html';
+   //  event.preventDefault();
+
+    console.log("ayy lmao" + objectId);
+
+    //  console.log("ayy lmao");
 
     var Item = Parse.Object.extend("item");
     var query = new Parse.Query(Item);
 
 
-    query.get("PYkufjJxYF", {
+    query.get(objectId, {
         success: function (item) {
 
+          //  event.preventDefault();
 
             document.getElementById("metalField").innerHTML = item.get("metal");
             document.getElementById("typeField").innerHTML = item.get("type");
@@ -22,10 +34,11 @@ function get() {
 
             //   document.getElementById("purchaseDateField").innerHTML = item.get("purchaseDate"); 
 
+           // location.reload();
 
 
 
-            console.log(item.get("purchaseDate"));
+            console.log(item.get("total"));
 
 
 
@@ -33,11 +46,12 @@ function get() {
         error: function (object, error) {
             // The object was not retrieved successfully.
             // error is a Parse.Error with an error code and message.
+           // location.reload();
+            console.log("Fucking Errors");
 
-            console.log("Failed to update");
+            console.log(error.message);
         }
     });
-
 
 
 };
@@ -203,24 +217,47 @@ function generateGold(objectId) {
             // console.log(table);
             //console.log(data);
 
-
-
             var tr;
             $(document).ready(function () {
                 for (var i = 0; i < data.length; i++) {
 
+
                     tr = $('<tr/>');
-                    tr.append("<td>" + data[i].type + "</td>");
+
+                    var id = data[i].objectId;
+
+
+                    //    tr.append("<a onclick = " + "get('id')" + ">" + id);
+                    tr.append("<td>" + id + "</td>");
+                    // tr.append("<a  href= " + "../src/myitem.html" + ">" + "<td>" + data[i].objectId + "</td>");
                     tr.append("<td>" + data[i].type + "</td>");
                     tr.append("<td>" + data[i].qty + "</td>");
 
                     tr.append("<td>" + data[i].weightg + "</td>");
                     tr.append("<td>" + data[i].weightau + "</td>");
-                    tr.append("<td>" + data[i].total + "</td>");
+                    tr.append("<td>" + data[i].total + "</td>" + "</a>");
+                    // tr.onClick = set(123);
 
                     $('#goldTable').append(tr);
-                }
+                      $(tr).click(function(){ 
+                          
+                        var a = $(this).closest('tr').find('td:first').text();
+                           set(a);
+                        
+                        
+                          window.location.href = 'myitem.html';
+                          
+                          //console.log(a);
+                      
+                      
+                      
+                      });
 
+                }
+                
+                      
+                
+                
             });
 
         },
@@ -232,6 +269,28 @@ function generateGold(objectId) {
 
 
 };
+
+
+
+
+
+
+
+function set(objectId) {
+
+    console.log("hey " + objectId);
+    
+    document.cookie = objectId;
+
+
+}
+
+function getId(){
+
+    
+        return document.cookie;
+    
+}
 
 function name() {
     var data = [];
@@ -256,7 +315,7 @@ function name() {
                 temp = results[i].attributes;
                 id = results[i].id
                 data[i] = {
-                    "objectId": id,
+                    "objectId": temp.id,
                     "type": temp.type,
                     "metal": temp.metal,
                     "qty": temp.qty,
@@ -276,9 +335,11 @@ function name() {
                 for (var i = 0; i < data.length; i++) {
 
                     tr = $('<tr/>');
+
                     tr.append("<td>" + data[i].type + "</td>");
                     tr.append("<td>" + data[i].metal + "</td>");
                     tr.append("<td>" + data[i].qty + "</td>");
+
                     $('table').append(tr);
                 }
 

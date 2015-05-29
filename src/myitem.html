@@ -9,9 +9,20 @@
     <meta name=viewport content="width=device-width, initial-scale=.8, minimum-scale = .8, user-scalable=yes">
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-    <script src="./js/jquery-1.11.2.min.js"></script>
-    <script src="./js/velocity.min.js"></script>
-    <script src="./js/main.js"></script>
+    <!--<script src="../js/jquery-1.11.2.min.js"></script> -->
+    <script src="../js/velocity.min.js"></script>
+    
+    <script src = "../js/main.js"></script>
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"  
+type="text/javascript" charset="utf-8"></script> 
+    
+    
+          <!-- CHANGE THIS SHIT TO LOCAL PLS -->
+      <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
+
+    
+        <script type ="text/javascript" src ="../js/crud.js"></script>
     <title>Gold Item - CoinFlip</title>
 </head>
 
@@ -22,10 +33,16 @@
     <script type="text/javascript">
     loadSideNav(1);
     </script>
+    <script>
+    
+        console.log("SUPP " + getId());
+   get(getId());
+    
+    </script>
     <section class="main-section">
         <section class="coin_wrapper">
             <div class="mobile-nav">
-                <a href="wire3.html">
+                <a href="dashboard.html">
                     <svg class="icon icon-keyboard-arrow-left">
                         <symbol id="icon-keyboard-arrow-left" viewBox="0 0 1024 1024">
                             <title>keyboard-arrow-left</title>
@@ -37,7 +54,7 @@
                 ITEM DETAIL
             </div>
             <div class="coin_main">
-                <a href="wire3.html">
+                <a href="dashboard.html">
                     <div class="breadcrumb">
                         <svg class="icon icon-play-arrow-rev">
                             <symbol id="icon-play-arrow" viewBox="0 0 1024 1024">
@@ -58,27 +75,27 @@
                     <table>
                         <tr>
                             <td>Metal</td>
-                            <td>Gold</td>
+                            <td id = "metalField"></td>
                         </tr>
                         <tr>
                             <td>Type</td>
-                            <td>US Eagle</td>
+                            <td id = "typeField"></td>
                         </tr>
                         <tr>
                             <td>Purchase Date</td>
-                            <td>04 March 2015</td>
+                            <td id="purchaseDateField">04 March 2015</td>
                         </tr>
                         <tr>
                             <td>Qty.</td>
-                            <td>1</td>
+                            <td id = "qtyField">1</td>
                         </tr>
                         <tr>
                             <td>Premium</td>
-                            <td>47.00</td>
+                            <td id="premiumField">47.00</td>
                         </tr>
                         <tr>
                             <td>Unit Price</td>
-                            <td>1250.60</td>
+                            <td id="unitPriceField">1250.60</td>
                         </tr>
                         <tr>
                             <td>Gold %</td>
@@ -102,7 +119,7 @@
                         </tr>
                         <tr>
                             <td><strong>TOTAL</strong></td>
-                            <td><strong>1199.10</strong></td>
+                            <td><strong id = "totalField">1199.10</strong></td>
                         </tr>
                     </table>
                 </section>

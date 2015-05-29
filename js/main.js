@@ -1,3 +1,5 @@
+
+
 function loadTopNav() {
 	document.write("    <nav>");
 	document.write("        <svg class=\"icon-spinner2\">");
@@ -7,7 +9,7 @@ function loadTopNav() {
 	document.write("            <\/symbol>");
 	document.write("            <use xlink:href=\"#icon-spinner2\"><\/use>");
 	document.write("        <\/svg>");
-	document.write("        <a href=\"dashboard.html\">COIN VAULT<\/a>");
+	document.write("        <a href=\"dashboard.html\">COINFLIP<\/a>");
 	document.write("        <svg class=\"icon-cog\">");
 	document.write("            <symbol id=\"icon-cog\" viewBox=\"0 0 1024 1024\">");
 	document.write("                <title>cog<\/title>");
@@ -27,7 +29,7 @@ function loadTopNavPersist() {
 	document.write("            <\/symbol>");
 	document.write("            <use xlink:href=\"#icon-spinner2\"><\/use>");
 	document.write("        <\/svg>");
-	document.write("        <a href=\"dashboard.html\">COIN VAULT<\/a>");
+	document.write("        <a href=\"dashboard.html\">COINFLIP<\/a>");
 	document.write("        <svg class=\"icon-cog\">");
 	document.write("            <symbol id=\"icon-cog\" viewBox=\"0 0 1024 1024\">");
 	document.write("                <title>cog<\/title>");
@@ -89,7 +91,7 @@ function loadSideNav(selected){
 
 function loadFooter(){
 	document.write("    <footer>");
-	document.write("        &copy; 2015 Coin Vault");
+	document.write("        &copy; 2015 CoinFlip");
 	document.write("    <\/footer> ");
 }
 
@@ -470,34 +472,6 @@ function metaloz(value) {
 
 };
 
-function update() {
-
-            console.log("YO WTF");
-
-    
-    var qty = document.getElementById("qtyField").value;
-
-    var premium = document.getElementById("premiumField").value;
-
-    var unitPrice = document.getElementById("unitPriceField").value;
-
-    if (!qty) qty = 1;
-    if (!premium) premium = 47;
-    if (!unitPrice) unitPrice = 1250.60;
-
-    var sum = (+qty * (+premium + +unitPrice));
-
-    sum = parseFloat(sum).toFixed(2);
-
-
-    document.getElementById("totalField").innerHTML = sum;
-    
-        console.log(qty);
-        console.log(premium);
-        console.log(unitPrice);
-        console.log(sum);
-    
-};
 function run() {
     
     console.log("invoking run");
