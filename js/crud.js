@@ -2,16 +2,61 @@
 //Type, unitPrice, premium Total createdAt, metal
 Parse.initialize("uuMKgtd7piSYYS1OIicbKekLesPHKKerHp21X3Zk", "J10xkBbtYfn4EPD9TQzp0BNJI7sQ2UXmJqY0Dkgu");
 
+function set(objectId) {
 
-function get() {
+    
+   // console.log("attempting");
+    //deleteAllCookies();
+    
+    
+   // console.log("hey " + objectId);
+    
+  //  document.cookie = "id=" + objectId;
+    
+    localStorage.id = objectId;
+
+
+}
+
+function getId() {
+
+    /*
+    var allcookies = document.cookie;
+    
+    cookiearray = allcookies.split(";");
+    
+    for( var i = 0; i< cookiearray.length; i++){
+              id = cookiearray[i].split('=')[0];
+              value = cookiearray[i].split('=')[1];
+
+
+                //console.log(id); 
+        
+    }*/
+    
+    return localStorage.getItem("id");
+    }
+function get(objectId) {
+     //event.preventDefault();
+    // window.localStorage.setItem("option", optionch);
+    var objectId2 = objectId;
+
+
+     //window.location.href = 'myitem.html';
+   //  event.preventDefault();
+
+    console.log("ayy lmao" + objectId);
+
+    //  console.log("ayy lmao");
 
     var Item = Parse.Object.extend("item");
     var query = new Parse.Query(Item);
 
 
-    query.get("PYkufjJxYF", {
+    query.get(objectId, {
         success: function (item) {
 
+          //  event.preventDefault();
 
             document.getElementById("metalField").innerHTML = item.get("metal");
             document.getElementById("typeField").innerHTML = item.get("type");
@@ -22,10 +67,11 @@ function get() {
 
             //   document.getElementById("purchaseDateField").innerHTML = item.get("purchaseDate"); 
 
+           // location.reload();
 
 
 
-            console.log(item.get("purchaseDate"));
+            console.log(item.get("total"));
 
 
 
@@ -33,12 +79,65 @@ function get() {
         error: function (object, error) {
             // The object was not retrieved successfully.
             // error is a Parse.Error with an error code and message.
+           // location.reload();
+            //console.log("Fucking Errors");
 
-            console.log("Failed to update");
+            console.log(error.message);
         }
     });
 
 
+}
+
+function getEdit(objectId) {
+    console.log("invoking edit");
+     //event.preventDefault();
+    // window.localStorage.setItem("option", optionch);
+    var objectId2 = objectId;
+
+
+     //window.location.href = 'myitem.html';
+   //  event.preventDefault();
+
+    console.log("ayy lmao " + objectId);
+
+    //  console.log("ayy lmao");
+
+    var Item = Parse.Object.extend("item");
+    var query = new Parse.Query(Item);
+
+
+    query.get(objectId, {
+        success: function (item) {
+
+          //  event.preventDefault();
+
+            document.getElementById("metalField").placeholder = item.get("metal");
+            document.getElementById("typeField").placeholder = item.get("type");
+            document.getElementById("unitPriceField").value = item.get("unitPrice");
+            document.getElementById("premiumField").value = item.get("premium");
+            document.getElementById("totalField").value = item.get("total");
+            document.getElementById("qtyField").value = item.get("qty");
+
+            //   document.getElementById("purchaseDateField").innerHTML = item.get("purchaseDate"); 
+
+           // location.reload();
+
+
+            console.log(item.get("total"));
+
+
+
+        },
+        error: function (object, error) {
+            // The object was not retrieved successfully.
+            // error is a Parse.Error with an error code and message.
+           // location.reload();
+            //console.log("Fucking Errors");
+
+            console.log(error.message);
+        }
+    });
 
 };
 
@@ -108,41 +207,62 @@ function creat(userObjId) {
     });
 };
 
-function update(objectId) {
+function update() {
+     console.log("invoking update");
+
+    /*
+   var objectId = getId();
+   // event.preventDefault();
 
     var Item = Parse.Object.extend("item");
     //var query = new Parse.Query(Item);
     var thing = new Item();
 
+//console.log(thing);
+
+    var metal = document.getElementById("metalField");
+    var type = document.getElementById("typeField");
+    var purchaseDate = document.getElementById("purchaseDateField");
+    var qty = document.getElementById("qtyField");
+    var premium = document.getElementById("premiumField");
+    var unitPrice = document.getElementById("unitPriceField");
+    var total = document.getElementById("totalField").textContent;
 
 
 
 
-
-
-    /*
-    
-     thing.set("objectId", objectId);
-          thing.set("metal", document.getElementById("metalField").innerHTML);
-        thing.set("type", document.getElementById("typeField").innerHTML);
-      thing.set("unitPrice", document.getElementById("unitPriceField").innerHTML);
-      thing.set("premium", document.getElementById("premiumField").innerHTML);
-      thing.set("total", document.getElementById("totalField").innerHTML); 
-      thing.set("qty", document.getElementById("qtyField").innerHTML); 
-      
-      thing.set("purchaseDate", document.getElementById("purchaseDateField").innerHTML); 
-          
-          */
     thing.set("objectId", objectId);
-    thing.set("metal", "ROAWR");
-    thing.save();
 
+    thing.set("metal", metal.options[metal.selectedIndex].text);
+    thing.set("type", type.options[type.selectedIndex].text);
 
+    thing.set("qty", Number(qty.value));
+    thing.set("premium", Number(premium.value));
+    thing.set("unitPrice", Number(unitPrice.value));
+    thing.set("total", Number(total));
 
+    thing.set("weightg", weightg);
+    thing.set("weightau", weightau);
 
+    thing.save(null, {
+        success: function (thing) {
+            // Execute any logic that should take place after the object is saved.
+           
+            console.log("edit success");
+            location.reload();
+        },
+        error: function (thing, error) {
+            // Execute any logic that should take place if the save fails.
+            // error is a Parse.Error with an error code and message.
+          
+            location.reload();
+                        console.log("edit fail");
 
+        }
+    });
 
-};
+*/
+}; 
 
 function delet(objectId) {
 
@@ -203,24 +323,47 @@ function generateGold(objectId) {
             // console.log(table);
             //console.log(data);
 
-
-
             var tr;
             $(document).ready(function () {
                 for (var i = 0; i < data.length; i++) {
 
+
                     tr = $('<tr/>');
-                    tr.append("<td>" + data[i].type + "</td>");
+
+                    var id = data[i].objectId;
+
+
+                    //    tr.append("<a onclick = " + "get('id')" + ">" + id);
+                    tr.append("<td>" + id + "</td>");
+                    // tr.append("<a  href= " + "../src/myitem.html" + ">" + "<td>" + data[i].objectId + "</td>");
                     tr.append("<td>" + data[i].type + "</td>");
                     tr.append("<td>" + data[i].qty + "</td>");
 
                     tr.append("<td>" + data[i].weightg + "</td>");
                     tr.append("<td>" + data[i].weightau + "</td>");
-                    tr.append("<td>" + data[i].total + "</td>");
+                    tr.append("<td>" + data[i].total + "</td>" + "</a>");
+                    // tr.onClick = set(123);
 
                     $('#goldTable').append(tr);
-                }
+                      $(tr).click(function(){ 
+                          
+                        var a = $(this).closest('tr').find('td:first').text();
+                           set(a);
+                        
+                        
+                          window.location.href = 'myitem.html';
+                          
+                          //console.log(a);
+                      
+                      
+                      
+                      });
 
+                }
+                
+                      
+                
+                
             });
 
         },
@@ -232,6 +375,28 @@ function generateGold(objectId) {
 
 
 };
+
+
+
+
+
+
+
+
+
+function deleteAllCookies() {
+
+    
+    console.log("deleting cookies...");
+    var cookies = document.cookie.split(";");
+
+    for (var i = 0; i < cookies.length; i++) {
+    	var cookie = cookies[i];
+    	var eqPos = cookie.indexOf("=");
+    	var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+    	document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    }
+}
 
 function name() {
     var data = [];
@@ -256,7 +421,7 @@ function name() {
                 temp = results[i].attributes;
                 id = results[i].id
                 data[i] = {
-                    "objectId": id,
+                    "objectId": temp.id,
                     "type": temp.type,
                     "metal": temp.metal,
                     "qty": temp.qty,
@@ -276,9 +441,11 @@ function name() {
                 for (var i = 0; i < data.length; i++) {
 
                     tr = $('<tr/>');
+
                     tr.append("<td>" + data[i].type + "</td>");
                     tr.append("<td>" + data[i].metal + "</td>");
                     tr.append("<td>" + data[i].qty + "</td>");
+
                     $('table').append(tr);
                 }
 
