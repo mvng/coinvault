@@ -1,6 +1,6 @@
 <?php 
 //************  Brent Crude Prices  ****************
-$br_json = file_get_contents('https://www.quandl.com/api/v1/datasets/CHRIS/CME_BZ1.json?auth_token=MozKdjXWdsbMFLxbDSfr');
+$br_json = file_get_contents('');
 $br_obj = json_decode($br_json, true);
 //Build arrays
 $br_label_arr = array();
