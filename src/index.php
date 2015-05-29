@@ -10,7 +10,7 @@ $i = 0;
 		$br_label_arr[] = date('M j',strtotime($br_data[0])); //pull dates
 		$br_value_arr[] = $br_data[1]; //pull prices
 
-		if (++$i == 20) break;
+		if (++$i == 30) break;
 	}
 $br_labels = array_reverse($br_label_arr); //reverse the data for ASC
 $br_values = array_reverse($br_value_arr); //reverse the data for ASC
@@ -47,7 +47,7 @@ $br_values = implode(", ", $br_values); //comma sep
 					pointStrokeColor : "#fff",
 					pointHighlightFill : "#000",
 					pointHighlightStroke : "rgba(151,187,205,1)",
-					data : [<?php echo $br_values; ?>]
+					data : [	]
 				}
 			]
 

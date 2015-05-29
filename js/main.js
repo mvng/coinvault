@@ -254,7 +254,7 @@ $(window).load(function() {
 		}
 		else if(page =="goldoverview.html"){
 			var data = {
-				labels: [<?php echo '"'.$br_labels.'"'; ?>],
+				labels: ["January", "February", "March", "April", "May", "June", "July"],
 				datasets: [
 				{
 					label: "Gold Total",
@@ -274,7 +274,7 @@ $(window).load(function() {
 					pointStrokeColor: pointStroke,
 					pointHighlightFill: pointHighlightFill,
 					pointHighlightStroke: pointHighlightStroke,
-					data: [<?php echo $br_values; ?>]
+					data: [100, 110, 120, 90, 102, 135, 115]
 				}
 				]
 			};
