@@ -16,7 +16,6 @@
     <script>
         Parse.initialize("uuMKgtd7piSYYS1OIicbKekLesPHKKerHp21X3Zk", "J10xkBbtYfn4EPD9TQzp0BNJI7sQ2UXmJqY0Dkgu");
     </script>
-
     <script src="../js/jquery-1.11.2.min.js"></script>
     <script src="../js/velocity.min.js"></script>
     <script language="JavaScript" src="../js/mainlogin.js"></script>
@@ -31,19 +30,21 @@
         <div class="mobile-nav">
             COIN VAULT
         </div>
-    </header>
+    </header>   
 
     <section class="main-section">
-        <h1 style="font-size:50px;">SIGN UP</h1>
-        <h2>NAME :</h2>
-        <input type="text" placeholder="Your Name" id="user">
-        <h2>EMAIL :</h2>
-        <input type="text" placeholder="Your Email" id="email">
-        <h2>PASSWORD :<h2>
-        <input type="password" placeholder="Your Password" id="password">
+        <h1 id="signup-text">SIGN UP</h1>
+        <h2 id="name-text">NAME :</h2>
+        <input type="text" placeholder="Your Name" id="user" class="name-input">
+        <h2 id="email-text">EMAIL :</h2>
+        <input type="text" placeholder="Your Email" id="email" class="email-input">
+        <h2 id="password-text">PASSWORD :<h2>
+        <input type="password" placeholder="Your Password" id="password" class="password-input">
     </section>
-    <button class="sign-up-button" onclick="signup()">Sign up</button>
-
+    <div align="center">
+        <a onclick="register()"><span id="sign-up-button" class="signup-button">Sign up</span></a>
+    </div>
+    
     <script type="text/javascript">
         loadFooter();
     </script>

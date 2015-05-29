@@ -1,5 +1,4 @@
 function loadTopNav() {
->>>>>>> ee899a8694d67dc6858f83360edabb68768623ae
 	document.write("    <nav>");
 	document.write("        <svg class=\"icon-spinner2\">");
 	document.write("            <symbol id=\"icon-spinner2\" viewBox=\"0 0 1024 1024\">");
