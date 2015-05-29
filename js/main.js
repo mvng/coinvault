@@ -1,4 +1,5 @@
-function loadTopNav(){
+function loadTopNav() {
+>>>>>>> ee899a8694d67dc6858f83360edabb68768623ae
 	document.write("    <nav>");
 	document.write("        <svg class=\"icon-spinner2\">");
 	document.write("            <symbol id=\"icon-spinner2\" viewBox=\"0 0 1024 1024\">");
@@ -18,7 +19,7 @@ function loadTopNav(){
 	document.write("    <\/nav>");
 }
 
-function loadTopNavPersist(){
+function loadTopNavPersist() {
 	document.write("    <nav style='display: block; visibility: visible;'>");
 	document.write("        <svg class=\"icon-spinner2\">");
 	document.write("            <symbol id=\"icon-spinner2\" viewBox=\"0 0 1024 1024\">");
@@ -111,10 +112,11 @@ $(window).load(function() {
 	 $('.icon-spinner2').click(function(){
 	 	location.reload();	
 	 });
-
+/*
 	 $('tr').click(function(){
 	 	$(this).find('a')[0].click();
 	 });
+     */
 
 	/* * * * * * * * * * * * * *
 	 *                         *
@@ -471,11 +473,14 @@ function metaloz(value) {
 
 function update() {
 
-    var qty = document.getElementById("qty").value;
+            console.log("YO WTF");
 
-    var premium = document.getElementById("premium").value;
+    
+    var qty = document.getElementById("qtyField").value;
 
-    var unitPrice = document.getElementById("unit").value;
+    var premium = document.getElementById("premiumField").value;
+
+    var unitPrice = document.getElementById("unitPriceField").value;
 
     if (!qty) qty = 1;
     if (!premium) premium = 47;
@@ -486,16 +491,18 @@ function update() {
     sum = parseFloat(sum).toFixed(2);
 
 
-    document.getElementById("totalDollarAmount").innerHTML = sum;
-    /*
+    document.getElementById("totalField").innerHTML = sum;
+    
         console.log(qty);
         console.log(premium);
         console.log(unitPrice);
         console.log(sum);
-    */
+    
 };
 function run() {
-    initialMetal = document.getElementById("metaltypeselector").value;
+    
+    console.log("invoking run");
+    initialMetal = document.getElementById("metalField").value;
     document.getElementById("metalDetails").innerHTML = metal(initialMetal);
     document.getElementById("gu").innerHTML = metalgu(initialMetal);
     document.getElementById("oz").innerHTML = metaloz(initialMetal);
