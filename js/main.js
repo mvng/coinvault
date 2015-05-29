@@ -260,7 +260,7 @@ $(window).load(function() {
             
                 ///this shit breaks it too.
 				//labels: [<?php echo '"'.$br_labels.'"'; ?>],
- 				labels: ["January", "February", "March", "April", "May", "June", "July"],
+ 				labels: [gold_labels],
  				datasets: [
  				{
  					label: "Gold Total",
@@ -270,7 +270,7 @@ $(window).load(function() {
  					pointStrokeColor: pointStroke,
  					pointHighlightFill: pointHighlightFill,
  					pointHighlightStroke: pointHighlightStroke,
- 					data: [700,820,700,800,730,950,900]
+ 					data: [gold_values]
  				},
 				{
  					label: "1oz Gold",
