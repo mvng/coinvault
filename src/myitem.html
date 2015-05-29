@@ -18,12 +18,14 @@
 type="text/javascript" charset="utf-8"></script> 
     
     
+    <script src = "../js/jquery.jeditable.mini.js"> </script>
+    
           <!-- CHANGE THIS SHIT TO LOCAL PLS -->
       <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
 
     
         <script type ="text/javascript" src ="../js/crud.js"></script>
-    <title>Gold Item - CoinFlip</title>
+    <title>Gold Item - CoinVault</title>
 </head>
 
 <body>
@@ -36,12 +38,16 @@ type="text/javascript" charset="utf-8"></script>
     <script>
     
         
-         deleteAllCookies();
-        
         
         console.log("Passing Cookies. " + getId());
    get(getId());
     
+        
+        
+        
+        $('#myTable td').click(function(){
+  $('myDialog').dialog('open');
+});
     </script>
     <section class="main-section">
         <section class="coin_wrapper">
@@ -68,15 +74,26 @@ type="text/javascript" charset="utf-8"></script>
                             <use xlink:href="#icon-play-arrow"></use>
                         </svg>
                         Item Detail
+                    
+
                     </div>
                 </a>
+                
                 <section class="coin_image">
+                    
                     <div class="img_box">
-                        <div class="img_circle"></div>
+                        <div class="img_circle">
+                        
+                        </div>
                     </div>
+                                   
+
                 </section>
+                
                 <section class="coin_detail">
-                    <table>
+                                                                           
+
+                    <table id = "myTable">
                         <tr>
                             <td>Metal</td>
                             <td id = "metalField"></td>
@@ -124,8 +141,13 @@ type="text/javascript" charset="utf-8"></script>
                         <tr>
                             <td><strong>TOTAL</strong></td>
                             <td><strong id = "totalField">1199.10</strong></td>
+                            
+                        </tr>
+                            <tr>
+                           <!--     <a href="../src/updateItem.html"><span id = "edit-button">Edit</span></a>-->
                         </tr>
                     </table>
+                    <a href="updateItem.html"><span id="cancel">Edit</span></a>
                 </section>
             </div>
         </section>
