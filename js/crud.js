@@ -278,19 +278,23 @@ function generateGold(objectId) {
 
 function set(objectId) {
 
-    deleteAllCookies();
+    
+   // console.log("attempting");
+    //deleteAllCookies();
     
     
-    console.log("hey " + objectId);
+   // console.log("hey " + objectId);
     
-    document.cookie = "id=" + objectId;
+  //  document.cookie = "id=" + objectId;
+    
+    localStorage.id = objectId;
 
 
 }
 
 function getId() {
 
-    
+    /*
     var allcookies = document.cookie;
     
     cookiearray = allcookies.split(";");
@@ -302,12 +306,15 @@ function getId() {
 
                 //console.log(id); 
         
-    }
+    }*/
     
-    return value;
-}
+    return localStorage.getItem("id");
+    }
 
 function deleteAllCookies() {
+
+    
+    console.log("deleting cookies...");
     var cookies = document.cookie.split(";");
 
     for (var i = 0; i < cookies.length; i++) {
