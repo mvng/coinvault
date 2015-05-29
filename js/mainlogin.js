@@ -12,6 +12,7 @@ function register() {
 
     person.signUp(null, {success: function(user){
         console.log("Sign up Success");
+        login();
     },
     error: function(user,error){
         console.log(error);
@@ -21,10 +22,10 @@ function register() {
 };
 
 function login() {
-    var mail = document.getElementById('email').value;
+    var username = document.getElementById('user').value;
     var pw = document.getElementById('password').value;
 
-    Parse.User.logIn(mail, pw, {
+    Parse.User.logIn(username, pw, {
       success: function(user) {
         console.log("Successful login");
         window.location.assign("dashboard.html");

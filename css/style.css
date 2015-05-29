@@ -860,13 +860,13 @@ select {
   left: 15%;
  }
 
-#name-text {
+#username-text {
   position:absolute;
   top: 20%;
   left: 15%;
 }
 
-.name-input {
+.username-input {
   font-size: 18px;
   position: absolute;
   top: 25%;
@@ -907,7 +907,7 @@ select {
   position:absolute;
   text-align: center;
   top: 50%;
-  left: 15%;
+  left: 15%;  
   width: 10%;
   height: 35px;
 }
