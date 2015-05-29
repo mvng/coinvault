@@ -37,20 +37,73 @@ function login() {
 };
 
 function signup() {
-    console.log("what");
-    var x = document.getElementById("login-user");
-    var y = document.getElementById("iphone");
-    var z = document.getElementById("login-pass");
-    var zc = document.getElementById("login-cpass");
+    // Items on page that need to disappear
+    var iphone = document.getElementById("iphone");
+    var left = document.getElementById("w1-left");
+    var login = document.getElementById("login");
+    var button = document.getElementById("loginButton");
 
-    // $.Velocity.animate(document.x, "scroll", 1000);
+    if(iphone){
+        iphone.remove();
+    }
 
-if(y){
-y.remove();
-    
-}
+    if(left){
+        left.remove();
+    }
+    /*if(iphone){
+        setTimeout(function () {
+            $(iphone)
+                .velocity({
+                    opacity: 0
+                }, {
+                    duration: 100,
+                    display: "block"
+                })
+        }, 0);
+    }
+
+    if(left){
+        setTimeout(function () {
+            $(left)
+                .velocity({
+                    opacity: 0
+                }, {
+                    duration: 100,
+                    display: "block"
+                })
+        }, 0);
+    }*/
+
+    if(login){
+        setTimeout(function () {
+            $(login)
+                .velocity({
+                    opacity: 0
+                }, {
+                    duration: 100,
+                    display: "block"
+                })
+        }, 0);
+    }
+
+    if(button){
+        setTimeout(function () {
+            $(button)
+                .velocity({
+                    opacity: 0
+                }, {
+                    duration: 100,
+                    display: "block"
+                })
+        }, 0);
+    }
+
+    // Items on page that need to appear
+    var signup = document.getElementById("signup");
+    var signupButton = document.getElementById("signup-button");
+
     setTimeout(function () {
-        $(x)
+        $(signup)
             .velocity({
                 opacity: 1
             }, {
@@ -58,17 +111,9 @@ y.remove();
                 display: "block"
             })
     }, 0);
+
     setTimeout(function () {
-        $(z)
-            .velocity({
-                opacity: 1
-            }, {
-                duration: 750,
-                display: "block"
-            })
-    }, 0);
-    setTimeout(function () {
-        $(zc)
+        $(signupButton)
             .velocity({
                 opacity: 1
             }, {
@@ -79,32 +124,50 @@ y.remove();
 };
 
 function loginButton() {
-    console.log("what");
-    var x = document.getElementById("login-user");
-    var y = document.getElementById("iphone");
-    var z = document.getElementById("login-pass");
-    var zc = document.getElementById("login-cpass");
+    // Items on page that need to disappear
+    var iphone = document.getElementById("iphone");
+    var left = document.getElementById("w1-left");
+    var signup = document.getElementById("signup");
+    var signupButton = document.getElementById("signup-button");
 
+    if(iphone){
+        iphone.remove();
+    }
 
-    // $.Velocity.animate(document.x, "scroll", 1000);
-if(y){
-document.getElementById("w1-right").remove();
+    if(left){
+        left.remove();
+    }
 
-y.remove();
-    
-}
+    if(signup){
+        setTimeout(function () {
+            $(signup)
+                .velocity({
+                    opacity: 0
+                }, {
+                    duration: 100,
+                    display: "block"
+                })
+        }, 0);
+    }
+
+    if(signupButton){
+        setTimeout(function () {
+            $(signupButton)
+                .velocity({
+                    opacity: 0
+                }, {
+                    duration: 100,
+                    display: "block"
+                })
+        }, 0);
+    }
+
+    // Items on page that need to appear
+    var login = document.getElementById("login");
+    var button = document.getElementById("loginButton");
 
     setTimeout(function () {
-        $(zc)
-            .velocity({
-                opacity: 0
-            }, {
-                duration: 0,
-                display: "hidden"
-            })
-    }, 0);
-    setTimeout(function () {
-        $(x)
+        $(login)
             .velocity({
                 opacity: 1
             }, {
@@ -112,8 +175,9 @@ y.remove();
                 display: "block"
             })
     }, 0);
+
     setTimeout(function () {
-        $(z)
+        $(button)
             .velocity({
                 opacity: 1
             }, {
@@ -121,5 +185,4 @@ y.remove();
                 display: "block"
             })
     }, 0);
-
 };
