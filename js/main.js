@@ -1,4 +1,3 @@
-    console.log("wtf");
 
 
 function loadTopNav(){
@@ -19,8 +18,6 @@ function loadTopNav(){
 	document.write("            <use xlink:href=\"#icon-cog\"><\/use>");
 	document.write("        <\/svg>");
 	document.write("    <\/nav>");
-    
-    console.log("wtf");
 }
 
 function loadTopNavPersist(){
