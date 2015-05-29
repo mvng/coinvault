@@ -1,3 +1,5 @@
+
+
 function loadTopNav(){
 	document.write("    <nav>");
 	document.write("        <svg class=\"icon-spinner2\">");
@@ -254,7 +256,15 @@ $(window).load(function() {
 		}
 		else if(page =="goldoverview.html"){
 			var data = {
+<<<<<<< HEAD
 				labels: [br_labels],
+=======
+                
+                
+                ///this shit breaks it too.
+				//labels: [<?php echo '"'.$br_labels.'"'; ?>],
+                labels: ["gold total"],
+>>>>>>> 96b90318f2b2b5d2bdab316352e073b0142893f9
 				datasets: [
 				{
 					label: "Gold Total",
@@ -274,7 +284,14 @@ $(window).load(function() {
 					pointStrokeColor: pointStroke,
 					pointHighlightFill: pointHighlightFill,
 					pointHighlightStroke: pointHighlightStroke,
+<<<<<<< HEAD
 					data: [100, 110, 120, 90, 102, 135, 115]
+=======
+					data: [700,820,700,800,730,950,900]
+                    
+                    //if this fails it literally breaks everything lol... wtf??
+                    //data: [<?php echo $br_values; ?]
+>>>>>>> 96b90318f2b2b5d2bdab316352e073b0142893f9
 				}
 				]
 			};
