@@ -281,17 +281,17 @@ $(window).load(function() {
 		else if(page =="goldoverview.html"){
 			var data = {
             
-			labels : [<?php echo '"'.$br_labels.'"'; ?>],
-			datasets : [
-				{
-					label: "Brent Crude",
-					fillColor : "rgba(151,187,205,0.3)",
-					strokeColor : "#999",
-					pointColor : "rgba(151,187,205,1)",
-					pointStrokeColor : "#fff",
-					pointHighlightFill : "#000",
-					pointHighlightStroke : "rgba(151,187,205,1)",
-					data : [<?php echo $br_values; ?>]
+ 				labels: ["January", "February", "March", "April", "May", "June", "July"],
+ 				datasets: [
+ 				{
+ 					label: "Gold Total",
+ 					fillColor: "rgba(104, 206, 222, 0.05)",
+ 					strokeColor: "#FF6D67",
+ 					pointColor: "#FF6D67",
+ 					pointStrokeColor: pointStroke,
+ 					pointHighlightFill: pointHighlightFill,
+ 					pointHighlightStroke: pointHighlightStroke,
+ 					data: [700,820,700,800,730,950,900]
  				},
 				{
  					label: "1oz Gold",
