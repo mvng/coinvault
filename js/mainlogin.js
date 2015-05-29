@@ -1,6 +1,26 @@
 Parse.initialize("uuMKgtd7piSYYS1OIicbKekLesPHKKerHp21X3Zk", "J10xkBbtYfn4EPD9TQzp0BNJI7sQ2UXmJqY0Dkgu");
 
-function signup() {
+function register() {
+    var username = document.getElementById('user').value;
+    var mail = document.getElementById('email').value;
+    var pw = document.getElementById('password').value;
+    var person = new Parse.User();
+
+    person.set("username", username);
+    person.set("password", pw);
+    person.set("email", mail);
+
+    person.signUp(null, {success: function(user){
+        console.log("Sign up Success");
+    },
+    error: function(user,error){
+        console.log(error);
+    }});
+    
+     event.preventDefault(); 
+};
+
+function login() {
     var username = document.getElementById('user').value;
     var mail = document.getElementById('email').value;
     var pw = document.getElementById('password').value;
@@ -62,7 +82,7 @@ y.remove();
     }, 0);
 };
 
-function login() {
+function loginButton() {
     console.log("what");
     var x = document.getElementById("login-user");
     var y = document.getElementById("iphone");
