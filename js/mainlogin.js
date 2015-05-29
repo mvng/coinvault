@@ -44,19 +44,12 @@ function signup() {
     var button = document.getElementById("loginButton");
 
     if(iphone){
-        iphone.remove();
-    }
-
-    if(left){
-        left.remove();
-    }
-    /*if(iphone){
         setTimeout(function () {
             $(iphone)
                 .velocity({
                     opacity: 0
                 }, {
-                    duration: 100,
+                    duration: 0,
                     display: "block"
                 })
         }, 0);
@@ -68,11 +61,11 @@ function signup() {
                 .velocity({
                     opacity: 0
                 }, {
-                    duration: 100,
+                    duration: 0,
                     display: "block"
                 })
         }, 0);
-    }*/
+    }
 
     if(login){
         setTimeout(function () {
@@ -80,7 +73,7 @@ function signup() {
                 .velocity({
                     opacity: 0
                 }, {
-                    duration: 100,
+                    duration: 0,
                     display: "block"
                 })
         }, 0);
@@ -92,7 +85,7 @@ function signup() {
                 .velocity({
                     opacity: 0
                 }, {
-                    duration: 100,
+                    duration: 0,
                     display: "block"
                 })
         }, 0);
@@ -131,11 +124,27 @@ function loginButton() {
     var signupButton = document.getElementById("signup-button");
 
     if(iphone){
-        iphone.remove();
+        setTimeout(function () {
+            $(iphone)
+                .velocity({
+                    opacity: 0
+                }, {
+                    duration: 0,
+                    display: "block"
+                })
+        }, 0);
     }
 
     if(left){
-        left.remove();
+        setTimeout(function () {
+            $(left)
+                .velocity({
+                    opacity: 0
+                }, {
+                    duration: 0,
+                    display: "block"
+                })
+        }, 0);
     }
 
     if(signup){
@@ -144,7 +153,7 @@ function loginButton() {
                 .velocity({
                     opacity: 0
                 }, {
-                    duration: 100,
+                    duration: 0,
                     display: "block"
                 })
         }, 0);
@@ -156,7 +165,7 @@ function loginButton() {
                 .velocity({
                     opacity: 0
                 }, {
-                    duration: 100,
+                    duration: 0,
                     display: "block"
                 })
         }, 0);
