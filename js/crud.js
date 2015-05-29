@@ -47,7 +47,7 @@ function get(objectId) {
             // The object was not retrieved successfully.
             // error is a Parse.Error with an error code and message.
            // location.reload();
-            console.log("Fucking Errors");
+            //console.log("Fucking Errors");
 
             console.log(error.message);
         }
@@ -280,16 +280,28 @@ function set(objectId) {
 
     console.log("hey " + objectId);
     
-    document.cookie = objectId;
+    document.cookie = "id=" + objectId;
 
 
 }
 
-function getId(){
+function getId() {
 
     
-        return document.cookie;
+    var allcookies = document.cookie;
     
+    cookiearray = allcookies.split(";");
+    
+    for( var i = 0; i< cookiearray.length; i++){
+              id = cookiearray[i].split('=')[0];
+              value = cookiearray[i].split('=')[1];
+
+
+                //console.log(id); 
+        
+    }
+    
+    return value;
 }
 
 function name() {
