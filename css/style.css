@@ -911,3 +911,24 @@ select {
   width: 10%;
   height: 35px;
 }
+
+.nav-list {
+  list-style-type: none;
+}
+.nav-text {
+  position:absolute;
+  font-size: 20px;
+  left:20px;
+}
+
+.register-text {
+  position:absolute;
+  font-size: 15px;
+  left:165px;  
+}
+
+.login-text {
+  position:absolute;
+  font-size: 15px;
+  left:245px;
+}
