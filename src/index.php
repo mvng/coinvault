@@ -18,7 +18,10 @@ $br_labels = implode('","', $br_labels); //comma sep
 $br_values = implode(", ", $br_values); //comma sep
 ?>
 
-<script type="text/javascript" src="main.js"></script>
+<script type="text/javascript">var br_labels = "<?= $br_labels ?>";</script>
+<script type="text/javascript">var br_values = "<?= $br_values ?>";</script>
+
+<script type="text/javascript" src="file.js"></script>
 
 <!doctype html>
 <html>
@@ -47,7 +50,7 @@ $br_values = implode(", ", $br_values); //comma sep
 					pointStrokeColor : "#fff",
 					pointHighlightFill : "#000",
 					pointHighlightStroke : "rgba(151,187,205,1)",
-					data : [	]
+					data : [<?php echo $br_values; ?>]
 				}
 			]
 

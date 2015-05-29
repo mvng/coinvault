@@ -254,7 +254,7 @@ $(window).load(function() {
 		}
 		else if(page =="goldoverview.html"){
 			var data = {
-				labels: ["January", "February", "March", "April", "May", "June", "July"],
+				labels: [br_labels],
 				datasets: [
 				{
 					label: "Gold Total",
@@ -264,7 +264,7 @@ $(window).load(function() {
 					pointStrokeColor: pointStroke,
 					pointHighlightFill: pointHighlightFill,
 					pointHighlightStroke: pointHighlightStroke,
-					data: [700,820,700,800,730,950,900]
+					data: [br_values]
 				},
 				{
 					label: "1oz Gold",
