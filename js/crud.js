@@ -203,14 +203,18 @@ function creat(userObjId) {
     thing.save(null, {
         success: function (thing) {
             // Execute any logic that should take place after the object is saved.
-            alert('New object created with objectId: ' + thing.id);
+        //    alert('New object created with objectId: ' + thing.id);
             location.reload();
+            window.location.href = "goldoverview.html";
         },
         error: function (thing, error) {
             // Execute any logic that should take place if the save fails.
             // error is a Parse.Error with an error code and message.
-            alert('Failed to create new object, with error code: ' + error.message);
-            location.reload();
+                        location.reload();
+
+          //  alert('Failed to create new object, with error code: ' + error.message);
+                        window.location.href = "goldoverview.html";
+
 
         }
     });
@@ -283,17 +287,31 @@ function updateItem() {
 
 };
 
-function delet(objectId) {
+function deleteItem() {
 
     "use strict";
+    //event.preventDefault();
+
+    var objectId;
+
+    objectId = getId();
 
     var Item = Parse.Object.extend("item");
 
     var THING = new Parse.Object("item");
     THING.id = objectId;
     THING.destroy({
-        success: function () {},
-        error: function (error) {}
+        success: function () {
+            
+         //   console.log("success delete");
+            //location.reload();
+        },
+        error: function (error) {
+            //console.log(error.message);
+            //really why does it even go here????????????????
+           // location.reload();
+            
+        }
     });
 
 };
