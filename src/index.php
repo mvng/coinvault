@@ -17,12 +17,6 @@ $br_values = array_reverse($br_value_arr); //reverse the data for ASC
 $br_labels = implode('","', $br_labels); //comma sep
 $br_values = implode(", ", $br_values); //comma sep
 ?>
-
-<script type="text/javascript">var br_labels = "<?= $br_labels ?>";</script>
-<script type="text/javascript">var br_values = "<?= $br_values ?>";</script>
-
-<script type="text/javascript" src="file.js"></script>
-
 <!doctype html>
 <html>
 	<head>
@@ -38,23 +32,9 @@ $br_values = implode(", ", $br_values); //comma sep
 		</div>
 
 
-<script type="text/javascript">
-  var gold_labels = <?php echo '"'.$br_labels.'"'; ?>;
-  var gold_values = <?php echo $br_values; ?>;
-</script>
-<script src="main.js" type="text/javascript"></script>
-
-<script>
-document.getElementById("demo").innerHTML = gold_labels;
-document.getElementById("demo").innerHTML = gold_values;
-
-</script>
-
-
-
 	<script>
 		var lineChartData = {
-			labels : [gold_labels],
+			labels : [<?php echo '"'.$br_labels.'"'; ?>],
 			datasets : [
 				{
 					label: "Brent Crude",
@@ -64,7 +44,7 @@ document.getElementById("demo").innerHTML = gold_values;
 					pointStrokeColor : "#fff",
 					pointHighlightFill : "#000",
 					pointHighlightStroke : "rgba(151,187,205,1)",
-					data : [gold_values]
+					data : [<?php echo $br_values; ?>]
 				}
 			]
 

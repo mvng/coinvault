@@ -270,7 +270,7 @@ $(window).load(function() {
  					pointStrokeColor: pointStroke,
  					pointHighlightFill: pointHighlightFill,
  					pointHighlightStroke: pointHighlightStroke,
- 					data: [gold_values]
+ 					data: ["gold_values"]
  				},
 				{
  					label: "1oz Gold",
