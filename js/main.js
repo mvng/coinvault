@@ -1,6 +1,6 @@
 
 
-function loadTopNav(){
+function loadTopNav() {
 	document.write("    <nav>");
 	document.write("        <svg class=\"icon-spinner2\">");
 	document.write("            <symbol id=\"icon-spinner2\" viewBox=\"0 0 1024 1024\">");
@@ -9,7 +9,7 @@ function loadTopNav(){
 	document.write("            <\/symbol>");
 	document.write("            <use xlink:href=\"#icon-spinner2\"><\/use>");
 	document.write("        <\/svg>");
-	document.write("        <a href=\"dashboard.html\">COINFLIP<\/a>");
+	document.write("        <a href=\"dashboard.html\">COIN VAULT<\/a>");
 	document.write("        <svg class=\"icon-cog\">");
 	document.write("            <symbol id=\"icon-cog\" viewBox=\"0 0 1024 1024\">");
 	document.write("                <title>cog<\/title>");
@@ -20,7 +20,7 @@ function loadTopNav(){
 	document.write("    <\/nav>");
 }
 
-function loadTopNavPersist(){
+function loadTopNavPersist() {
 	document.write("    <nav style='display: block; visibility: visible;'>");
 	document.write("        <svg class=\"icon-spinner2\">");
 	document.write("            <symbol id=\"icon-spinner2\" viewBox=\"0 0 1024 1024\">");
@@ -91,7 +91,7 @@ function loadSideNav(selected){
 
 function loadFooter(){
 	document.write("    <footer>");
-	document.write("        &copy; 2015 CoinFlip");
+	document.write("        &copy; 2015 Coin Vault");
 	document.write("    <\/footer> ");
 }
 
@@ -113,10 +113,11 @@ $(window).load(function() {
 	 $('.icon-spinner2').click(function(){
 	 	location.reload();	
 	 });
-
+/*
 	 $('tr').click(function(){
 	 	$(this).find('a')[0].click();
 	 });
+     */
 
 	/* * * * * * * * * * * * * *
 	 *                         *
@@ -479,33 +480,10 @@ function metaloz(value) {
 
 };
 
-function update() {
-
-    var qty = document.getElementById("qty").value;
-
-    var premium = document.getElementById("premium").value;
-
-    var unitPrice = document.getElementById("unit").value;
-
-    if (!qty) qty = 1;
-    if (!premium) premium = 47;
-    if (!unitPrice) unitPrice = 1250.60;
-
-    var sum = (+qty * (+premium + +unitPrice));
-
-    sum = parseFloat(sum).toFixed(2);
-
-
-    document.getElementById("totalDollarAmount").innerHTML = sum;
-    /*
-        console.log(qty);
-        console.log(premium);
-        console.log(unitPrice);
-        console.log(sum);
-    */
-};
 function run() {
-    initialMetal = document.getElementById("metaltypeselector").value;
+    
+    console.log("invoking run");
+    initialMetal = document.getElementById("metalField").value;
     document.getElementById("metalDetails").innerHTML = metal(initialMetal);
     document.getElementById("gu").innerHTML = metalgu(initialMetal);
     document.getElementById("oz").innerHTML = metaloz(initialMetal);

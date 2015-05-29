@@ -14,6 +14,13 @@
     
     <script src ="../js/main.js"></script>
     
+    
+        <!-- CHANGE THIS SHIT TO LOCAL PLS -->
+      <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
+
+    
+        <script type ="text/javascript" src ="../js/crud.js"></script>
+    
         <title>New Item - CoinFlip</title>
 </head>
 
@@ -57,12 +64,12 @@
                     </div>
                 </section>
                 <section class="coin_detail">
-                    <form>
+                    <form onsubmit="creat('XfP9iownzq')">
                     <table>
                         <tr>
                             <td>Metal</td>
                             <td>
-                                <select id="metaltypeselector" onchange="run()">
+                                <select id="metalField" onchange="run()">
                                         <option value="1">Gold </option>
                                         <option value="2"> Silver</option>
                                         <option value="3"> Platinum</option>
@@ -72,7 +79,7 @@
                         <tr>
                             <td>Type</td>
                             <td>
-                                <select>
+                                <select id = "typeField">
                                     <option selected value="us_eagle">US Eagle</option>
                                 </select>
                             </td>
@@ -80,25 +87,25 @@
                         <tr>
                             <td>Purchase Date</td>
                             <td>
-                                <input name="purchase_date" value="04 March 2015" />
+                                <input id = "purchaseDateField"  value="04 March 2015" onchange = "update()"/>
                             </td>
                         </tr>
                         <tr>
                             <td>Qty.</td>
                             <td>
-                                <input id="qty" value="1" onchange ="update()"/>
+                                <input id="qtyField" value="1" type = "number" onchange ="update()">
                             </td>
                         </tr>
                         <tr>
                             <td>Premium</td>
                             <td>
-                                <input id="premium" value="47.00" onchange ="update()" />
+                                <input id="premiumField" type="number" value="47" onchange="update()">
                             </td>
                         </tr>
                         <tr>
                             <td>Unit Price</td>
                             <td>
-                                <input id="unit" value="1250.60" onchange ="update()"/>
+                                <input id="unitPriceField" value="1250.60" onchange ="update()"/>
                             </td>
                         </tr>
                         <tr>
@@ -123,10 +130,10 @@
                         </tr>
                         <tr>
                             <td><strong>TOTAL</strong></td>
-                  <td id="totalDollarAmount"><strong>1199.10</strong></td>
+                  <td id="totalField"><strong>1199.10</strong></td>
                         </tr>
                     </table>
-                    <a href="goldoverview.html"><span id="save">Save to My Stack</span></a>
+                    <input type = "submit">
                     <a href="goldoverview.html"><span id="cancel">Cancel</span></a>
                         </form>
                 </section>
