@@ -121,10 +121,76 @@ function delet(objectId){
 
 
 
+function generateGold(objectId){
+    var data = [];
+    var table = [];
+    var id;
+    var temp = {};
+    
+    // Generates the array of objects
+    
+    var item = Parse.Object.extend("item");
+    var query = new Parse.Query(item);
+   
+    query.equalTo("userObjId",objectId);
+    //console.log("sup");
+    query.find({
+        success: function(results){
 
+           // console.log(results[0].attributes);
 
+            
 
+            for(var i = 0; i < results.length; i++){
+                temp = results[i].attributes;
+                id = results[i].id
+                data[i] = {
+                    "objectId": id,
+                    "type": temp.type,
+                    "metal": temp.metal,
+                    "qty": temp.qty,
+                    "value": temp.total,
+                    "weightg": temp.weightg,
+                    "weightau": temp.weightau,
+                    "total": temp.total
+                    
+                };
+                console.log(data);
 
+            }
+            table.push(data);
+           // console.log(table);
+            //console.log(data);
+            
+            
+            
+    var tr;
+    $(document).ready(function () {
+    for(var i = 0; i< data.length; i++){
+        
+        tr = $('<tr/>');
+        tr.append("<td>" + data[i].type + "</td>");
+        tr.append("<td>" + data[i].type + "</td>");
+        tr.append("<td>" + data[i].qty + "</td>");
+
+        tr.append("<td>" + data[i].weightg + "</td>");
+        tr.append("<td>" + data[i].weightau + "</td>");       
+        tr.append("<td>" + data[i].total + "</td>");
+
+        $('#goldTable').append(tr);
+    }
+
+});
+            
+        },
+        error: function(error){
+            console.log(error);
+        }
+    });
+    
+       
+
+};
 
 function name(){
     var data = [];
