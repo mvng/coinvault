@@ -3,22 +3,25 @@
 Parse.initialize("uuMKgtd7piSYYS1OIicbKekLesPHKKerHp21X3Zk", "J10xkBbtYfn4EPD9TQzp0BNJI7sQ2UXmJqY0Dkgu");
 
 function set(objectId) {
+    "use strict";
 
-    
-   // console.log("attempting");
+
+    // console.log("attempting");
     //deleteAllCookies();
-    
-    
-   // console.log("hey " + objectId);
-    
-  //  document.cookie = "id=" + objectId;
-    
+
+
+    // console.log("hey " + objectId);
+
+    //  document.cookie = "id=" + objectId;
+
     localStorage.id = objectId;
 
 
 }
 
 function getId() {
+    "use strict";
+
 
     /*
     var allcookies = document.cookie;
@@ -33,18 +36,18 @@ function getId() {
                 //console.log(id); 
         
     }*/
-    
+
     return localStorage.getItem("id");
-    }
+}
+
 function get(objectId) {
-     //event.preventDefault();
+    //event.preventDefault();
     // window.localStorage.setItem("option", optionch);
-    var objectId2 = objectId;
 
 
-     //window.location.href = 'myitem.html';
-   //  event.preventDefault();
-
+    //window.location.href = 'myitem.html';
+    //  event.preventDefault();
+    "use strict";
     console.log("ayy lmao" + objectId);
 
     //  console.log("ayy lmao");
@@ -56,7 +59,7 @@ function get(objectId) {
     query.get(objectId, {
         success: function (item) {
 
-          //  event.preventDefault();
+            //  event.preventDefault();
 
             document.getElementById("metalField").innerHTML = item.get("metal");
             document.getElementById("typeField").innerHTML = item.get("type");
@@ -67,7 +70,7 @@ function get(objectId) {
 
             //   document.getElementById("purchaseDateField").innerHTML = item.get("purchaseDate"); 
 
-           // location.reload();
+            // location.reload();
 
 
 
@@ -79,7 +82,7 @@ function get(objectId) {
         error: function (object, error) {
             // The object was not retrieved successfully.
             // error is a Parse.Error with an error code and message.
-           // location.reload();
+            // location.reload();
             //console.log("Fucking Errors");
 
             console.log(error.message);
@@ -90,14 +93,18 @@ function get(objectId) {
 }
 
 function getEdit(objectId) {
+
+
+    "use strict";
+
     console.log("invoking edit");
-     //event.preventDefault();
+    //event.preventDefault();
     // window.localStorage.setItem("option", optionch);
-    var objectId2 = objectId;
+    //   var objectId2 = objectId;
 
 
-     //window.location.href = 'myitem.html';
-   //  event.preventDefault();
+    //window.location.href = 'myitem.html';
+    //  event.preventDefault();
 
     console.log("ayy lmao " + objectId);
 
@@ -110,7 +117,7 @@ function getEdit(objectId) {
     query.get(objectId, {
         success: function (item) {
 
-          //  event.preventDefault();
+            //  event.preventDefault();
 
             document.getElementById("metalField").placeholder = item.get("metal");
             document.getElementById("typeField").placeholder = item.get("type");
@@ -121,7 +128,7 @@ function getEdit(objectId) {
 
             //   document.getElementById("purchaseDateField").innerHTML = item.get("purchaseDate"); 
 
-           // location.reload();
+            // location.reload();
 
 
             console.log(item.get("total"));
@@ -132,14 +139,14 @@ function getEdit(objectId) {
         error: function (object, error) {
             // The object was not retrieved successfully.
             // error is a Parse.Error with an error code and message.
-           // location.reload();
+            // location.reload();
             //console.log("Fucking Errors");
 
             console.log(error.message);
         }
     });
 
-};
+}
 
 
 
@@ -155,6 +162,8 @@ function creat(userObjId) {
     var premium = document.getElementById("premiumField");
     var unitPrice = document.getElementById("unitPriceField");
     var total = document.getElementById("totalField").textContent;
+    var weightg;
+    var weightau;
 
     /*
     console.log(metal.options[metal.selectedIndex].text);
@@ -207,18 +216,18 @@ function creat(userObjId) {
     });
 };
 
-function update() {
-     console.log("invoking update");
+function updateItem() {
+    console.log("invoking update");
 
-    /*
-   var objectId = getId();
-   // event.preventDefault();
+
+    var objectId = getId();
+    event.preventDefault();
 
     var Item = Parse.Object.extend("item");
     //var query = new Parse.Query(Item);
     var thing = new Item();
 
-//console.log(thing);
+    //console.log(thing);
 
     var metal = document.getElementById("metalField");
     var type = document.getElementById("typeField");
@@ -228,7 +237,12 @@ function update() {
     var unitPrice = document.getElementById("unitPriceField");
     var total = document.getElementById("totalField").textContent;
 
-
+    var weightg;
+    var weightau;
+    if (metal.options[metal.selectedIndex].text == "Gold") {
+        weightg = 1.244;
+        weightau = 0.917;
+    }
 
 
     thing.set("objectId", objectId);
@@ -247,26 +261,31 @@ function update() {
     thing.save(null, {
         success: function (thing) {
             // Execute any logic that should take place after the object is saved.
-           
+
             console.log("edit success");
+
             location.reload();
+            window.location.href = "myitem.html";
+
         },
         error: function (thing, error) {
             // Execute any logic that should take place if the save fails.
             // error is a Parse.Error with an error code and message.
-          
+            console.log("edit fail");
+
             location.reload();
-                        console.log("edit fail");
+            window.location.href = "myitem.html";
+
 
         }
     });
 
-*/
-}; 
+
+};
 
 function delet(objectId) {
 
-
+    "use strict";
 
     var Item = Parse.Object.extend("item");
 
@@ -345,25 +364,25 @@ function generateGold(objectId) {
                     // tr.onClick = set(123);
 
                     $('#goldTable').append(tr);
-                      $(tr).click(function(){ 
-                          
+                    $(tr).click(function () {
+
                         var a = $(this).closest('tr').find('td:first').text();
-                           set(a);
-                        
-                        
-                          window.location.href = 'myitem.html';
-                          
-                          //console.log(a);
-                      
-                      
-                      
-                      });
+                        set(a);
+
+
+                        window.location.href = 'myitem.html';
+
+                        //console.log(a);
+
+
+
+                    });
 
                 }
-                
-                      
-                
-                
+
+
+
+
             });
 
         },
@@ -386,15 +405,15 @@ function generateGold(objectId) {
 
 function deleteAllCookies() {
 
-    
+
     console.log("deleting cookies...");
     var cookies = document.cookie.split(";");
 
     for (var i = 0; i < cookies.length; i++) {
-    	var cookie = cookies[i];
-    	var eqPos = cookie.indexOf("=");
-    	var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-    	document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+        var cookie = cookies[i];
+        var eqPos = cookie.indexOf("=");
+        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
     }
 }
 
