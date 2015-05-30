@@ -257,33 +257,31 @@ $(window).load(function() {
 		}
 		else if(page =="goldoverview.html"){
 			var data = {
-                
-                
+            
                 ///this shit breaks it too.
 				//labels: [<?php echo '"'.$br_labels.'"'; ?>],
-                labels: ["gold total"],
-				datasets: [
+ 				labels: [gold_labels],
+ 				datasets: [
+ 				{
+ 					label: "Gold Total",
+ 					fillColor: "rgba(104, 206, 222, 0.05)",
+ 					strokeColor: "#FF6D67",
+ 					pointColor: "#FF6D67",
+ 					pointStrokeColor: pointStroke,
+ 					pointHighlightFill: pointHighlightFill,
+ 					pointHighlightStroke: pointHighlightStroke,
+ 					data: ["gold_values"]
+ 				},
 				{
-					label: "Gold Total",
-					fillColor: "rgba(104, 206, 222, 0.05)",
-					strokeColor: "#FF6D67",
-					pointColor: "#FF6D67",
-					pointStrokeColor: pointStroke,
-					pointHighlightFill: pointHighlightFill,
-					pointHighlightStroke: pointHighlightStroke,
-					data: [700,820,700,800,730,950,900]
-				},
-				{
-					label: "1oz Gold",
-					fillColor: "rgba(104, 206, 222, 0.05)",
-					strokeColor: "#9FFF98",
-					pointColor: "#9FFF98",
-					pointStrokeColor: pointStroke,
-					pointHighlightFill: pointHighlightFill,
-					pointHighlightStroke: pointHighlightStroke,
-					data: [700,820,700,800,730,950,900]
-                    
-                    //if this fails it literally breaks everything lol... wtf??
+ 					label: "1oz Gold",
+ 					fillColor: "rgba(104, 206, 222, 0.05)",
+ 					strokeColor: "#9FFF98",
+ 					pointColor: "#9FFF98",
+ 					pointStrokeColor: pointStroke,
+ 					pointHighlightFill: pointHighlightFill,
+ 					pointHighlightStroke: pointHighlightStroke,
+ 					data: [100, 110, 120, 90, 102, 135, 115]
+ 					//if this fails it literally breaks everything lol... wtf??
                     //data: [<?php echo $br_values; ?]
 				}
 				]
