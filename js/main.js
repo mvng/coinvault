@@ -260,7 +260,7 @@ $(window).load(function() {
             
                 ///this shit breaks it too.
 				//labels: [<?php echo '"'.$br_labels.'"'; ?>],
- 				labels: [gold_labels],
+ 				labels: ["January", "February", "March", "April", "May", "June", "July"],
  				datasets: [
  				{
  					label: "Gold Total",
@@ -270,7 +270,7 @@ $(window).load(function() {
  					pointStrokeColor: pointStroke,
  					pointHighlightFill: pointHighlightFill,
  					pointHighlightStroke: pointHighlightStroke,
- 					data: ["gold_values"]
+ 					data: [100, 110, 120, 90, 102, 135, 115]
  				},
 				{
  					label: "1oz Gold",
@@ -280,7 +280,7 @@ $(window).load(function() {
  					pointStrokeColor: pointStroke,
  					pointHighlightFill: pointHighlightFill,
  					pointHighlightStroke: pointHighlightStroke,
- 					data: [100, 110, 120, 90, 102, 135, 115]
+ 					data: [5, 12, 13, 64, 102, 135, 115]
  					//if this fails it literally breaks everything lol... wtf??
                     //data: [<?php echo $br_values; ?]
 				}
