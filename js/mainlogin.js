@@ -12,13 +12,13 @@ function register() {
     person.set("email", mail);
 
     person.signUp(null, {success: function(user){
-        console.log("Sign up Success");
+        console.log("Successful sign up");
         document.getElementById("login-user").value = username;
         document.getElementById("login-password").value = pw;
         login();
     },
     error: function(user,error){
-        console.log(error);
+        alert(error.message);
     }});
     
      event.preventDefault(); 
@@ -35,7 +35,7 @@ function login() {
         window.location.assign("src/dashboard.html");
       },
       error: function(user, error) {
-        console.log("Failed login");
+        alert(error.message);
       }
     });
 };
@@ -50,11 +50,6 @@ function signupButton() {
     var loginText = document.getElementById("login-text");
     var loginUserText = document.getElementById("login-username-text");
     var loginEmailText = document.getElementById("login-email-text");
-
-    // Disables certain buttons
-    $("#su").attr("onclick", "return false;");
-    $("#lo").attr("onclick", "return false;");
-    $("#loginButton").attr("onclick", "return false;");
 
     if(iphone){
         setTimeout(function () {
@@ -151,6 +146,11 @@ function signupButton() {
                 })
         }, 0);
     }
+
+    // Disables certain buttons
+    $("#su").attr("onclick", "return false;");
+    $("#lo").attr("onclick", "return false;");
+    $("#loginButton").attr("onclick", "return false;");
 
     // Items on page that need to appear
     var signup = document.getElementById("signup");
@@ -508,10 +508,6 @@ function homeButton() {
     var signupEmailText = document.getElementById("signup-email-text");
     var signupPassText = document.getElementById("signup-password-text");
 
-    // Disables certain buttons
-    $("#signup-button").attr("onclick", "return false;");
-    $("#loginButton").attr("onclick", "return false;");
-
     if(iphone){
         setTimeout(function () {
             $(iphone)
@@ -691,6 +687,10 @@ function homeButton() {
                 })
         }, 0);
     }
+
+    // Disables certain buttons
+    $("#signup-button").attr("onclick", "return false;");
+    $("#loginButton").attr("onclick", "return false;");
 
     // Items on page that need to appear
     var left = document.getElementById("w1-left");
