@@ -2,9 +2,9 @@ Parse.initialize("uuMKgtd7piSYYS1OIicbKekLesPHKKerHp21X3Zk", "J10xkBbtYfn4EPD9TQ
 
 // Registers a User in the Parse database
 function register() {
-    var username = document.getElementById('signup-user').value;
-    var mail = document.getElementById('email').value;
-    var pw = document.getElementById('signup-password').value;
+    var username = document.getElementById("signup-user").value;
+    var mail = document.getElementById("signup-email").value;
+    var pw = document.getElementById("signup-password").value;
     var person = new Parse.User();
 
     person.set("username", username);
@@ -13,6 +13,8 @@ function register() {
 
     person.signUp(null, {success: function(user){
         console.log("Sign up Success");
+        document.getElementById("login-user").value = username;
+        document.getElementById("login-password").value = pw;
         login();
     },
     error: function(user,error){
@@ -24,8 +26,8 @@ function register() {
 
 // Attempts to login User
 function login() {
-    var username = document.getElementById('login-user').value;
-    var pw = document.getElementById('login-password').value;
+    var username = document.getElementById("login-user").value;
+    var pw = document.getElementById("login-password").value;
 
     Parse.User.logIn(username, pw, {
       success: function(user) {
