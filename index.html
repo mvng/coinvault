@@ -29,7 +29,7 @@
     <header>
         <nav>
             <ul class="nav-list">
-                <li class="nav-text"><a href="index.html">COIN VAULT</a></li>
+                <li class="nav-text"><a onclick="homeButton()">COIN VAULT</a></li>
                 <li class="register-text"><a onclick="signup()">Sign Up</a></li>
                 <li class="login-text"><a onclick="loginButton()">Login</a></li>                
             </ul>
@@ -40,7 +40,6 @@
     </header> 
 
     <div id="w1-wrapper">
-
         <section id="w1-left">
             <h1>COIN VAULT</h1>
             <h3>Manage your coin collection with a simple app.</h3>
@@ -76,7 +75,7 @@
                 <input type="password" placeholder="Your Password" id="password" class="email-input">
             </section>
 
-            <a onclick="loginButton()" id="loginButton" hidden><span id="sign-up-button" class="signup-button">Login</span></a>
+            <a onclick="login()" id="loginButton" hidden><span id="sign-up-button" class="signup-button">Login</span></a>
 
         </section>
 

@@ -195,3 +195,83 @@ function loginButton() {
             })
     }, 0);
 };
+
+function homeButton() {
+    // Items on page that need to disappear
+    var signup = document.getElementById("signup");
+    var signupButton = document.getElementById("signup-button");
+    var login = document.getElementById("login");
+    var button = document.getElementById("loginButton");
+
+    if(login){
+        setTimeout(function () {
+            $(login)
+                .velocity({
+                    opacity: 0
+                }, {
+                    duration: 0,
+                    display: "block"
+                })
+        }, 0);
+    }
+
+    if(button){
+        setTimeout(function () {
+            $(button)
+                .velocity({
+                    opacity: 0
+                }, {
+                    duration: 0,
+                    display: "block"
+                })
+        }, 0);
+    }
+
+    if(signup){
+        setTimeout(function () {
+            $(signup)
+                .velocity({
+                    opacity: 0
+                }, {
+                    duration: 0,
+                    display: "block"
+                })
+        }, 0);
+    }
+
+    if(signupButton){
+        setTimeout(function () {
+            $(signupButton)
+                .velocity({
+                    opacity: 0
+                }, {
+                    duration: 0,
+                    display: "block"
+                })
+        }, 0);
+    }
+
+    // Items on page that need to appear
+    var iphone = document.getElementById("iphone");
+    var left = document.getElementById("w1-left");
+
+    setTimeout(function () {
+        $(iphone)
+            .velocity({
+                opacity: 1
+            }, {
+                duration: 750,
+                display: "block"
+            })
+    }, 0);
+
+    setTimeout(function () {
+        $(left)
+            .velocity({
+                opacity: 1
+            }, {
+                duration: 750,
+                display: "block"
+            })
+    }, 0);
+};
