@@ -40,6 +40,12 @@ function getId() {
     return localStorage.getItem("id");
 }
 
+function numberWithCommas(x) {
+    var parts = x.toString().split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return parts.join(".");
+}
+
 function get(objectId) {
     //event.preventDefault();
     // window.localStorage.setItem("option", optionch);
@@ -325,6 +331,10 @@ function generateGold(objectId) {
     var id;
     var temp = {};
 
+    
+    var totalValue = 0;
+    var mydiv = document.getElementById("totalGoldValue");
+    
     // Generates the array of objects
 
     var item = Parse.Object.extend("item");
@@ -380,6 +390,8 @@ function generateGold(objectId) {
                     tr.append("<td>" + data[i].weightau + "</td>");
                     tr.append("<td>" + data[i].total + "</td>" + "</a>");
                     // tr.onClick = set(123);
+                     totalValue = totalValue + data[i].total;
+                    console.log(totalValue);
 
                     $('#goldTable').append(tr);
                     $(tr).click(function () {
@@ -397,6 +409,11 @@ function generateGold(objectId) {
                     });
 
                 }
+                
+                  var twoPlacedFloat = parseFloat(totalValue).toFixed(2)
+                //  console.log( "$$$$$$$$$$$$$" + numberWithCommas(twoPlacedFloat));
+
+                            mydiv.innerHTML = "$" + numberWithCommas(twoPlacedFloat);
 
 
 
