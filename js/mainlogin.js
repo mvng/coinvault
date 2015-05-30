@@ -11,6 +11,8 @@ function register() {
     person.set("password", pw);
     person.set("email", mail);
 
+    alert("swag");
+
     person.signUp(null, {success: function(user){
         console.log("Successful sign up");
         document.getElementById("login-user").value = username;
@@ -18,7 +20,7 @@ function register() {
         login();
     },
     error: function(user,error){
-        alert(error.message);
+        alert("" + error.message);
     }});
     
      event.preventDefault(); 
@@ -40,6 +42,11 @@ function login() {
     });
 };
 
+// Logs out the user
+function logout() {
+    Parse.User.logOut();
+}
+
 function signupButton() {
     // Items on page that need to disappear
     var iphone = document.getElementById("iphone");
@@ -51,14 +58,20 @@ function signupButton() {
     var loginUserText = document.getElementById("login-username-text");
     var loginEmailText = document.getElementById("login-email-text");
 
+    // Moves the other objects around
+    $("#login-user").css("top", "0%");
+    $("#login-password").css("top", "0%");
+    $("#signup-user").css("top", "25%");
+    $("#signup-email").css("top", "35%");
+    $("#signup-password").css("top", "45%");
+
     if(iphone){
         setTimeout(function () {
             $(iphone)
                 .velocity({
                     opacity: 0
                 }, {
-                    duration: 0,
-                    display: "block"
+                    duration: 0
                 })
         }, 0);
     }
@@ -69,8 +82,7 @@ function signupButton() {
                 .velocity({
                     opacity: 0
                 }, {
-                    duration: 0,
-                    display: "block"
+                    duration: 0
                 })
         }, 0);
     }
@@ -278,14 +290,20 @@ function loginButton() {
     $("#lo").attr("onclick", "return false;");
     $("#signup-button").attr("onclick", "return false;");
 
+    // Moves the other objects around
+    $("#signup-user").css("top", "0%");
+    $("#signup-email").css("top", "0%");
+    $("#signup-password").css("top", "0%");
+    $("#login-user").css("top", "25%");
+    $("#login-password").css("top", "35%");
+
     if(iphone){
         setTimeout(function () {
             $(iphone)
                 .velocity({
                     opacity: 0
                 }, {
-                    duration: 0,
-                    display: "block"
+                    duration: 0
                 })
         }, 0);
     }
@@ -296,8 +314,7 @@ function loginButton() {
                 .velocity({
                     opacity: 0
                 }, {
-                    duration: 0,
-                    display: "block"
+                    duration: 0
                 })
         }, 0);
     }
@@ -450,41 +467,35 @@ function loginButton() {
             })
     }, 0);
 
-    if(loginText){
-        setTimeout(function () {
-            $(loginText)
-                .velocity({
-                    opacity: 1
-                }, {
-                    duration: 750,
-                    display: "block"
-                })
-        }, 0);
-    }
+    setTimeout(function () {
+        $(loginText)
+            .velocity({
+                opacity: 1
+            }, {
+                duration: 750,
+                display: "block"
+            })
+    }, 0);
 
-    if(loginUserText){
-        setTimeout(function () {
-            $(loginUserText)
-                .velocity({
-                    opacity: 1
-                }, {
-                    duration: 750,
-                    display: "block"
-                })
-        }, 0);
-    }
+    setTimeout(function () {
+        $(loginUserText)
+            .velocity({
+                opacity: 1
+            }, {
+                duration: 750,
+                display: "block"
+            })
+    }, 0);
 
-    if(loginEmailText){
-        setTimeout(function () {
-            $(loginEmailText)
-                .velocity({
-                    opacity: 1
-                }, {
-                    duration: 750,
-                    display: "block"
-                })
-        }, 0);
-    }
+    setTimeout(function () {
+        $(loginEmailText)
+            .velocity({
+                opacity: 1
+            }, {
+                duration: 750,
+                display: "block"
+            })
+    }, 0);
 };
 
 function homeButton() {
@@ -514,8 +525,7 @@ function homeButton() {
                 .velocity({
                     opacity: 0
                 }, {
-                    duration: 0,
-                    display: "block"
+                    duration: 0
                 })
         }, 0);
     }
@@ -694,18 +704,37 @@ function homeButton() {
 
     // Items on page that need to appear
     var left = document.getElementById("w1-left");
+    var iphone = document.getElementById("iphone");
 
     // Re-enables certain buttons
     $("#su").attr("onclick", "signupButton()");
     $("#lo").attr("onclick", "loginButton()");
+
+    // To make left "animated"
+    setTimeout(function () {
+        $(left)
+            .velocity({
+                opacity: 0
+            }, {
+                duration: 0
+            })
+    }, 0);
 
     setTimeout(function () {
         $(left)
             .velocity({
                 opacity: 1
             }, {
-                duration: 750,
-                display: "block"
+                duration: 750
+            })
+    }, 0);
+
+    setTimeout(function () {
+        $(iphone)
+            .velocity({
+                opacity: 1
+            }, {
+                duration: 750
             })
     }, 0);
 };
