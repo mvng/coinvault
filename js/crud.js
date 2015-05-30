@@ -156,7 +156,9 @@ function getEdit(objectId) {
 
 
 
-function creat(userObjId) {
+function creat() {
+    
+    var userObjId = Parse.User.current().id;
     event.preventDefault();
 
     console.log("invoking creat");
@@ -325,12 +327,12 @@ function deleteItem() {
 
 
 
-function generateGold(objectId) {
+function generateGold() {
     var data = [];
     var table = [];
     var id;
     var temp = {};
-
+    var objectId = Parse.User.current().id;
     
     var totalValue = 0;
     var mydiv = document.getElementById("totalGoldValue");
@@ -545,4 +547,11 @@ function update() {
     //  console.log(premium);
     //  console.log(unitPrice);
     //  console.log(sum);
+};
+
+function getDetails(){
+    var currentUser = Parse.User.current();
+  
+    console.log(currentUser);
+    
 };
