@@ -10,7 +10,7 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <script src="js/jquery-1.11.2.min.js"></script>
-    <script language="JavaScript" src="js/parse-1.4.2.js"></script>
+    <script src="js/parse-1.4.2.js"></script>
     <script>
     Parse.initialize("uuMKgtd7piSYYS1OIicbKekLesPHKKerHp21X3Zk", "J10xkBbtYfn4EPD9TQzp0BNJI7sQ2UXmJqY0Dkgu");
     </script>
@@ -29,9 +29,9 @@
     <header>
         <nav>
             <ul class="nav-list">
-                <li class="nav-text"><a onclick="homeButton()">COIN VAULT</a></li>
-                <li class="register-text"><a onclick="signup()">Sign Up</a></li>
-                <li class="login-text"><a onclick="loginButton()">Login</a></li>                
+                <li class="nav-text"><a onclick="homeButton()" id="home-nav">COIN VAULT</a></li>
+                <li class="register-text"><a onclick="signupButton()" id="signup-nav">Sign Up</a></li>
+                <li class="login-text"><a onclick="loginButton()" id="login-nav">Login</a></li>                
             </ul>
         </nav>
         <div class="mobile-nav">
@@ -43,8 +43,8 @@
         <section id="w1-left">
             <h1>COIN VAULT</h1>
             <h3>Manage your coin collection with a simple app.</h3>
-            <a onclick="signup()"><span id="sign-up-button">Sign Up</span></a>
-            <a onclick="loginButton()"><span id="log-in-button">Log in</span></a>
+            <a onclick="signupButton()" id="su"><span id="sign-up-button">Sign Up</span></a>
+            <a onclick="loginButton()" id="lo"><span id="log-in-button">Log in</span></a>
         </section>
 
         <section id="w1-right">
@@ -56,29 +56,29 @@
             </div>
             
             <section class="main-section" id="signup" hidden>
-                <h1 id="signup-text">Register</h1>
-                <h2 id="username-text">Username :</h2>
-                <input type="text" placeholder="Your Username" id="user" class="username-input">
-                <h2 id="email-text">Email :</h2>
-                <input type="text" placeholder="Your Email" id="email" class="email-input">
-                <h2 id="password-text">Password :</h2>
-                <input type="password" placeholder="Your Password" id="password" class="password-input">
+                <h2 id="signup-text">Register</h2>
+                <h2 id="signup-username-text">Username :</h2>
+                <input type="text" placeholder="Your Username" id="signup-user" class="username-input">
+                <h2 id="signup-email-text">Email :</h2>
+                <input type="text" placeholder="Your Email" id="signup-email" class="email-input">
+                <h2 id="signup-password-text">Password :</h2>
+                <input type="password" placeholder="Your Password" id="signup-password" class="password-input">
             </section>
 
-            <a onclick="register()" id="signup-button" hidden><span id="sign-up-button" class="signup-button">Sign Up</span></a>
+            <a onclick="register()" id="signup-button" hidden><span id="register-button" class="signup-button">Sign Up</span></a>
 
             <section class="main-section" id="login" hidden>
-                <h1 id="signup-text">Login</h1>
-                <h2 id="username-text">USERNAME :</h2>
-                <input type="text" placeholder="Your Username" id="username" class="username-input">
-                <h2 id="email-text">PASSWORD :</h2>
-                <input type="password" placeholder="Your Password" id="password" class="email-input">
+                <h2 id="login-text">Login</h2>
+                <h2 id="login-username-text">Username :</h2>
+                <input type="text" placeholder="Your Username" id="login-user" class="username-input">
+                <h2 id="login-email-text">Password :</h2>
+                <input type="password" placeholder="Your Password" id="login-password" class="email-input">
             </section>
 
-            <a onclick="login()" id="loginButton" hidden><span id="sign-up-button" class="signup-button">Login</span></a>
+            <a onclick="login()" id="loginButton" hidden><span id="login-button" class="signup-button">Login</span></a>
 
         </section>
-
+    </div>
     <script type="text/javascript">
         loadFooter();
     </script>
