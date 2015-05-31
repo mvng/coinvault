@@ -405,7 +405,138 @@ function generateGold() {
                     totalValue = totalValue + data[i].total;
                     console.log(totalValue);
 
-                    $('#goldTable').append(tr);
+                    $('#silverTable').append(tr);
+                    $(tr).click(function () {
+
+                        var a = $(this).closest('tr').find('td:first').text();
+                        set(a);
+
+                        window.location.href = 'myitem.html';
+
+                        //console.log(a);
+
+                    });
+
+                }
+
+                //Updating totalGold Field after generating table on Parse
+                var user = Parse.User.current();
+
+                user.set("totalSilver", totalValue);
+                user.save()
+                    .then(
+                        function (user) {
+                            return user.fetch();
+                        }
+                    )
+                    .then(
+                        function (user) {
+                            console.log('gold updated', user);
+                        },
+                        function (error) {
+                            console.log('Something went wrong', error);
+                        }
+                    );
+
+                //Fixing the number value
+                var twoPlacedFloat = parseFloat(totalValue).toFixed(2)
+
+                //Assigning it to the HTML page
+                mydiv.innerHTML = "$" + numberWithCommas(twoPlacedFloat);
+
+            });
+
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+
+
+
+};
+
+
+function generateSilver() {
+    var data = [];
+    var table = [];
+    var id;
+    var temp = {};
+    
+    
+    console.log(Parse.User.current());
+         if(Parse.User.current() == null){
+            
+                 return window.location.href = "../index.html";
+    
+         }
+    
+    var objectId = Parse.User.current().id;
+
+    
+    
+    var totalValue = 0;
+    var mydiv = document.getElementById("totalSilverValue");
+
+    // Generates the array of objects
+
+    var item = Parse.Object.extend("item");
+    var query = new Parse.Query(item);
+
+    query.equalTo("userObjId", objectId);
+    //console.log("sup");
+    query.find({
+        success: function (results) {
+
+            // console.log(results[0].attributes);
+
+
+
+            for (var i = 0; i < results.length; i++) {
+                temp = results[i].attributes;
+                id = results[i].id
+                data[i] = {
+                    "objectId": id,
+                    "type": temp.type,
+                    "metal": temp.metal,
+                    "qty": temp.qty,
+                    "value": temp.total,
+                    "weightg": temp.weightg,
+                    "weightau": temp.weightau,
+                    "total": temp.total
+
+                };
+                console.log(data);
+
+            }
+            table.push(data);
+            // console.log(table);
+            //console.log(data);
+
+            var tr;
+            $(document).ready(function () {
+                for (var i = 0; i < data.length; i++) {
+
+
+                    tr = $('<tr/>');
+
+                    var id = data[i].objectId;
+
+
+                    //    tr.append("<a onclick = " + "get('id')" + ">" + id);
+                    tr.append("<td>" + id + "</td>");
+                    // tr.append("<a  href= " + "../src/myitem.html" + ">" + "<td>" + data[i].objectId + "</td>");
+                    tr.append("<td>" + data[i].type + "</td>");
+                    tr.append("<td>" + data[i].qty + "</td>");
+
+                    tr.append("<td>" + data[i].weightg + "</td>");
+                    tr.append("<td>" + data[i].weightau + "</td>");
+                    tr.append("<td>" + data[i].total + "</td>" + "</a>");
+                    // tr.onClick = set(123);
+                    totalValue = totalValue + data[i].total;
+                    console.log(totalValue);
+
+                    $('#silverTable').append(tr);
                     $(tr).click(function () {
 
                         var a = $(this).closest('tr').find('td:first').text();
