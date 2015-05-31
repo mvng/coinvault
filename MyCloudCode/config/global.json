@@ -1,0 +1,14 @@
+{
+  "global": {
+    "parseVersion": "1.4.2"
+  },
+  "applications": {
+    "Coin Vault": {
+      "applicationId": "uuMKgtd7piSYYS1OIicbKekLesPHKKerHp21X3Zk",
+      "masterKey": "ndcAto5YEyuRAcNkuyMww58YXKkmZ9m9zqld1ndI"
+    },
+    "_default": {
+      "link": "Coin Vault"
+    }
+  }
+}
