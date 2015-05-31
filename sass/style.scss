@@ -934,6 +934,34 @@ footer{
  	background: #397C86;
  	border: 1px solid #151515;
      margin-bottom:10px;
+     
+     #signup-text{font-size:50px;position:absolute;top:12%;left:15%;}
+.signup-button{font-size:25px;position:absolute;text-align:center;top:50%;left:15%;width:150px;height:35px;cursor:pointer;}
+.login-button{font-size:25px;position:absolute;text-align:center;top:40%;left:15%;width:150px;height:35px;cursor:pointer;}
+#login-text{font-size:50px;position:absolute;top:12%;left:15%;}
+#login-username-text{position:absolute;top:20%;left:15%;}
+#login-email-text{position:absolute;top:30%;left:15%;}
+#login-button{background:#1C3A3F;border:1px solid #151515;cursor:pointer;}
+.login-text{position:absolute;font-size:15px;left:245px;}
+#signup-username-text{position:absolute;top:20%;left:15%;}
+.username-input{font-size:18px;position:absolute;top:25%;left:15%;width:70%}
+#signup-email-text{position:absolute;top:30%;left:15%;}
+.email-input{font-size:18px;position:absolute;top:35%;left:15%;width:70%}
+#signup-password-text{position:absolute;top:40%;left:15%;}
+.password-input{font-size:18px;position:absolute;top:45%;left:15%;width:70%}
+.nav-list{list-style-type:none;cursor:pointer;}
+.nav-text{position:absolute;font-size:20px;left:20px;cursor:pointer;}
+#register-button{background:#1C3A3F;border:1px solid #151515;cursor:pointer;}
+.register-text{position:absolute;font-size:15px;left:165px;}
+.facebook-login-button{font-size:25px;position:absolute;text-align:center;top:40%;left:31%;width:150px;height:35px;cursor:pointer;}
+#facebook-button{background:#3B5999;border:1px solid #151515;cursor:pointer;}
+.google-login-button{font-size:25px;position:absolute;text-align:center;top:40%;left:47%;width:150px;height:35px;cursor:pointer;}
+#google-button{background:#F90101;border:1px solid #151515;cursor:pointer;}
+.su-facebook-login-button{font-size:25px;position:absolute;text-align:center;top:50%;left:31%;width:150px;height:35px;cursor:pointer;}
+#su-facebook-button{background:#3B5999;border:1px solid #151515;cursor:pointer;}
+.su-google-login-button{font-size:25px;position:absolute;text-align:center;top:50%;left:47%;width:150px;height:35px;cursor:pointer;}
+#su-google-button{background:#F90101;border:1px solid #151515;cursor:pointer;}
+#logout{position:absolute;right:85px;cursor:pointer;}
  
  }
 /* * * * * * * * * * * * * * * *

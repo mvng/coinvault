@@ -105,7 +105,7 @@ function loadSideNav(selected) {
     document.write("            <figcaption>My Gold<\/figcaption>");
     document.write("        <\/figure>       ");
     document.write("        <\/a> ");
-    document.write("        <a href=\"goldoverview.html\">");
+    document.write("        <a href=\"silveroverview.html\">");
     if (selected == 2)
         document.write("        <figure class='nav-selected'>");
     else
@@ -114,7 +114,7 @@ function loadSideNav(selected) {
     document.write("            <figcaption>My Silver<\/figcaption>");
     document.write("        <\/figure>       ");
     document.write("        <\/a> ");
-    document.write("        <a href=\"goldoverview.html\">");
+    document.write("        <a href=\"platinumoverview.html\">");
     if (selected == 3)
         document.write("        <figure class='nav-selected'>");
     else
@@ -381,8 +381,6 @@ function drawGoldGraph() {
 $(window).load(function () {
 
     var gb,ga,gc;
-    var sb,sa,sc;
-    var pb,pa,pc;
 
     var path = window.location.pathname;
     var page = path.split("/").pop();
@@ -394,41 +392,23 @@ $(window).load(function () {
         success: function (query) {
 
 
-            //temproraily cache entrys on parse for faster queries in drawing the graph!
+            //temproraily cache entrys on parse for faster queries in drawing the graph! hell yes =)
             tempGoldDate = query.get("goldDate");
             tempGoldValue = query.get("goldValue");
             tempSilverValue = query.get("silverValue");
             tempPlatinumValue = query.get("platinumValue");
             
+            console.log(tempSilverValue);
             
             gb = query.get("gbid");
             ga = query.get("gask");
             gc = query.get("gchange").toFixed(2);
-            
-            sb = query.get("sbid");
-            sa = query.get("sask");
-            sc = query.get("schange").toFixed(2);
-            
-            pb = query.get("pbid");
-            pa = query.get("pask");
-            pc = query.get("pchange").toFixed(2);
-            
-            
 
             if (page == "dashboard.html"){
                 drawDashboardGraph();
                  document.getElementById("gbid").innerHTML = gb;
-                document.getElementById("gask").innerHTML = ga;
+                 document.getElementById("gask").innerHTML = ga;
                 document.getElementById("gchange").innerHTML = gc;
-                
-                document.getElementById("sbid").innerHTML = sb;
-                document.getElementById("sask").innerHTML = sa;
-                document.getElementById("schange").innerHTML = sc;
-                
-                
-                document.getElementById("pbid").innerHTML = pb;
-                document.getElementById("pask").innerHTML = pa;
-                document.getElementById("pchange").innerHTML = pc;
             }
             if (page == "goldoverview.html"){
                 drawGoldGraph();
@@ -438,6 +418,16 @@ $(window).load(function () {
                 document.getElementById("change").innerHTML = gc;
 
                 
+                
+            }
+            
+            if(page == "silveroverview.html"){
+                
+                  drawGoldGraph();
+
+                  document.getElementById("bid").innerHTML = sb;
+                 document.getElementById("ask").innerHTML = sa;
+                document.getElementById("change").innerHTML = sc;
                 
             }
 
@@ -615,7 +605,7 @@ function runGoldJSON() {
         console.log("start...");
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             var myArr = JSON.parse(xmlhttp.responseText);
-            arrGenGoldJSON(myArr);
+            arrGen(myArr);
 
         }
     }
@@ -624,7 +614,7 @@ function runGoldJSON() {
 
 };
 
-function arrGenGoldJSON(arr) {
+function arrGen(arr) {
 
     var i = 0;
 
@@ -666,19 +656,29 @@ function runGoldJSONBid() {
         console.log("start...");
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             var myArr = JSON.parse(xmlhttp.responseText);
-            arrGenGoldBid(myArr);
+            arrGen(myArr);
 
         }
     }
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
 
+    var xmlHttpTimeout = setTimeout(ajaxTimeout, 1);
+
+    function ajaxTimeout() {
+        xmlhttp.readyState = 4;
+    }
 };
 
-function arrGenGoldBid(arr) {
+function arrGen(arr) {
 
     var i = 0;
 
+    // console.log(arr.data.length);
+
+    //ASSIGN HOW MANY PLOT POINTS HERE
+
+    
     
     bid = arr.data[0][1];
     ask = arr.data[0][2];
@@ -686,13 +686,9 @@ function arrGenGoldBid(arr) {
     
     var chg = change.toFixed(2);
   
-    if( document.getElementById("bid") == null) {} 
-        else {
     document.getElementById("bid").innerHTML = bid;
     document.getElementById("ask").innerHTML = ask;
     document.getElementById("change").innerHTML = chg;
-        
-    }
     
     console.log("" + bid + "" + ask + "" + chg);
     
@@ -726,7 +722,7 @@ function runSilverJSON() {
         console.log("start...");
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             var myArr = JSON.parse(xmlhttp.responseText);
-            arrGenSilverJSON(myArr);
+            arrGen(myArr);
 
         }
     }
@@ -735,7 +731,7 @@ function runSilverJSON() {
 
 };
 
-function arrGenSilverJSON(arr) {
+function arrGen(arr) {
 
     var i = 0;
 
@@ -744,6 +740,11 @@ function arrGenSilverJSON(arr) {
     //ASSIGN HOW MANY PLOT POINTS HERE
     for (i = 0; i < 30; i++) {
 
+        // console.log(i);
+       // console.log(arr.data[i][0] + " " + arr.data[i][1]);
+
+
+       // goldDate[i] = arr.data[i][0];
         silverValue[i] = arr.data[i][1];
     }
 
@@ -774,7 +775,7 @@ function runPlatinumJSON() {
         console.log("start...");
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             var myArr = JSON.parse(xmlhttp.responseText);
-            arrGenPlatJSON(myArr);
+            arrGen(myArr);
 
         }
     }
@@ -783,13 +784,20 @@ function runPlatinumJSON() {
 
 };
 
-function arrGenPlatJSON(arr) {
+function arrGen(arr) {
 
     var i = 0;
+
+    // console.log(arr.data.length);
 
     //ASSIGN HOW MANY PLOT POINTS HERE
     for (i = 0; i < 30; i++) {
 
+        // console.log(i);
+       // console.log(arr.data[i][0] + " " + arr.data[i][1]);
+
+
+       // goldDate[i] = arr.data[i][0];
         platinumValue[i] = arr.data[i][1];
     }
 
@@ -805,126 +813,8 @@ function arrGenPlatJSON(arr) {
         success: function (date) {},
         error: function (date, error) {
         
+        
             console.log(error);
-        }
-    });
-
-};
-
-
-function runSilverJSONBid() {
-
-    
-    console.log("RUNNING JSON");
-    var xmlhttp = new XMLHttpRequest();
-    var url = "https://www.quandl.com/api/v1/datasets/PERTH/SLVR_USD_D.json?auth_token=yNHhNn-3_J2TMae97Dza";
-
-
-    xmlhttp.onreadystatechange = function () {
-        console.log("start...");
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            var myArr = JSON.parse(xmlhttp.responseText);
-            arrGenSilverBid(myArr);
-
-        }
-    }
-    xmlhttp.open("GET", url, true);
-    xmlhttp.send();
-
-};
-
-function arrGenSilverBid(arr) {
-
-    var i = 0;
-
-    
-    bid = arr.data[0][5];
-    ask = arr.data[0][6];
-    change = bid - ask;
-    
-    var chg = change.toFixed(2);
-  
-  //  document.getElementById("bid").innerHTML = bid;
-  //  document.getElementById("ask").innerHTML = ask;
-  //  document.getElementById("change").innerHTML = chg;
-    
-    console.log("Silver Details " + bid + " " + ask + " " + chg);
-    
-    var silver = Parse.Object.extend("graph");
-
-    var date = new silver();
-
-    date.set("objectId", "PlycS4oIZR");
-    date.set("sbid", bid);
-    date.set("sask", ask);
-    date.set("schange",Number(chg));
-
-    date.save(null, {
-        success: function (date) {},
-        error: function (date, error) {
-        
-        console.log(error);
-        }
-    });
-
-};
-
-
-
-
-
-
-function runPlatinumJSONBid() {
-
-    
-    console.log("RUNNING JSON");
-    var xmlhttp = new XMLHttpRequest();
-    var url = "https://www.quandl.com/api/v1/datasets/PERTH/PLAT_USD_D.json?auth_token=yNHhNn-3_J2TMae97Dza";
-
-
-    xmlhttp.onreadystatechange = function () {
-        console.log("start...");
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            var myArr = JSON.parse(xmlhttp.responseText);
-            arrGenPlatinumBid(myArr);
-
-        }
-    }
-    xmlhttp.open("GET", url, true);
-    xmlhttp.send();
-
-};
-
-function arrGenPlatinumBid(arr) {
-
-    var i = 0;
-    
-    bid = arr.data[0][5];
-    ask = arr.data[0][6];
-    change = bid - ask;
-    
-    var chg = change.toFixed(2);
-  
-  //  document.getElementById("bid").innerHTML = bid;
-  //  document.getElementById("ask").innerHTML = ask;
-  //  document.getElementById("change").innerHTML = chg;
-    
-    console.log("Platinum Details " + bid + " " + ask + " " + chg);
-    
-    var plat = Parse.Object.extend("graph");
-
-    var date = new plat();
-
-    date.set("objectId", "PlycS4oIZR");
-    date.set("pbid", bid);
-    date.set("pask", ask);
-    date.set("pchange",Number(chg));
-
-    date.save(null, {
-        success: function (date) {},
-        error: function (date, error) {
-        
-        console.log(error);
         }
     });
 
