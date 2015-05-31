@@ -1,6 +1,6 @@
 Parse.initialize("uuMKgtd7piSYYS1OIicbKekLesPHKKerHp21X3Zk", "J10xkBbtYfn4EPD9TQzp0BNJI7sQ2UXmJqY0Dkgu");
 
-window.fbAsyncInit = function() {
+/*window.fbAsyncInit = function() {
     Parse.FacebookUtils.init({
         appId      : '851290008320180', // Facebook App ID
         status     : true,  // check Facebook Login status
@@ -17,7 +17,7 @@ window.fbAsyncInit = function() {
     // Take out "https:" if not using local files            
     js.src = "https://connect.facebook.net/en_US/sdk.js";
     fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
+}(document, 'script', 'facebook-jssdk'));*/
 
 // Registers a User in the Parse database
 function register() {
@@ -51,7 +51,8 @@ function login() {
     Parse.User.logIn(username, pw, {
       success: function(user) {
         console.log("Successful login");
-        window.location.assign("src/dashboard.html");
+        //window.location.assign("src/dashboard.html");
+        window.location.assign("https://coinvault.herokuapp.com/src/dashboard.html");
       },
       error: function(user, error) {
         alert(error.message);
@@ -71,7 +72,8 @@ function facebookLogin() {
         success: function(user) {
             if (!user.existed()) {
                 alert("User signed up and logged in through Facebook!");
-                window.location.assign("src/dashboard.html");
+                //window.location.assign("src/dashboard.html");
+                window.location.assign("https://coinvault.herokuapp.com/src/dashboard.html");
             } else {
                 alert("User logged in through Facebook!");
             }
