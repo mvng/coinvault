@@ -33,8 +33,9 @@ function login() {
       success: function(user) {
         console.log("Successful login");
         //window.location.assign("src/dashboard.html");
-    //    window.location.assign("https://coinvault.herokuapp.com/src/dashboard.html");
-                window.location.assign("./src/dashboard.html");
+        //window.location.assign("https://coinvault.herokuapp.com/src/dashboard.html");
+          
+                          window.location.assign("./src/dashboard.html");
 
       },
       error: function(user, error) {
@@ -57,10 +58,12 @@ function facebookLogin() {
                 alert("User signed up and logged in through Facebook!");
                 //window.location.assign("src/dashboard.html");
                 //window.location.assign("https://coinvault.herokuapp.com/src/dashboard.html");
-                window.location.assign("./src/dashboard.html");
+                                window.location.assign("./src/dashboard.html");
 
             } else {
                 alert("User logged in through Facebook!");
+                                window.location.assign("./src/dashboard.html");
+
             }
         },
         error: function(user, error) {
