@@ -1,5 +1,4 @@
 <?php 
-<<<<<<< HEAD
 
 //set time zone for when pulling dates
 date_default_timezone_set('America/Los_Angeles');
@@ -29,22 +28,12 @@ $x = 0;
 		if (++$x == 30) break;
 	}	
 
-=======
-//************  Brent Crude Prices  ****************
-$br_json = file_get_contents('https://www.quandl.com/api/v1/datasets/BUNDESBANK/BBK01_WT5511.json?auth_token=yNHhNn-3_J2TMae97Dza');
-$br_obj = json_decode($br_json, true);
-//Build arrayss
-$br_label_arr = array();
-$br_value_arr = array();
->>>>>>> adf47cd873ea731384bfd593c6c9be1bf2ac5758
 $i = 0;
-	foreach ($br_obj['data'] as $br_data){ //loop through data
-		$br_label_arr[] = date('M j',strtotime($br_data[0])); //pull dates
-		$br_value_arr[] = $br_data[1]; //pull prices
-
+	foreach ($gold_bid_ask_obj['data'] as $gold_bid_ask_data){ //loop through data for bid ask and change
+		$gold_bid_arr[] = $gold_bid_ask_data[5]; 
+		$gold_ask_arr[] = $gold_bid_ask_data[6]; 
 		if (++$i == 30) break;
 	}
-<<<<<<< HEAD
 
 //calculated values for daily and overall values
 $gold_daily = $gold_oz_arr[0]-$gold_oz_arr[1]; //daily value of gold
@@ -157,6 +146,8 @@ $plat_change = $plat_ask_arr[0]-$plat_ask_arr[1]; //current change price for ask
 
 
 //******************** tests *********************
+echo 'gold';
+echo ' ';
 echo $gold_daily;
 echo ' ';
 echo $gold_overall;
@@ -166,6 +157,8 @@ echo ' ';
 echo $gold_ask;
 echo ' ';
 echo $gold_change;
+echo ' ';
+echo 'silver';
 echo ' ';
 echo $silver_daily;
 echo ' ';
@@ -177,6 +170,8 @@ echo $silver_ask;
 echo ' ';
 echo $silver_change;
 echo ' ';
+echo 'platinum';
+echo ' ';
 echo $plat_daily;
 echo ' ';
 echo $plat_overall;
@@ -186,12 +181,7 @@ echo ' ';
 echo $plat_ask;
 echo ' ';
 echo $plat_change;
-=======
-$br_labels = array_reverse($br_label_arr); //reverse the data for ASC
-$br_values = array_reverse($br_value_arr); //reverse the data for ASC
-$br_labels = implode('","', $br_labels); //comma sep
-$br_values = implode(", ", $br_values); //comma sep
->>>>>>> adf47cd873ea731384bfd593c6c9be1bf2ac5758
+
 ?>
 
 
@@ -212,7 +202,7 @@ $br_values = implode(", ", $br_values); //comma sep
 
 	<script>
 		var lineChartData = {
-			labels : [<?php echo '"'.$br_labels.'"'; ?>],
+			labels : [<?php echo '"'.$gold_dates.'"'; ?>],
 			datasets : [
 				{
 					label: "Brent Crude",
@@ -222,7 +212,7 @@ $br_values = implode(", ", $br_values); //comma sep
 					pointStrokeColor : "#fff",
 					pointHighlightFill : "#000",
 					pointHighlightStroke : "rgba(151,187,205,1)",
-					data : [<?php echo $br_values; ?>]
+					data : [<?php echo $gold_oz; ?>]
 				}
 			]
 
