@@ -1,6 +1,18 @@
+Parse.initialize("uuMKgtd7piSYYS1OIicbKekLesPHKKerHp21X3Zk", "J10xkBbtYfn4EPD9TQzp0BNJI7sQ2UXmJqY0Dkgu");
 
 
 function loadTopNav() {
+        
+         if(Parse.User.current() == null){
+            
+                 return window.location.href = "../index.html";
+    
+         }
+    
+    
+    
+    
+    
 	document.write("    <nav>");
 	document.write("        <svg class=\"icon-spinner2\">");
 	document.write("            <symbol id=\"icon-spinner2\" viewBox=\"0 0 1024 1024\">");
