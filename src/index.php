@@ -7,7 +7,7 @@ date_default_timezone_set('America/Los_Angeles');
 
 //connecting to the gold data
 $gold_oz_json = file_get_contents('https://www.quandl.com/api/v1/datasets/BUNDESBANK/BBK01_WT5511.json?auth_token=yNHhNn-3_J2TMae97Dza');
-$gold_bid_ask_json = file_get_contents('https://www.quandl.com/api/v1/datasets/CHRIS/MX_SXA1.json?auth_token=yNHhNn-3_J2TMae97Dza');
+$gold_bid_ask_json = file_get_contents('https://www.quandl.com/api/v1/datasets/PERTH/GOLD_USD_D.json?auth_token=yNHhNn-3_J2TMae97Dza');
 
 //decoding it to json
 $gold_oz_obj = json_decode($gold_oz_json, true);
@@ -18,7 +18,6 @@ $gold_dates_arr = array();
 $gold_oz_arr = array();
 $gold_bid_arr = array();
 $gold_ask_arr = array();
-$gold_change_arr = array();
 
 $x = 0;
 	foreach ($gold_oz_obj['data'] as $gold_oz_data){ //loop through data for dates and oz value
@@ -29,9 +28,8 @@ $x = 0;
 
 $i = 0;
 	foreach ($gold_bid_ask_obj['data'] as $gold_bid_ask_data){ //loop through data for bid ask and change
-		$gold_bid_arr[] = $gold_bid_ask_data[1]; 
-		$gold_ask_arr[] = $gold_bid_ask_data[2]; 
-		$gold_change_arr[] = $gold_bid_ask_data[8];
+		$gold_bid_arr[] = $gold_bid_ask_data[5]; 
+		$gold_ask_arr[] = $gold_bid_ask_data[6]; 
 		if (++$i == 30) break;
 	}
 
@@ -48,7 +46,7 @@ $gold_oz = implode(", ", $gold_oz); //comma sep to be used for chart.js
 //bid, ask and change data 
 $gold_bid = $gold_bid_arr[0]; //current bid price
 $gold_ask = $gold_ask_arr[0]; //current ask price
-$gold_change = $gold_change_arr[0]; //current change price
+$gold_change = $gold_ask_arr[0]-$gold_ask_arr[1]; //current change price for ask (selling)
 
 //******************** SECTION BELOW IS FOR SILVER ********************
 //
