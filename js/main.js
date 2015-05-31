@@ -661,7 +661,7 @@ $(window).load(function () {
             
             if(page == "platinumoverview.html"){
                 
-                
+                    drawPlatinumGraph();
                     document.getElementById("bid").innerHTML = pb;
                  document.getElementById("ask").innerHTML = pa;
                 document.getElementById("change").innerHTML = pc;
