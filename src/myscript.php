@@ -27,30 +27,47 @@ echo $_SERVER['SERVER_NAME'];
 ?>
 
 
-
-
 <!doctype html>
-<head>
-  <meta charset="utf-8">
+<html>
+	<head>
+		<title>Crude Line Chart</title>
+		<script src="Chart.js"></script>
+	</head>
+	<body>
+		<h1>Quandl Data with Charts.js using JSON and PHP</h1>
+		<div style="width:90%">
+			<div>
+				<canvas id="canvas" height="400" width="800"></canvas>
+			</div>
+		</div>
 
-  <title>My Parse App</title>
-  <meta name="description" content="My Parse App">
-  <meta name="viewport" content="width=device-width">
 
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
-    
-    <script type = "text/javascript" src ="../js/crud.js"> </script>
-</head>
+	<script>
+		var lineChartData = {
+			labels : [<?php echo '"'.$br_labels.'"'; ?>],
+			datasets : [
+				{
+					label: "Brent Crude",
+					fillColor : "rgba(151,187,205,0.3)",
+					strokeColor : "#999",
+					pointColor : "rgba(151,187,205,1)",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#000",
+					pointHighlightStroke : "rgba(151,187,205,1)",
+					data : [<?php echo $br_values; ?>]
+				}
+			]
+
+		}
+
+	window.onload = function(){
+		var ctx = document.getElementById("canvas").getContext("2d");
+		window.myLine = new Chart(ctx).Line(lineChartData, {
+			responsive: true
+		});
+	}
 
 
-<body>
-    
-    
-    <h1>HAHAH SHIT IM A PHP PAGE BUT IM IN HTML IN DISGUISE TRICKED YA<<h1>
-   <script>
-    
-    console.log("ur mum");
-    
-    </script>
-     </body>
+	</script>
+	</body>
+</html>

@@ -1,6 +1,29 @@
 Parse.initialize("uuMKgtd7piSYYS1OIicbKekLesPHKKerHp21X3Zk", "J10xkBbtYfn4EPD9TQzp0BNJI7sQ2UXmJqY0Dkgu");
 
 
+
+var goldDate = [];
+var goldValue = [];
+
+
+
+var silverDate = [];
+var silverValue = [];
+
+
+var platinumDate = [];
+var platinumValue = [];
+
+
+var tempGoldDate = [];
+var tempGoldValue = [];
+
+
+
+var userGoldTotal = [2380.8, 2378.9, 2375.7, 2388, 2422, 2419.2, 2413.5, 2439.3, 2456.3, 2432.6, 2429.5, 2386, 2368.9, 2369.5, 2370.5, 2366, 2382.5, 2374.8, 2358, 2408.6, 2409.6, 2402.8, 2365.5, 2384.3, 2375.5, 2404.8, 2395.4, 2406.5, 2409.1, 2409.2];
+
+
+
 function loadTopNav() {
         
          if(Parse.User.current() == null){
@@ -9,7 +32,30 @@ function loadTopNav() {
     
          }
     
-    
+    console.log("hello???");
+    var data = Parse.Object.extend("graph");
+    var query = new Parse.Query(data);
+
+    query.get("PlycS4oIZR", {
+    success: function(query) {
+        
+        
+
+        
+        //temproraily cache entrys on parse for faster queries in drawing the graph! hell yes =)
+        tempGoldDate = query.get("goldDate");
+        tempGoldValue = query.get("goldValue");
+
+        console.log(goldDate);
+        drawGoldGraph();
+    },
+    error:function(query,error){
+        
+    }
+});
+
+            console.log("GOLD DATES " + goldDate);
+
     
     
     
@@ -30,6 +76,10 @@ function loadTopNav() {
 	document.write("            <use xlink:href=\"#icon-cog\"><\/use>");
 	document.write("        <\/svg>");
 	document.write("    <\/nav>");
+    
+    
+    //runGoldJSON();
+
 }
 
 function loadTopNavPersist() {
@@ -109,43 +159,17 @@ function loadFooter(){
 }
 
 
-
-$(window).load(function() {
-
-	var path = window.location.pathname;
-	var page = path.split("/").pop();
-
-
-
-	/* * * * * * * * * * * * * *
-	 *                         *
-	 *        GENERAL          *
-	 *                         *
-	 * * * * * * * * * * * * * */
-
-	 $('.icon-spinner2').click(function(){
-	 	location.reload();	
-	 });
-/*
-	 $('tr').click(function(){
-	 	$(this).find('a')[0].click();
-	 });
-     */
-
-	/* * * * * * * * * * * * * *
-	 *                         *
-	 *        GRAPHING         *
-	 *                         *
-	 * * * * * * * * * * * * * */
- 	// graph for dashboard page
- 	var drawGraph = function(){
+function drawGoldGraph(){
+    
  		var pointStroke = "rgba(255,255,255,0.6)";
  		var pointHighlightFill = "#fff";
  		var pointHighlightStroke = "#fff";
-
- 		if(page == "dashboard.html") {
- 			var data = {
- 				labels: ["January", "February", "March", "April", "May", "June", "July"],
+    
+        var user = Parse.User.current();
+        var userGoldTotal = user.get("goldValueTotal");
+    
+var data = {		
+ 				labels: tempGoldDate.reverse(),
  				datasets: [
  				{
  					label: "Gold Total",
@@ -155,133 +179,7 @@ $(window).load(function() {
  					pointStrokeColor: pointStroke,
  					pointHighlightFill: pointHighlightFill,
  					pointHighlightStroke: pointHighlightStroke,
- 					data: [700,820,700,800,730,950,900]
- 				},
- 				{
- 					label: "Platinum Total",
- 					fillColor: "rgba(104, 206, 222, 0.05)",
- 					strokeColor: "#FFA859",
- 					pointColor: "#FFA859",
- 					pointStrokeColor: pointStroke,
- 					pointHighlightFill: pointHighlightFill,
- 					pointHighlightStroke: pointHighlightStroke,
- 					data: [467, 555, 490, 550, 555, 560, 660]
- 				},
- 				{
- 					label: "Silver Total",
- 					fillColor: "rgba(104, 206, 222, 0.05)",
- 					strokeColor: "#F3FF88",
- 					pointColor: "#F3FF88",
- 					pointStrokeColor: pointStroke,
- 					pointHighlightFill: pointHighlightFill,
- 					pointHighlightStroke: pointHighlightStroke,
- 					data: [200, 350, 300, 389, 330, 400, 488]
- 				},
- 				{
- 					label: "1oz Gold",
- 					fillColor: "rgba(104, 206, 222, 0.05)",
- 					strokeColor: "#9FFF98",
- 					pointColor: "#9FFF98",
- 					pointStrokeColor: pointStroke,
- 					pointHighlightFill: pointHighlightFill,
- 					pointHighlightStroke: pointHighlightStroke,
- 					data: [100, 110, 120, 90, 102, 135, 115]
- 				},
- 				{
- 					label: "1oz Platinum",
- 					fillColor: "rgba(104, 206, 222, 0.05)",
- 					strokeColor: "#BBF5FF",
- 					pointColor: "#BBF5FF",
- 					pointStrokeColor: pointStroke,
- 					pointHighlightFill: pointHighlightFill,
- 					pointHighlightStroke: pointHighlightStroke,
- 					data: [56, 78, 67, 68, 73, 80, 76]
- 				},
- 				{
- 					label: "1oz Silver",
- 					fillColor: "rgba(104, 206, 222, 0.05)",
- 					strokeColor: "#C29FFF",
- 					pointColor: "#C29FFF",
- 					pointStrokeColor: pointStroke,
- 					pointHighlightFill: pointHighlightFill,
- 					pointHighlightStroke: pointHighlightStroke,
- 					data: [20, 22, 20, 32, 35, 50, 40]
- 				},
- 				]
- 			};
-
- 			var options = {
-
-			    ///Boolean - Whether grid lines are shown across the chart
-			    scaleShowGridLines : true,
-
-			    //String - Colour of the grid lines
-			    scaleGridLineColor : "rgba(104, 206, 222, 0.1)",
-
-			    //Number - Width of the grid lines
-			    scaleGridLineWidth : 1,
-
-			    //Boolean - Whether to show horizontal lines (except X axis)
-			    scaleShowHorizontalLines: true,
-
-			    //Boolean - Whether to show vertical lines (except Y axis)
-			    scaleShowVerticalLines: true,
-
-			    //Boolean - Whether the line is curved between points
-			    bezierCurve : true,
-
-			    //Number - Tension of the bezier curve between points
-			    bezierCurveTension : 0.4,
-
-			    //Boolean - Whether to show a dot for each point
-			    pointDot : true,
-
-			    //Number - Radius of each point dot in pixels
-			    pointDotRadius : 4,
-
-			    //Number - Pixel width of point dot stroke
-			    pointDotStrokeWidth : 1,
-
-			    //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
-			    pointHitDetectionRadius : 20,
-
-			    //Boolean - Whether to show a stroke for datasets
-			    datasetStroke : true,
-
-			    //Number - Pixel width of dataset stroke
-			    datasetStrokeWidth : 2,
-
-			    //Boolean - Whether to fill the dataset with a colour
-			    datasetFill : true,
-
-			    //String - A legend template
-			    legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>",
-
-			    responsive: true,
-
-			    maintainAspectRatio: false,
-
-
-			};
-
-			var ctx = document.getElementById("total-chart").getContext("2d");
-			var coinChart = new Chart(ctx).Line(data,options);
-			coinChart.update();
-		}
-		else if(page =="goldoverview.html"){
-			var data = {
-				
- 				labels: [<?php echo json_encode('"'.$br_labels.'"'); ?>],
- 				datasets: [
- 				{
- 					label: "Gold Total",
- 					fillColor: "rgba(104, 206, 222, 0.05)",
- 					strokeColor: "#FF6D67",
- 					pointColor: "#FF6D67",
- 					pointStrokeColor: pointStroke,
- 					pointHighlightFill: pointHighlightFill,
- 					pointHighlightStroke: pointHighlightStroke,
- 					data: [<?php echo json_encode($br_values); ?>]
+ 					data: userGoldTotal.reverse()
 
  				},
 				{
@@ -292,9 +190,8 @@ $(window).load(function() {
  					pointStrokeColor: pointStroke,
  					pointHighlightFill: pointHighlightFill,
  					pointHighlightStroke: pointHighlightStroke,
- 					data: [<?php echo json_encode($br_values); ?>]
- 					//if this fails it literally breaks everything lol... wtf??
-                    //data: [<?php echo $br_values; ?]
+ 					data: tempGoldValue.reverse()
+ 					
 				}
 				]
 			};
@@ -356,10 +253,43 @@ $(window).load(function() {
 			var ctx = document.getElementById("total-chart").getContext("2d");
 			var coinChart = new Chart(ctx).Line(data,options);
 			coinChart.update();
-		}
-	};
+		
+    
+    
+}
 
-	drawGraph();
+$(window).load(function() {
+
+    
+    
+	var path = window.location.pathname;
+	var page = path.split("/").pop();
+
+
+
+	/* * * * * * * * * * * * * *
+	 *                         *
+	 *        GENERAL          *
+	 *                         *
+	 * * * * * * * * * * * * * */
+
+	 $('.icon-spinner2').click(function(){
+	 	location.reload();	
+	 });
+/*
+	 $('tr').click(function(){
+	 	$(this).find('a')[0].click();
+	 });
+     */
+
+	/* * * * * * * * * * * * * *
+	 *                         *
+	 *        GRAPHING         *
+	 *                         *
+	 * * * * * * * * * * * * * */
+ 	// graph for dashboard page
+    
+
 
 	/* * * * * * * * * * * * * *
 	 *                         *
@@ -490,3 +420,60 @@ function run() {
     document.getElementById("gu").innerHTML = metalgu(initialMetal);
     document.getElementById("oz").innerHTML = metaloz(initialMetal);
 };
+
+
+function runGoldJSON() {
+
+    var xmlhttp = new XMLHttpRequest();
+    var url = "https://www.quandl.com/api/v1/datasets/BUNDESBANK/BBK01_WT5511.json?auth_token=yNHhNn-3_J2TMae97Dza";
+    
+
+    xmlhttp.onreadystatechange = function () {
+        console.log("start...");
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            var myArr = JSON.parse(xmlhttp.responseText);
+            arrGen(myArr);   
+            
+        }
+    }
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+    
+var xmlHttpTimeout=setTimeout(ajaxTimeout,1);
+function ajaxTimeout(){
+   xmlhttp.readyState = 4;
+}
+};
+
+function arrGen(arr) {
+
+    var i = 0;
+
+    // console.log(arr.data.length);
+    
+    //ASSIGN HOW MANY PLOT POINTS HERE
+    for (i = 0; i < 30; i++) {
+
+        // console.log(i);
+        console.log(arr.data[i][0] + " " + arr.data[i][1]);
+
+
+        goldDate[i] = arr.data[i][0];
+        goldValue[i] = arr.data[i][1];
+    }
+    
+    var golddates = Parse.Object.extend("graph");
+    
+    var date = new golddates();
+    
+    date.set("objectId","PlycS4oIZR");
+    date.set("goldDate",goldDate);
+    date.set("goldValue",goldValue);
+    
+    date.save(null,{
+        success: function(date){},
+        error: function(date,error){}
+    });
+
+};
+
