@@ -84,7 +84,7 @@ function facebookLogin() {
 
 // Login through Google account
 function googleLogin() {
-    // Does nothing atm
+    alert("I currently do nothing ):");
 }
 
 // Performs the animations in the home screen when signup is pressed
@@ -171,7 +171,7 @@ function showHome() {
             .velocity({
                 opacity: 1
             }, {
-                duration: 750
+                duration: 350
             })
     }, 0);
 
@@ -180,7 +180,7 @@ function showHome() {
             .velocity({
                 opacity: 1
             }, {
-                duration: 750
+                duration: 350
             })
     }, 0);
 }
@@ -189,11 +189,15 @@ function showHome() {
 function hideSignup(){
     // Disables Signup buttons
     $("#signup-button").attr("onclick", "return false;");
+    $("#su-facebook-login").attr("onclick", "return false;");
+    $("#su-google-login").attr("onclick", "return false;");
 
     // Moves items out
     $("#signup-user").css("top", "0%");
     $("#signup-email").css("top", "0%");
     $("#signup-password").css("top", "0%");
+    $("#su-facebook-button").css("top", "0%");
+    $("#su-google-button").css("top", "0%");
 
     // Parses Signup items to hide
     var signup = document.getElementById("signup");
@@ -205,6 +209,8 @@ function hideSignup(){
     var signupUserText = document.getElementById("signup-username-text");
     var signupEmailText = document.getElementById("signup-email-text");
     var signupPassText = document.getElementById("signup-password-text");
+    var sufacebookButton = document.getElementById("su-facebook-login");
+    var sugoogleButton = document.getElementById("su-google-login");
 
     setTimeout(function () {
         $(signup)
@@ -285,17 +291,42 @@ function hideSignup(){
                 display: "block"
             })
     }, 0);
+
+    setTimeout(function () {
+        $(sufacebookButton)
+            .velocity({
+                opacity: 0
+            }, {
+                duration: 0,
+                display: "block"
+            })
+    }, 0);
+
+    setTimeout(function () {
+        $(sugoogleButton)
+            .velocity({
+                opacity: 0
+            }, {
+                duration: 0,
+                display: "block"
+            })
+    }, 0);
+
 }
 
 // Shows the elements associated with the signup page
 function showSignup(){
     // Re-enables button
     $("#signup-button").attr("onclick", "register()");
+    $("#su-facebook-login").attr("onclick", "facebookLogin()");
+    $("#su-google-login").attr("onclick", "googleLogin()");
 
     // Moves items back
     $("#signup-user").css("top", "25%");
     $("#signup-email").css("top", "35%");
     $("#signup-password").css("top", "45%");
+    $("#su-facebook-button").css("top", "50%");
+    $("#su-google-button").css("top", "50%");
 
     // Parses Signup items to show
     var signup = document.getElementById("signup");
@@ -307,13 +338,15 @@ function showSignup(){
     var signupUserText = document.getElementById("signup-username-text");
     var signupEmailText = document.getElementById("signup-email-text");
     var signupPassText = document.getElementById("signup-password-text");
+    var sufacebookButton = document.getElementById("su-facebook-login");
+    var sugoogleButton = document.getElementById("su-google-login");
 
     setTimeout(function () {
         $(signup)
             .velocity({
                 opacity: 1
             }, {
-                duration: 750,
+                duration: 350,
                 display: "block"
             })
     }, 0);
@@ -323,7 +356,7 @@ function showSignup(){
             .velocity({
                 opacity: 1
             }, {
-                duration: 750,
+                duration: 350,
                 display: "block"
             })
     }, 0);
@@ -333,7 +366,7 @@ function showSignup(){
             .velocity({
                 opacity: 1
             }, {
-                duration: 750,
+                duration: 350,
                 display: "block"
             })
     }, 0);
@@ -343,7 +376,7 @@ function showSignup(){
             .velocity({
                 opacity: 1
             }, {
-                duration: 750,
+                duration: 350,
                 display: "block"
             })
     }, 0);
@@ -353,7 +386,7 @@ function showSignup(){
             .velocity({
                 opacity: 1
             }, {
-                duration: 750,
+                duration: 350,
                 display: "block"
             })
     }, 0);
@@ -363,7 +396,7 @@ function showSignup(){
             .velocity({
                 opacity: 1
             }, {
-                duration: 750,
+                duration: 350,
                 display: "block"
             })
     }, 0);
@@ -373,7 +406,7 @@ function showSignup(){
             .velocity({
                 opacity: 1
             }, {
-                duration: 750,
+                duration: 350,
                 display: "block"
             })
     }, 0);
@@ -384,7 +417,7 @@ function showSignup(){
             .velocity({
                 opacity: 1
             }, {
-                duration: 750,
+                duration: 350,
                 display: "block"
             })
     }, 0);
@@ -394,7 +427,27 @@ function showSignup(){
             .velocity({
                 opacity: 1
             }, {
-                duration: 750,
+                duration: 350,
+                display: "block"
+            })
+    }, 0);
+
+    setTimeout(function () {
+        $(sufacebookButton)
+            .velocity({
+                opacity: 1
+            }, {
+                duration: 350,
+                display: "block"
+            })
+    }, 0);
+
+    setTimeout(function () {
+        $(sugoogleButton)
+            .velocity({
+                opacity: 1
+            }, {
+                duration: 350,
                 display: "block"
             })
     }, 0);
@@ -410,8 +463,8 @@ function hideLogin() {
     // Moves items around
     $("#login-user").css("top", "0%");
     $("#login-password").css("top", "0%");
-    $("#facebook-login").css("top", "0%");
-    $("#google-login").css("top", "0%");
+    $("#facebook-button").css("top", "0%");
+    $("#google-button").css("top", "0%");
 
     // Parse all login values to hide them
     var login = document.getElementById("login");
@@ -525,8 +578,8 @@ function showLogin() {
     // Moves Login objects back
     $("#login-user").css("top", "25%");
     $("#login-password").css("top", "35%");
-    $("#facebook-login").css("top", "40%");
-    $("#google-login").css("top", "40%");
+    $("#facebook-button").css("top", "40%");
+    $("#google-button").css("top", "40%");
 
     // Parses login items to show
     var login = document.getElementById("login");
@@ -544,7 +597,7 @@ function showLogin() {
             .velocity({
                 opacity: 1
             }, {
-                duration: 750,
+                duration: 350,
                 display: "block"
             })
     }, 0);
@@ -554,7 +607,7 @@ function showLogin() {
             .velocity({
                 opacity: 1
             }, {
-                duration: 750,
+                duration: 350,
                 display: "block"
             })
     }, 0);
@@ -564,7 +617,7 @@ function showLogin() {
             .velocity({
                 opacity: 1
             }, {
-                duration: 750,
+                duration: 350,
                 display: "block"
             })
     }, 0);
@@ -574,7 +627,7 @@ function showLogin() {
             .velocity({
                 opacity: 1
             }, {
-                duration: 750,
+                duration: 350,
                 display: "block"
             })
     }, 0);
@@ -584,7 +637,7 @@ function showLogin() {
             .velocity({
                 opacity: 1
             }, {
-                duration: 750,
+                duration: 350,
                 display: "block"
             })
     }, 0);
@@ -594,7 +647,7 @@ function showLogin() {
             .velocity({
                 opacity: 1
             }, {
-                duration: 750,
+                duration: 350,
                 display: "block"
             })
     }, 0);
@@ -604,7 +657,7 @@ function showLogin() {
             .velocity({
                 opacity: 1
             }, {
-                duration: 750,
+                duration: 350,
                 display: "block"
             })
     }, 0);
@@ -614,7 +667,7 @@ function showLogin() {
             .velocity({
                 opacity: 1
             }, {
-                duration: 750,
+                duration: 350,
                 display: "block"
             })
     }, 0);
@@ -624,7 +677,7 @@ function showLogin() {
             .velocity({
                 opacity: 1
             }, {
-                duration: 750,
+                duration: 350,
                 display: "block"
             })
     }, 0);

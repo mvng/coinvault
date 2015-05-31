@@ -21,3 +21,8 @@
 #facebook-button{background:#3B5999;border:1px solid #151515;cursor:pointer;}
 .google-login-button{font-size:25px;position:absolute;text-align:center;top:40%;left:47%;width:150px;height:35px;cursor:pointer;}
 #google-button{background:#F90101;border:1px solid #151515;cursor:pointer;}
+.su-facebook-login-button{font-size:25px;position:absolute;text-align:center;top:50%;left:31%;width:150px;height:35px;cursor:pointer;}
+#su-facebook-button{background:#3B5999;border:1px solid #151515;cursor:pointer;}
+.su-google-login-button{font-size:25px;position:absolute;text-align:center;top:50%;left:47%;width:150px;height:35px;cursor:pointer;}
+#su-google-button{background:#F90101;border:1px solid #151515;cursor:pointer;}
+#logout{position:absolute;right:85px;cursor:pointer;}
