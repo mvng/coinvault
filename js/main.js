@@ -379,7 +379,7 @@ function drawGoldGraph() {
 
 $(window).load(function () {
 
-
+    var gb,ga,gc;
 
     var path = window.location.pathname;
     var page = path.split("/").pop();
@@ -394,11 +394,27 @@ $(window).load(function () {
             //temproraily cache entrys on parse for faster queries in drawing the graph! hell yes =)
             tempGoldDate = query.get("goldDate");
             tempGoldValue = query.get("goldValue");
+            
+            gb = query.get("gbid");
+            ga = query.get("gask");
+            gc = query.get("gchange").toFixed(2);
 
-            if (page == "dashboard.html")
+            if (page == "dashboard.html"){
                 drawDashboardGraph();
-            if (page == "goldoverview.html")
+                 document.getElementById("gbid").innerHTML = gb;
+                 document.getElementById("gask").innerHTML = ga;
+                document.getElementById("gchange").innerHTML = gc;
+            }
+            if (page == "goldoverview.html"){
                 drawGoldGraph();
+                
+                document.getElementById("bid").innerHTML = gb;
+                 document.getElementById("ask").innerHTML = ga;
+                document.getElementById("change").innerHTML = gc;
+
+                
+                
+            }
 
 
             //   drawGoldGraph();
@@ -581,11 +597,6 @@ function runGoldJSON() {
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
 
-    var xmlHttpTimeout = setTimeout(ajaxTimeout, 1);
-
-    function ajaxTimeout() {
-        xmlhttp.readyState = 4;
-    }
 };
 
 function arrGen(arr) {
@@ -616,6 +627,71 @@ function arrGen(arr) {
     date.save(null, {
         success: function (date) {},
         error: function (date, error) {}
+    });
+
+};
+
+function runGoldJSONBid() {
+
+    var xmlhttp = new XMLHttpRequest();
+    var url = "https://www.quandl.com/api/v1/datasets/CHRIS/MX_SXA1.json?auth_token=yNHhNn-3_J2TMae97Dza";
+
+
+    xmlhttp.onreadystatechange = function () {
+        console.log("start...");
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            var myArr = JSON.parse(xmlhttp.responseText);
+            arrGen(myArr);
+
+        }
+    }
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+
+    var xmlHttpTimeout = setTimeout(ajaxTimeout, 1);
+
+    function ajaxTimeout() {
+        xmlhttp.readyState = 4;
+    }
+};
+
+function arrGen(arr) {
+
+    var i = 0;
+
+    // console.log(arr.data.length);
+
+    //ASSIGN HOW MANY PLOT POINTS HERE
+
+    
+    
+    bid = arr.data[0][1];
+    ask = arr.data[0][2];
+    change = bid - ask;
+    
+    var chg = change.toFixed(2);
+  
+    document.getElementById("bid").innerHTML = bid;
+    document.getElementById("ask").innerHTML = ask;
+    document.getElementById("change").innerHTML = chg;
+    
+    console.log("" + bid + "" + ask + "" + chg);
+    
+    var golddates = Parse.Object.extend("graph");
+
+    var date = new golddates();
+
+    date.set("objectId", "PlycS4oIZR");
+    date.set("gbid", bid);
+    date.set("gask", ask);
+    date.set("gchange",Number(chg));
+
+    date.save(null, {
+        success: function (date) {},
+        error: function (date, error) {
+        
+        console.log(error);
+        }
     });
 
 };
