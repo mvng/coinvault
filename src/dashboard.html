@@ -1,24 +1,4 @@
-<?php 
-//************  Brent Crude Prices  ****************
-$br_json = file_get_contents('https://www.quandl.com/api/v1/datasets/BUNDESBANK/BBK01_WT5511.json?trim_start=2015-02-22');
-$br_obj = json_decode($br_json, true);
-//Build arrays
-$br_label_arr = array();
-$br_value_arr = array();
-$i = 0;
-    foreach ($br_obj['data'] as $br_data){ //loop through data
-        $br_label_arr[] = date('M j',strtotime($br_data[0])); //pull dates
-        $br_value_arr[] = $br_data[6]; //pull prices
-        if (++$i == 30) break;
-    }
-$br_labels = array_reverse($br_label_arr); //reverse the data for ASC
-$br_values = array_reverse($br_value_arr); //reverse the data for ASC
-$br_labels = implode('","', $br_labels); //comma sep
-$br_values = implode(", ", $br_values); //comma sep
-print_r(array_values($br_labels));
-?>
 
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -38,12 +18,6 @@ print_r(array_values($br_labels));
     <script src="../js/Chart.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/mainlogin.js"></script>
-    
-    
-    
-    
-    
-          <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
 
     <script src ="../js/crud.js"> </script>
     <title>Home - Coin Vault</title>
@@ -51,19 +25,14 @@ print_r(array_values($br_labels));
 </head>
 
 <body>
-    <script type="text/javascript">loadTopNavPersist();</script>
+    <script type="text/javascript">loadTopNavPersist();
+    
+    </script>
     <script type="text/javascript">loadSideNav(0);</script>
 
     <section class="main-section">
 
-
-
-<script type="text/javascript">
-var myVar = '<?php print $br_values?>';
-    
-    //dashboardTotal();
-        
-        </script>        <section class="coin_wrapper">
+     <section class="coin_wrapper">
             <section class="overview-panel">
                 <section class="total-value">
                     <div class="total-dollars" id ="dashboardTotalValue">$24,249.23</div>
@@ -225,7 +194,9 @@ var myVar = '<?php print $br_values?>';
         
 dashboardTotal();
         
-        loadFooter();</script>
+        loadFooter();
+        
+    </script>
 </body>
 
 </html>
