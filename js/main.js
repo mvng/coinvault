@@ -176,6 +176,7 @@ function drawDashboardGraph() {
  					pointHighlightFill: pointHighlightFill,
  					pointHighlightStroke: pointHighlightStroke,
  					data: [200, 350, 300, 389, 330, 400, 488]
+
  				},
             {
                 label: "1oz Gold",
@@ -195,7 +196,7 @@ function drawDashboardGraph() {
  					pointStrokeColor: pointStroke,
  					pointHighlightFill: pointHighlightFill,
  					pointHighlightStroke: pointHighlightStroke,
- 					data: [56, 78, 67, 68, 73, 80, 76]
+ 					data: tempPlatinumValue.reverse()
  				},
  				{
  					label: "1oz Silver",
@@ -205,7 +206,7 @@ function drawDashboardGraph() {
  					pointStrokeColor: pointStroke,
  					pointHighlightFill: pointHighlightFill,
  					pointHighlightStroke: pointHighlightStroke,
- 					data: [20, 22, 20, 32, 35, 50, 40]
+ 					data: tempSilverValue.reverse()
  				}
     ]
     };
@@ -394,6 +395,10 @@ $(window).load(function () {
             //temproraily cache entrys on parse for faster queries in drawing the graph! hell yes =)
             tempGoldDate = query.get("goldDate");
             tempGoldValue = query.get("goldValue");
+            tempSilverValue = query.get("silverValue");
+            tempPlatinumValue = query.get("platinumValue");
+            
+            console.log(tempSilverValue);
             
             gb = query.get("gbid");
             ga = query.get("gask");
@@ -474,7 +479,7 @@ $(window).load(function () {
         $('.mtb-1').removeClass('mobile-toggle-selected');
         $('.mtb-2').addClass('mobile-toggle-selected');
         $('.graph-panel').addClass('graph-panel-show');
-        drawGraph();
+      //  drawGraph();
     });
 
     var resizer = function () {
@@ -691,6 +696,115 @@ function arrGen(arr) {
         error: function (date, error) {
         
         console.log(error);
+        }
+    });
+
+};
+
+
+function runSilverJSON() {
+
+    var xmlhttp = new XMLHttpRequest();
+    var url = "https://www.quandl.com/api/v1/datasets/PERTH/SLVR_USD_D.json?auth_token=MozKdjXWdsbMFLxbDSfr";
+
+
+    xmlhttp.onreadystatechange = function () {
+        console.log("start...");
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            var myArr = JSON.parse(xmlhttp.responseText);
+            arrGen(myArr);
+
+        }
+    }
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+
+};
+
+function arrGen(arr) {
+
+    var i = 0;
+
+    // console.log(arr.data.length);
+
+    //ASSIGN HOW MANY PLOT POINTS HERE
+    for (i = 0; i < 30; i++) {
+
+        // console.log(i);
+       // console.log(arr.data[i][0] + " " + arr.data[i][1]);
+
+
+       // goldDate[i] = arr.data[i][0];
+        silverValue[i] = arr.data[i][1];
+    }
+
+    var golddates = Parse.Object.extend("graph");
+
+    var date = new golddates();
+
+    date.set("objectId", "PlycS4oIZR");
+   // date.set("silverDate", silverDate);
+    date.set("silverValue", silverValue);
+
+    date.save(null, {
+        success: function (date) {},
+        error: function (date, error) {}
+    });
+
+};
+
+
+
+function runPlatinumJSON() {
+
+    var xmlhttp = new XMLHttpRequest();
+    var url = "https://www.quandl.com/api/v1/datasets/PERTH/PLAT_USD_D.json?auth_token=MozKdjXWdsbMFLxbDSfr";
+
+
+    xmlhttp.onreadystatechange = function () {
+        console.log("start...");
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            var myArr = JSON.parse(xmlhttp.responseText);
+            arrGen(myArr);
+
+        }
+    }
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+
+};
+
+function arrGen(arr) {
+
+    var i = 0;
+
+    // console.log(arr.data.length);
+
+    //ASSIGN HOW MANY PLOT POINTS HERE
+    for (i = 0; i < 30; i++) {
+
+        // console.log(i);
+       // console.log(arr.data[i][0] + " " + arr.data[i][1]);
+
+
+       // goldDate[i] = arr.data[i][0];
+        platinumValue[i] = arr.data[i][1];
+    }
+
+    var golddates = Parse.Object.extend("graph");
+
+    var date = new golddates();
+
+    date.set("objectId", "PlycS4oIZR");
+   // date.set("silverDate", silverDate);
+    date.set("platinumValue", platinumValue);
+
+    date.save(null, {
+        success: function (date) {},
+        error: function (date, error) {
+        
+        
+            console.log(error);
         }
     });
 
