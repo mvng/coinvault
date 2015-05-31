@@ -27,6 +27,8 @@ $br_values = implode(", ", $br_values); //comma sep
 
 
 
+
+<!doctype html>
 <head>
   <meta charset="utf-8">
 
@@ -42,6 +44,9 @@ $br_values = implode(", ", $br_values); //comma sep
 
 
 <body>
+    
+    
+    <h1>HAHAH SHIT IM A PHP PAGE BUT IM IN HTML IN DISGUISE TRICKED YA<<h1>
    <script>
     
     console.log("ur mum");
