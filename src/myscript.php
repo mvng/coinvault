@@ -23,6 +23,7 @@ $br_values = implode(", ", $br_values); //comma sep
 <?php
   $mytext = $_POST['mytext'];
   echo $mytext;
+echo $_SERVER['SERVER_NAME'];
 ?>
 
 
