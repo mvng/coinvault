@@ -641,9 +641,9 @@ $(window).load(function () {
             if (page == "goldoverview.html"){
                 drawGoldGraph();
                 
-                document.getElementById("sbid").innerHTML = gb;
-                 document.getElementById("sask").innerHTML = ga;
-                document.getElementById("schange").innerHTML = gc;
+                document.getElementById("bid").innerHTML = gb;
+                 document.getElementById("ask").innerHTML = ga;
+                document.getElementById("change").innerHTML = gc;
 
                 
                 
