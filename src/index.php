@@ -1,4 +1,5 @@
 <?php 
+<<<<<<< HEAD
 
 //set time zone for when pulling dates
 date_default_timezone_set('America/Los_Angeles');
@@ -28,12 +29,22 @@ $x = 0;
 		if (++$x == 30) break;
 	}	
 
+=======
+//************  Brent Crude Prices  ****************
+$br_json = file_get_contents('https://www.quandl.com/api/v1/datasets/BUNDESBANK/BBK01_WT5511.json?auth_token=yNHhNn-3_J2TMae97Dza');
+$br_obj = json_decode($br_json, true);
+//Build arrayss
+$br_label_arr = array();
+$br_value_arr = array();
+>>>>>>> adf47cd873ea731384bfd593c6c9be1bf2ac5758
 $i = 0;
-	foreach ($gold_bid_ask_obj['data'] as $gold_bid_ask_data){ //loop through data for bid ask and change
-		$gold_bid_arr[] = $gold_bid_ask_data[5]; 
-		$gold_ask_arr[] = $gold_bid_ask_data[6]; 
+	foreach ($br_obj['data'] as $br_data){ //loop through data
+		$br_label_arr[] = date('M j',strtotime($br_data[0])); //pull dates
+		$br_value_arr[] = $br_data[1]; //pull prices
+
 		if (++$i == 30) break;
 	}
+<<<<<<< HEAD
 
 //calculated values for daily and overall values
 $gold_daily = $gold_oz_arr[0]-$gold_oz_arr[1]; //daily value of gold
@@ -175,6 +186,12 @@ echo ' ';
 echo $plat_ask;
 echo ' ';
 echo $plat_change;
+=======
+$br_labels = array_reverse($br_label_arr); //reverse the data for ASC
+$br_values = array_reverse($br_value_arr); //reverse the data for ASC
+$br_labels = implode('","', $br_labels); //comma sep
+$br_values = implode(", ", $br_values); //comma sep
+>>>>>>> adf47cd873ea731384bfd593c6c9be1bf2ac5758
 ?>
 
 
@@ -195,7 +212,7 @@ echo $plat_change;
 
 	<script>
 		var lineChartData = {
-			labels : [<?php echo '"'.$gold_dates.'"'; ?>],
+			labels : [<?php echo '"'.$br_labels.'"'; ?>],
 			datasets : [
 				{
 					label: "Brent Crude",
@@ -205,7 +222,7 @@ echo $plat_change;
 					pointStrokeColor : "#fff",
 					pointHighlightFill : "#000",
 					pointHighlightStroke : "rgba(151,187,205,1)",
-					data : [<?php echo $gold_oz; ?>]
+					data : [<?php echo $br_values; ?>]
 				}
 			]
 

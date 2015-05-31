@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+
+
+<html>
+	<head>
+
+        <title>Crude Line Chart</title>
+        
+        <script type="text/javascript" src="myscript.php"></script>
+
+		<script src="Chart.js"></script>
+    </head>
+    
+	<body>
+		<h1>Quandl Data with Charts.js using JSON and PHP</h1>
+
+		<div style="width:90%">
+			<div>
+				<canvas id="canvas" height="400" width="800"></canvas>
+			</div>
+		</div>
+
+
+        <form  method="post" name="myform" action="myscript.php">
+    <input type="text" name="mytext" maxlength="80" size="30">
+    <input type="submit" value="Submit" >
+</form>
+        
+	<script>
+		var lineChartData = {
+            labels : [<?php echo '"'.$gold_dates.'"'; ?>],
+			datasets : [
+				{
+					label: "Brent Crude",
+					fillColor : "rgba(151,187,205,0.3)",
+					strokeColor : "#999",
+					pointColor : "rgba(151,187,205,1)",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#000",
+					pointHighlightStroke : "rgba(151,187,205,1)",
+					data : [<?php echo $gold_oz; ?>]
+				}
+			]
+
+		}
+
+	window.onload = function(){
+		var ctx = document.getElementById("canvas").getContext("2d");
+		window.myLine = new Chart(ctx).Line(lineChartData, {
+			responsive: true
+		});
+	}
+
+
+	</script>
+	</body>
+</html>
+
