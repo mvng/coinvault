@@ -333,6 +333,39 @@ function deleteItem() {
 };
 
 
+function untilOpen(){
+	//calculate
+	var now = new Date();
+	var hoursleft = 23-now.getHours();
+	var minutesleft = 59-now.getMinutes();
+	var secondsleft = 59-now.getSeconds();
+	//format 0 prefixes
+	if(minutesleft<10) minutesleft = "0"+minutesleft;
+	if(secondsleft<10) secondsleft = "0"+secondsleft;
+
+	//display
+
+    if (now.getHours() > 6 && now.getHours() < 13){
+        
+        var hoursLeft2 = 13 - now.getHours();
+        
+        
+        $('#openOrClose').html("Market is open");
+        $('#HMSremaining').html("Closes in: "+hoursLeft2+"h "+minutesleft+"min");
+    }
+    else{
+
+        $('#openOrClose').html("Market is closed");
+        var hoursLeft2 = 29 - now.getHours();     
+        if( hoursLeft2 > 23){
+            hoursLeft2 = hoursLeft2 - 23;   
+        }
+        $('#HMSremaining').html("Opens in: "+hoursLeft2+"h "+minutesleft+"min");
+    }
+	
+}
+
+
 
 
 function generateGold() {

@@ -60,8 +60,11 @@
                     </div>
                 </section>
                 <section class="market-status">
-                    <div class="market-open">Market is open</div>
-                    <div class="market-time">closes in 3h 36min</div>
+                    <div class="market-open" id="openOrClose"></div>
+                    
+                    
+                    <div class="market-time" id="HMSremaining"></div>
+                        
                 </section>
                 <section class="market-list">
 
@@ -198,7 +201,11 @@
          //runPlatinumJSON()
         dashboardTotal();
         
+        untilOpen();
+        
+        
         loadFooter();
+        
         
     </script>
 </body>
