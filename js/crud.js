@@ -174,28 +174,30 @@ function creat() {
     var weightg;
     var weightau;
 
-    /*
-    console.log(metal.options[metal.selectedIndex].text);
-    console.log(type.options[type.selectedIndex].text);
-   console.log(purchaseDate.value);
     
-    console.log(qty.value);
-    console.log(premium.value);
-    console.log(unitPrice.value);
-    console.log(document.getElementById("totalField").textContent);
-
-    */
+    var page = "dashboard.html";
 
     if (metal.options[metal.selectedIndex].text == "Gold") {
         weightg = 1.244;
         weightau = 0.917;
+        page = "goldoverview.html";
+        
     }
     
     if (metal.options[metal.selectedIndex].text == "Silver") {
         weightg = 2.48;
         weightau = 2.260416;
+        page = "silveroverview.html";
     }
 
+    
+      if (metal.options[metal.selectedIndex].text == "Platinum") {
+        weightg = 28.3495;
+        weightau = 0.911;
+        page = "platinumoverview.html";
+    }
+    
+    
     var Item = Parse.Object.extend("item");
     var thing = new Item();
 
@@ -218,8 +220,12 @@ function creat() {
         success: function (thing) {
             // Execute any logic that should take place after the object is saved.
             //    alert('New object created with objectId: ' + thing.id);
-            location.reload();
-            window.location.href = "goldoverview.html";
+                                    location.reload();
+
+   
+            window.location.href = page;
+            
+
         },
         error: function (thing, error) {
             // Execute any logic that should take place if the save fails.
@@ -227,7 +233,7 @@ function creat() {
             location.reload();
 
             //  alert('Failed to create new object, with error code: ' + error.message);
-            window.location.href = "goldoverview.html";
+            window.location.href = "dashboard.html";
 
 
         }
@@ -306,16 +312,23 @@ function deleteItem() {
     "use strict";
 
     var objectId;
-    var navPage = 0;
+    var navPage;
 
     objectId = getId();
+    
+    
 
     var Item = Parse.Object.extend("item");
 
     var THING = new Parse.Object("item");
+    // var query = new Parse.Query(Item);
+    
     THING.id = objectId;
     
-    navPage = THING.type;
+    
+               
+    
+    
     
     THING.destroy({
         success: function () {
@@ -438,8 +451,9 @@ function generateGold() {
                         continue;   
                     }
                     //    tr.append("<a onclick = " + "get('id')" + ">" + id);
-                    tr.append("<td>" + id + "</td>");
-                    // tr.append("<a  href= " + "../src/myitem.html" + ">" + "<td>" + data[i].objectId + "</td>");
+           tr.append("<td hidden>" + id + "</td>");
+
+                    tr.append("<td>" + data[i].metal + "</td>");                    // tr.append("<a  href= " + "../src/myitem.html" + ">" + "<td>" + data[i].objectId + "</td>");
                     tr.append("<td>" + data[i].type + "</td>");
                     tr.append("<td>" + data[i].qty + "</td>");
 
@@ -467,7 +481,7 @@ function generateGold() {
                 //Updating totalGold Field after generating table on Parse
                 var user = Parse.User.current();
 
-                user.set("totalSilver", totalValue);
+                user.set("totalGold", totalValue);
                 user.save()
                     .then(
                         function (user) {
@@ -571,8 +585,9 @@ function generatePlatinum() {
                         continue;   
                     }
                     //    tr.append("<a onclick = " + "get('id')" + ">" + id);
-                    tr.append("<td>" + id + "</td>");
-                    // tr.append("<a  href= " + "../src/myitem.html" + ">" + "<td>" + data[i].objectId + "</td>");
+           tr.append("<td hidden>" + id + "</td>");
+
+                    tr.append("<td>" + data[i].metal + "</td>");                    // tr.append("<a  href= " + "../src/myitem.html" + ">" + "<td>" + data[i].objectId + "</td>");
                     tr.append("<td>" + data[i].type + "</td>");
                     tr.append("<td>" + data[i].qty + "</td>");
 
@@ -684,7 +699,7 @@ function generateSilver() {
                     "total": temp.total
 
                 };
-                console.log(data);
+               // console.log(data);
 
             }
             table.push(data);
@@ -705,6 +720,8 @@ function generateSilver() {
                     }
 
                     //    tr.append("<a onclick = " + "get('id')" + ">" + id);
+                         tr.append("<td hidden>" + id + "</td>");
+
                     tr.append("<td>" + data[i].metal + "</td>");
                     // tr.append("<a  href= " + "../src/myitem.html" + ">" + "<td>" + data[i].objectId + "</td>");
                     tr.append("<td>" + data[i].type + "</td>");
@@ -715,7 +732,7 @@ function generateSilver() {
                     tr.append("<td>" + data[i].total + "</td>" + "</a>");
                     // tr.onClick = set(123);
                     totalValue = totalValue + data[i].total;
-                    console.log(totalValue);
+                   // console.log(totalValue);
 
                     $('#silverTable').append(tr);
                     $(tr).click(function () {
@@ -734,7 +751,7 @@ function generateSilver() {
                 //Updating totalGold Field after generating table on Parse
                 var user = Parse.User.current();
 
-                user.set("totalGold", totalValue);
+                user.set("totalSilver", totalValue);
                 user.save()
                     .then(
                         function (user) {
