@@ -1,6 +1,6 @@
 //Objects to edit in Parse
 //Type, unitPrice, premium Total createdAt, metal
-Parse.initialize("uuMKgtd7piSYYS1OIicbKekLesPHKKerHp21X3Zk", "J10xkBbtYfn4EPD9TQzp0BNJI7sQ2UXmJqY0Dkgu");
+//Parse.initialize("uuMKgtd7piSYYS1OIicbKekLesPHKKerHp21X3Zk", "J10xkBbtYfn4EPD9TQzp0BNJI7sQ2UXmJqY0Dkgu");
 
 function set(objectId) {
     "use strict";
@@ -159,6 +159,7 @@ function getEdit(objectId) {
 function creat() {
 
     var userObjId = Parse.User.current().id;
+
     event.preventDefault();
 
     console.log("invoking creat");
@@ -330,8 +331,19 @@ function generateGold() {
     var table = [];
     var id;
     var temp = {};
+    
+    
+    console.log(Parse.User.current());
+         if(Parse.User.current() == null){
+            
+                 return window.location.href = "../index.html";
+    
+         }
+    
     var objectId = Parse.User.current().id;
 
+    
+    
     var totalValue = 0;
     var mydiv = document.getElementById("totalGoldValue");
 
