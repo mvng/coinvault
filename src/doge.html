@@ -4,9 +4,12 @@
 
 <html>
 	<head>
-		<title>Crude Line Chart</title>
+
+        <title>Crude Line Chart</title>
+        
+        <script type="text/javascript" src="myscript.php"></script>
+
 		<script src="Chart.js"></script>
-<script type="text/javascript" src="myscript.php"></script>
     </head>
     
 	<body>
@@ -20,7 +23,7 @@
 
 	<script>
 		var lineChartData = {
-			labels : [<?php echo '"'.$gold_dates.'"'; ?>],
+            labels : [<?php echo '"'.$gold_dates.'"'; ?>],
 			datasets : [
 				{
 					label: "Brent Crude",
@@ -47,3 +50,4 @@
 	</script>
 	</body>
 </html>
+
