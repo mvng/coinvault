@@ -24,8 +24,30 @@
 
     <title>Home - Coin Vault</title>
 </head>
-
 <body>
+    <!-- Needed for Facebook Login -->
+    <div id="fb-root">
+        <script>
+            window.fbAsyncInit = function() {
+                Parse.FacebookUtils.init({
+                    appId      : '851290008320180', // Facebook App ID
+                    cookie     : true,  // enable cookies to allow Parse to access the session
+                    xfbml      : true,  // initialize Facebook social plugins on the page
+                    version    : 'v2.3'
+                });
+            };
+
+            (function(d, s, id){
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {return;}
+                js = d.createElement(s); js.id = id;
+                // Take out "https:" if not using local files            
+                js.src = "https://connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>
+    </div>
+
     <header>
         <nav>
             <ul class="nav-list">
@@ -76,6 +98,10 @@
             </section>
 
             <a onclick="login()" id="loginButton" hidden><span id="login-button" class="login-button">Login</span></a>
+
+            <a onclick="facebookLogin()" id="facebook-login" hidden><span id="facebook-button" class="facebook-login-button">Facebook</span></a>
+
+            <a onclick="googleLogin()" id="google-login" hidden><span id="google-button" class="google-login-button">Google</span></a>
 
         </section>
     </div>
