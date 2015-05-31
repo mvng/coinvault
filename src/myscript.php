@@ -16,13 +16,6 @@ $br_labels = array_reverse($br_label_arr); //reverse the data for ASC
 $br_values = array_reverse($br_value_arr); //reverse the data for ASC
 $br_labels = implode('","', $br_labels); //comma sep
 $br_values = implode(", ", $br_values); //comma sep
-
-
-
-$someVar = 1;
-
-echo "Hi I AM A PHP FILE";
-
 ?>
 
 
