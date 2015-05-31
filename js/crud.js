@@ -378,6 +378,7 @@ function generateGold() {
                 console.log(data);
 
             }
+        
             table.push(data);
             // console.log(table);
             //console.log(data);
@@ -391,7 +392,9 @@ function generateGold() {
 
                     var id = data[i].objectId;
 
-
+                    if(data[i].metal == "silver" ||  data[i].metal == "platinum" ){
+                        continue;   
+                    }
                     //    tr.append("<a onclick = " + "get('id')" + ">" + id);
                     tr.append("<td>" + id + "</td>");
                     // tr.append("<a  href= " + "../src/myitem.html" + ">" + "<td>" + data[i].objectId + "</td>");
