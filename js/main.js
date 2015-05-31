@@ -381,6 +381,8 @@ function drawGoldGraph() {
 $(window).load(function () {
 
     var gb,ga,gc;
+    var sb,sa,sc;
+    var pb,pa,pc;
 
     var path = window.location.pathname;
     var page = path.split("/").pop();

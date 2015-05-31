@@ -392,7 +392,8 @@ function generateGold() {
 
                     var id = data[i].objectId;
 
-                    if(data[i].metal == "silver" ||  data[i].metal == "platinum" ){
+                    if(data[i].metal == "Silver" ||  data[i].metal == "Platinum" ){
+                        console.log("does it go here?");
                         continue;   
                     }
                     //    tr.append("<a onclick = " + "get('id')" + ">" + id);
@@ -408,7 +409,7 @@ function generateGold() {
                     totalValue = totalValue + data[i].total;
                     console.log(totalValue);
 
-                    $('#silverTable').append(tr);
+                    $('#goldTable').append(tr);
                     $(tr).click(function () {
 
                         var a = $(this).closest('tr').find('td:first').text();
