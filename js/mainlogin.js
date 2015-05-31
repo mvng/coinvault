@@ -1,6 +1,6 @@
 Parse.initialize("uuMKgtd7piSYYS1OIicbKekLesPHKKerHp21X3Zk", "J10xkBbtYfn4EPD9TQzp0BNJI7sQ2UXmJqY0Dkgu");
 
-/*window.fbAsyncInit = function() {
+window.fbAsyncInit = function() {
     Parse.FacebookUtils.init({
         appId      : '851290008320180', // Facebook App ID
         status     : true,  // check Facebook Login status
@@ -17,7 +17,7 @@ Parse.initialize("uuMKgtd7piSYYS1OIicbKekLesPHKKerHp21X3Zk", "J10xkBbtYfn4EPD9TQ
     // Take out "https:" if not using local files            
     js.src = "https://connect.facebook.net/en_US/sdk.js";
     fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));*/
+}(document, 'script', 'facebook-jssdk'));
 
 // Registers a User in the Parse database
 function register() {
@@ -59,8 +59,8 @@ function login() {
     });
 };
 
+// Login through Facebook account
 function facebookLogin() {
-
     Parse.FacebookUtils.logIn(null, {
         success: function(user) {
             if (!user.existed()) {
@@ -75,29 +75,38 @@ function facebookLogin() {
     });
 }
 
-// Logs out the user
+// Login through Google account
+function googleLogin() {
+    // Does nothing atm
+}
+
+// Logs current user out
 function logout() {
     Parse.User.logOut();
 }
 
+// Performs the animations in the home screen when signup is pressed
 function signupButton() {
     hideHome();
     hideLogin();
     showSignup();
 };
 
+// Performs the animations in the home screen when login is pressed
 function loginButton() {
     hideHome();
     hideSignup();
     showLogin();
 };
 
+// Performs the animations in the home screen when home is pressed
 function homeButton() {
     hideLogin();
     hideSignup();
     showHome();
 };
 
+// Hides the elements associated with the home page
 function hideHome() {
     // Disables home buttons
     $("#su").attr("onclick", "return false;");
@@ -126,6 +135,7 @@ function hideHome() {
     }, 0);
 }
 
+// Shows the elements associated with the home page
 function showHome() {
     // Re-enables home buttons
     $("#su").attr("onclick", "signupButton()");
@@ -173,6 +183,7 @@ function showHome() {
     }, 0);
 }
 
+// Hides the elements associated with the signup page
 function hideSignup(){
     // Disables Signup buttons
     $("#signup-button").attr("onclick", "return false;");
@@ -274,6 +285,7 @@ function hideSignup(){
     }, 0);
 }
 
+// Shows the elements associated with the signup page
 function showSignup(){
     // Re-enables button
     $("#signup-button").attr("onclick", "register()");
@@ -386,6 +398,7 @@ function showSignup(){
     }, 0);
 }
 
+// Hides the elements associated with the login page
 function hideLogin() {
     // Disables login buttons
     $("#loginButton").attr("onclick", "return false;");
@@ -500,6 +513,7 @@ function hideLogin() {
     }, 0);
 }
 
+// Shows the elements associated with the login page
 function showLogin() {
     // Re-enables Login buttons
     $("#loginButton").attr("onclick", "login()");
