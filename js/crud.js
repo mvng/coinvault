@@ -301,6 +301,7 @@ function deleteItem() {
     "use strict";
 
     var objectId;
+    var navPage = 0;
 
     objectId = getId();
 
@@ -308,6 +309,9 @@ function deleteItem() {
 
     var THING = new Parse.Object("item");
     THING.id = objectId;
+    
+    navPage = THING.type;
+    
     THING.destroy({
         success: function () {
 

@@ -391,14 +391,14 @@ function drawSilverGraph() {
         labels: tempGoldDate.reverse(),
         datasets: [
             {
-                label: "Gold Total",
-                fillColor: "rgba(104, 206, 222, 0.05)",
-                strokeColor: "#FF6D67",
-                pointColor: "#FF6D67",
-                pointStrokeColor: pointStroke,
-                pointHighlightFill: pointHighlightFill,
-                pointHighlightStroke: pointHighlightStroke,
-                data: userGoldTotal.reverse()
+ 					label: "Silver Total",
+ 					fillColor: "rgba(104, 206, 222, 0.05)",
+ 					strokeColor: "#F3FF88",
+ 					pointColor: "#F3FF88",
+ 					pointStrokeColor: pointStroke,
+ 					pointHighlightFill: pointHighlightFill,
+ 					pointHighlightStroke: pointHighlightStroke,
+ 					data: [200, 350, 300, 389, 330, 400, 488]
 
      },
             {
@@ -494,25 +494,25 @@ function drawPlatinumGraph() {
         labels: tempGoldDate.reverse(),
         datasets: [
             {
-                label: "Gold Total",
-                fillColor: "rgba(104, 206, 222, 0.05)",
-                strokeColor: "#FF6D67",
-                pointColor: "#FF6D67",
-                pointStrokeColor: pointStroke,
-                pointHighlightFill: pointHighlightFill,
-                pointHighlightStroke: pointHighlightStroke,
-                data: userGoldTotal.reverse()
+ 					label: "Platinum Total",
+ 					fillColor: "rgba(104, 206, 222, 0.05)",
+ 					strokeColor: "#FFA859",
+ 					pointColor: "#FFA859",
+ 					pointStrokeColor: pointStroke,
+ 					pointHighlightFill: pointHighlightFill,
+ 					pointHighlightStroke: pointHighlightStroke,
+ 					data: [467, 555, 490, 550, 555, 560, 660]
 
      },
             {
-                label: "1oz Gold",
-                fillColor: "rgba(104, 206, 222, 0.05)",
-                strokeColor: "#9FFF98",
-                pointColor: "#9FFF98",
-                pointStrokeColor: pointStroke,
-                pointHighlightFill: pointHighlightFill,
-                pointHighlightStroke: pointHighlightStroke,
-                data: tempPlatinumValue.reverse()
+               		label: "1oz Platinum",
+ 					fillColor: "rgba(104, 206, 222, 0.05)",
+ 					strokeColor: "#BBF5FF",
+ 					pointColor: "#BBF5FF",
+ 					pointStrokeColor: pointStroke,
+ 					pointHighlightFill: pointHighlightFill,
+ 					pointHighlightStroke: pointHighlightStroke,
+ 					data: tempPlatinumValue.reverse()
 
     }
     ]
