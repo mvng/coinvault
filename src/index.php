@@ -17,6 +17,8 @@ $br_values = array_reverse($br_value_arr); //reverse the data for ASC
 $br_labels = implode('","', $br_labels); //comma sep
 $br_values = implode(", ", $br_values); //comma sep
 ?>
+
+
 <!doctype html>
 <html>
 	<head>
