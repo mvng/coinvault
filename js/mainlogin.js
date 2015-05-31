@@ -83,6 +83,7 @@ function googleLogin() {
 // Logs current user out
 function logout() {
     Parse.User.logOut();
+    window.location.assign("../index.html");
 }
 
 // Performs the animations in the home screen when signup is pressed

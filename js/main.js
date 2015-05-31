@@ -29,7 +29,7 @@ function loadTopNavPersist() {
 	document.write("            <\/symbol>");
 	document.write("            <use xlink:href=\"#icon-spinner2\"><\/use>");
 	document.write("        <\/svg>");
-	document.write("        <a href=\"dashboard.html\">COINFLIP<\/a>");
+	document.write("        <a href=\"dashboard.html\">COIN VAULT<\/a>");
 	document.write("        <svg class=\"icon-cog\">");
 	document.write("            <symbol id=\"icon-cog\" viewBox=\"0 0 1024 1024\">");
 	document.write("                <title>cog<\/title>");
