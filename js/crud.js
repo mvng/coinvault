@@ -40,6 +40,12 @@ function getId() {
     return localStorage.getItem("id");
 }
 
+function numberWithCommas(x) {
+    var parts = x.toString().split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return parts.join(".");
+}
+
 function get(objectId) {
     //event.preventDefault();
     // window.localStorage.setItem("option", optionch);
@@ -150,7 +156,9 @@ function getEdit(objectId) {
 
 
 
-function creat(userObjId) {
+function creat() {
+
+    var userObjId = Parse.User.current().id;
     event.preventDefault();
 
     console.log("invoking creat");
@@ -203,14 +211,18 @@ function creat(userObjId) {
     thing.save(null, {
         success: function (thing) {
             // Execute any logic that should take place after the object is saved.
-            alert('New object created with objectId: ' + thing.id);
+            //    alert('New object created with objectId: ' + thing.id);
             location.reload();
+            window.location.href = "goldoverview.html";
         },
         error: function (thing, error) {
             // Execute any logic that should take place if the save fails.
             // error is a Parse.Error with an error code and message.
-            alert('Failed to create new object, with error code: ' + error.message);
             location.reload();
+
+            //  alert('Failed to create new object, with error code: ' + error.message);
+            window.location.href = "goldoverview.html";
+
 
         }
     });
@@ -283,17 +295,29 @@ function updateItem() {
 
 };
 
-function delet(objectId) {
+function deleteItem() {
 
     "use strict";
+
+    var objectId;
+
+    objectId = getId();
 
     var Item = Parse.Object.extend("item");
 
     var THING = new Parse.Object("item");
     THING.id = objectId;
     THING.destroy({
-        success: function () {},
-        error: function (error) {}
+        success: function () {
+
+            //   console.log("success delete");
+            //location.reload();
+        },
+        error: function (error) {
+            console.log(error.message);
+
+
+        }
     });
 
 };
@@ -301,11 +325,15 @@ function delet(objectId) {
 
 
 
-function generateGold(objectId) {
+function generateGold() {
     var data = [];
     var table = [];
     var id;
     var temp = {};
+    var objectId = Parse.User.current().id;
+
+    var totalValue = 0;
+    var mydiv = document.getElementById("totalGoldValue");
 
     // Generates the array of objects
 
@@ -362,6 +390,8 @@ function generateGold(objectId) {
                     tr.append("<td>" + data[i].weightau + "</td>");
                     tr.append("<td>" + data[i].total + "</td>" + "</a>");
                     // tr.onClick = set(123);
+                    totalValue = totalValue + data[i].total;
+                    console.log(totalValue);
 
                     $('#goldTable').append(tr);
                     $(tr).click(function () {
@@ -369,19 +399,38 @@ function generateGold(objectId) {
                         var a = $(this).closest('tr').find('td:first').text();
                         set(a);
 
-
                         window.location.href = 'myitem.html';
 
                         //console.log(a);
-
-
 
                     });
 
                 }
 
+                //Updating totalGold Field after generating table on Parse
+                var user = Parse.User.current();
 
+                user.set("totalGold", totalValue);
+                user.save()
+                    .then(
+                        function (user) {
+                            return user.fetch();
+                        }
+                    )
+                    .then(
+                        function (user) {
+                            console.log('gold updated', user);
+                        },
+                        function (error) {
+                            console.log('Something went wrong', error);
+                        }
+                    );
 
+                //Fixing the number value
+                var twoPlacedFloat = parseFloat(totalValue).toFixed(2)
+
+                //Assigning it to the HTML page
+                mydiv.innerHTML = "$" + numberWithCommas(twoPlacedFloat);
 
             });
 
@@ -396,91 +445,48 @@ function generateGold(objectId) {
 };
 
 
+function dashboardTotal() {
+
+    var user = Parse.User.current();
+    var totalGold = user.get("totalGold");
+    var totalSilver = user.get("totalSilver");
+    var totalPlatinum = user.get("totalPlatinum");
+
+
+    if (totalGold == null) totalGold = 0;
+    if (totalSilver == null) totalSilver = 0;
+    if (totalPlatinum == null) totalPlatinum = 0;
 
 
 
 
+    var total = totalGold + totalSilver + totalPlatinum;
 
-
-
-function deleteAllCookies() {
-
-
-    console.log("deleting cookies...");
-    var cookies = document.cookie.split(";");
-
-    for (var i = 0; i < cookies.length; i++) {
-        var cookie = cookies[i];
-        var eqPos = cookie.indexOf("=");
-        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
-    }
-}
-
-function name() {
-    var data = [];
-    var table = [];
-    var id;
-    var temp = {};
-
-    // Generates the array of objects
-
-    var item = Parse.Object.extend("item");
-    var query = new Parse.Query(item);
-    query.equalTo("userObjId", "XfP9iownzq");
-    //console.log("sup");
-    query.find({
-        success: function (results) {
-
-            // console.log(results[0].attributes);
-
-
-
-            for (var i = 0; i < results.length; i++) {
-                temp = results[i].attributes;
-                id = results[i].id
-                data[i] = {
-                    "objectId": temp.id,
-                    "type": temp.type,
-                    "metal": temp.metal,
-                    "qty": temp.qty,
-                    "value": temp.total
-                };
-                console.log(data);
-
+    user.set("endOfDayTotal", total);
+    user.save()
+        .then(
+            function (user) {
+                return user.fetch();
             }
-            table.push(data);
-            // console.log(table);
-            //console.log(data);
+        )
+        .then(
+            function (user) {
+                console.log('endOfDay updated', user);
+            },
+            function (error) {
+                console.log('Something went wrong', error);
+            }
+        );
+
+    var mydiv = document.getElementById("dashboardTotalValue");
 
 
 
-            var tr;
-            $(document).ready(function () {
-                for (var i = 0; i < data.length; i++) {
+    //Makes it 2 decimal places
+    var twoPlacedFloat = parseFloat(total).toFixed(2)
 
-                    tr = $('<tr/>');
-
-                    tr.append("<td>" + data[i].type + "</td>");
-                    tr.append("<td>" + data[i].metal + "</td>");
-                    tr.append("<td>" + data[i].qty + "</td>");
-
-                    $('table').append(tr);
-                }
-
-
-
-
-
-
-
-            });
-
-        },
-        error: function (error) {
-            console.log(error);
-        }
-    });
+    //assigns the value on dashboard.
+    mydiv.innerHTML = "$" + numberWithCommas(twoPlacedFloat);
 
 
 
@@ -510,4 +516,11 @@ function update() {
     //  console.log(premium);
     //  console.log(unitPrice);
     //  console.log(sum);
+};
+
+function getDetails() {
+    var currentUser = Parse.User.current();
+
+    console.log(currentUser);
+
 };

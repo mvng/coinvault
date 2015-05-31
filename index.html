@@ -10,7 +10,7 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <script src="js/jquery-1.11.2.min.js"></script>
-    <script language="JavaScript" src="js/parse-1.4.2.js"></script>
+    <script src="js/parse-1.4.2.js"></script>
     <script>
     Parse.initialize("uuMKgtd7piSYYS1OIicbKekLesPHKKerHp21X3Zk", "J10xkBbtYfn4EPD9TQzp0BNJI7sQ2UXmJqY0Dkgu");
     </script>
@@ -22,23 +22,51 @@
     
     <!-- bs -->
 
-    <title>Login - Coin Vault</title>
+    <title>Home - Coin Vault</title>
 </head>
-
 <body>
-    <nav>
-        COIN VAULT
-    </nav>
-    <div class="mobile-nav">
-        COIN VAULT
-    </div>
-    <div id="w1-wrapper">
+    <!-- Needed for Facebook Login -->
+    <div id="fb-root">
+        <script>
+            window.fbAsyncInit = function() {
+                Parse.FacebookUtils.init({
+                    appId      : '851290008320180', // Facebook App ID
+                    cookie     : true,  // enable cookies to allow Parse to access the session
+                    xfbml      : true,  // initialize Facebook social plugins on the page
+                    version    : 'v2.3'
+                });
+            };
 
+            (function(d, s, id){
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {return;}
+                js = d.createElement(s); js.id = id;
+                // Take out "https:" if not using local files            
+                js.src = "https://connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>
+    </div>
+
+    <header>
+        <nav>
+            <ul class="nav-list">
+                <li class="nav-text"><a onclick="homeButton()" id="home-nav">COIN VAULT</a></li>
+                <li class="register-text"><a onclick="signupButton()" id="signup-nav">Sign Up</a></li>
+                <li class="login-text"><a onclick="loginButton()" id="login-nav">Login</a></li>                
+            </ul>
+        </nav>
+        <div class="mobile-nav">
+            COIN VAULT
+        </div>
+    </header> 
+
+    <div id="w1-wrapper">
         <section id="w1-left">
             <h1>COIN VAULT</h1>
             <h3>Manage your coin collection with a simple app.</h3>
-            <a href="src/signup.html"><span id="sign-up-button">Sign Up</span></a>
-            <a href="src/login.html"><span id="log-in-button">Log in</span></a>
+            <a onclick="signupButton()" id="su"><span id="sign-up-button">Sign Up</span></a>
+            <a onclick="loginButton()" id="lo"><span id="log-in-button">Log in</span></a>
         </section>
 
         <section id="w1-right">
@@ -48,26 +76,35 @@
                 <div id="iphone-screen"></div>
                 <div id="iphone-home"></div>
             </div>
-        </section>
-<!--            
-        <div id = "doge"> 
-            <div id="login-user" hidden>
-                Username
-                <input type="text">
-            </div>
-            <div id="login-pass" hidden>
-                Password
-                <input type="password">
-            </div>
-            <div id="login-cpass" hidden>
-                Confirm Password
-                <input type="password">
-            </div>
             
-            </div>
-            
-            </section>-->
+            <section class="main-section" id="signup" hidden>
+                <h2 id="signup-text">Register</h2>
+                <h2 id="signup-username-text">Username :</h2>
+                <input type="text" placeholder="Your Username" id="signup-user" class="username-input">
+                <h2 id="signup-email-text">Email :</h2>
+                <input type="text" placeholder="Your Email" id="signup-email" class="email-input">
+                <h2 id="signup-password-text">Password :</h2>
+                <input type="password" placeholder="Your Password" id="signup-password" class="password-input">
+            </section>
 
+            <a onclick="register()" id="signup-button" hidden><span id="register-button" class="signup-button">Sign Up</span></a>
+
+            <section class="main-section" id="login" hidden>
+                <h2 id="login-text">Login</h2>
+                <h2 id="login-username-text">Username :</h2>
+                <input type="text" placeholder="Your Username" id="login-user" class="username-input">
+                <h2 id="login-email-text">Password :</h2>
+                <input type="password" placeholder="Your Password" id="login-password" class="email-input">
+            </section>
+
+            <a onclick="login()" id="loginButton" hidden><span id="login-button" class="login-button">Login</span></a>
+
+            <a onclick="facebookLogin()" id="facebook-login" hidden><span id="facebook-button" class="facebook-login-button">Facebook</span></a>
+
+            <a onclick="googleLogin()" id="google-login" hidden><span id="google-button" class="google-login-button">Google</span></a>
+
+        </section>
+    </div>
     <script type="text/javascript">
         loadFooter();
     </script>

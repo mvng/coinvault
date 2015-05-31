@@ -32,7 +32,15 @@ print_r(array_values($br_labels));
     <script src="../js/jquery-1.11.2.min.js"></script>
     <script src="../js/Chart.js"></script>
     <script src="../js/main.js"></script>
-    <title>Home - CoinFlip</title>
+    
+    
+    
+    
+    
+          <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
+
+    <script src ="../js/crud.js"> </script>
+    <title>Home - Coin Vault</title>
 
 </head>
 
@@ -46,10 +54,13 @@ print_r(array_values($br_labels));
 
 <script type="text/javascript">
 var myVar = '<?php print $br_values?>';
-</script>        <section class="coin_wrapper">
+    
+    //dashboardTotal();
+        
+        </script>        <section class="coin_wrapper">
             <section class="overview-panel">
                 <section class="total-value">
-                    <div class="total-dollars">$24,249.23</div>
+                    <div class="total-dollars" id ="dashboardTotalValue">$24,249.23</div>
                     <div class="total-change pos-change">+3.5%</div><br/>
                     <div class="total-label">My Total Coin Value</div>
                 </section>
@@ -204,7 +215,11 @@ var myVar = '<?php print $br_values?>';
 
     </section>
 
-    <script type="text/javascript">loadFooter();</script>
+    <script type="text/javascript">
+        
+dashboardTotal();
+        
+        loadFooter();</script>
 </body>
 
 </html>

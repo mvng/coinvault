@@ -21,7 +21,7 @@
     
         <script type ="text/javascript" src ="../js/crud.js"></script>
     
-        <title>New Item - CoinFlip</title>
+        <title>New Item - Coin Vault</title>
 </head>
 
 <body>
@@ -71,7 +71,7 @@
                     </div>
                 </section>
                 <section class="coin_detail">
-                    <form onsubmit = "updateItem()">
+                    <form >
                     <table>
                         <tr>
                             <td>Metal</td>
@@ -140,10 +140,10 @@
                   <td id="totalField"><strong>1199.10</strong></td>
                         </tr>
                     </table>
-                                            <input type = "submit">
-
-                        
+                        <a href="myitem.html" onclick= "updateItem()"><span id="save">Save</span></a>
                         <a href="goldoverview.html"><span id="cancel">Cancel</span></a>
+                         <a href="goldoverview.html" onclick="deleteItem()"><span id="cancel">Delete</span></a>
+
                         </form>
                 </section>
             </div>
