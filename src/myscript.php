@@ -24,3 +24,27 @@ $br_values = implode(", ", $br_values); //comma sep
   $mytext = $_POST['mytext'];
   echo $mytext;
 ?>
+
+
+
+<head>
+  <meta charset="utf-8">
+
+  <title>My Parse App</title>
+  <meta name="description" content="My Parse App">
+  <meta name="viewport" content="width=device-width">
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
+    
+    <script type = "text/javascript" src ="../js/crud.js"> </script>
+</head>
+
+
+<body>
+   <script>
+    
+    console.log("ur mum");
+    
+    </script>
+     </body>
