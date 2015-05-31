@@ -324,11 +324,7 @@ function deleteItem() {
     // var query = new Parse.Query(Item);
     
     THING.id = objectId;
-    
-    
-               
-    
-    
+
     
     THING.destroy({
         success: function () {
@@ -585,7 +581,7 @@ function generatePlatinum() {
                         continue;   
                     }
                     //    tr.append("<a onclick = " + "get('id')" + ">" + id);
-           tr.append("<td hidden>" + id + "</td>");
+                    tr.append("<td hidden>" + id + "</td>");
 
                     tr.append("<td>" + data[i].metal + "</td>");                    // tr.append("<a  href= " + "../src/myitem.html" + ">" + "<td>" + data[i].objectId + "</td>");
                     tr.append("<td>" + data[i].type + "</td>");

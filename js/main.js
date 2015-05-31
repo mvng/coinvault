@@ -610,7 +610,7 @@ $(window).load(function () {
             
             console.log(tempSilverValue);
             
-          gb = query.get("gbid");
+            gb = query.get("gbid");
             ga = query.get("gask");
             gc = query.get("gchange").toFixed(2);
             
