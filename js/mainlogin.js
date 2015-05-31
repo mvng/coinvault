@@ -59,12 +59,19 @@ function login() {
     });
 };
 
+// Logs current user out
+function logout() {
+    Parse.User.logOut();
+    window.location.assign("../index.html");
+}
+
 // Login through Facebook account
 function facebookLogin() {
     Parse.FacebookUtils.logIn(null, {
         success: function(user) {
             if (!user.existed()) {
                 alert("User signed up and logged in through Facebook!");
+                window.location.assign("src/dashboard.html");
             } else {
                 alert("User logged in through Facebook!");
             }
@@ -78,12 +85,6 @@ function facebookLogin() {
 // Login through Google account
 function googleLogin() {
     // Does nothing atm
-}
-
-// Logs current user out
-function logout() {
-    Parse.User.logOut();
-    window.location.assign("../index.html");
 }
 
 // Performs the animations in the home screen when signup is pressed
