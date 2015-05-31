@@ -24,7 +24,7 @@
 
     
     
-    <title>My Silver - Coin Vault</title>
+    <title>My Gold - Coin Vault</title>
     
 </head>
 
@@ -35,7 +35,7 @@
 
     </script>
     <script type="text/javascript">
-    loadSideNav(2);
+    loadSideNav(3);
     </script>
     <section class="main-section">
         <section class="coin_wrapper">
@@ -49,7 +49,7 @@
                         <use xlink:href="#icon-keyboard-arrow-left"></use>
                     </svg>
                 </a>
-                MY SILVER
+                MY Platinum
                 <a href="additem.html">
                     <svg class="icon icon-add">
                         <symbol id="icon-add" viewBox="0 0 1024 1024">
@@ -62,7 +62,7 @@
             </div>
             <section class="overview-panel">
                 <section class="total-value">
-                    <div class="total-dollars" id = "totalSilverValue" >0</div>
+                    <div class="total-dollars" id = "totalPlatinumValue" >0</div>
                     <table class="current_gold">
                         <tr>
                             <td>Daily</td>
@@ -73,7 +73,7 @@
                             <td>+1.2%</td>
                         </tr>
                     </table> 
-                    <div class="total-label" id="my_gold_value">My Silver Value</div>
+                    <div class="total-label" id="my_gold_value">My Platinum Value</div>
 
                 </section>
                 <section class="mobile-toggle">
@@ -121,13 +121,13 @@
                     <div class="legend-left-half">
                         <section class="legend-item">
                             <div class="legend-item-color" id="legend-1"></div>
-                            Silver Total
+                            Platinum Total
                         </section> 
                     </div>
                     <div class="legend-right-half">      
                         <section class="legend-item">
                             <div class="legend-item-color" id="legend-4"></div>
-                            1oz Silver
+                            1oz Platinum
                         </section>
                     </div>    
                 </section>
@@ -139,10 +139,10 @@
             </section>
 
             <section class="my_stack">
-                <table id = "silverTable">
+                <table id = "platinumTable">
                     <caption>
                         <section class="label-and-search">
-                            <h3>My Silver</h3>
+                            <h3>My Platinum</h3>
                             <div class="stack_ctrl">
                                 <input type="search" placeholder="Search"/>
                                 <a href="additem.html">
@@ -164,7 +164,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                                            <script> generateSilver();</script>
+                                            <script> generatePlatinum();</script>
 
                         
                     </tbody>
@@ -173,7 +173,7 @@
         </section>
     </section>
     <script type="text/javascript">
-                runSilverJSONBid();
+                runPlatinumJSONBid();
 
     loadFooter();
     </script>
