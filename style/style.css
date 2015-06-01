@@ -1263,3 +1263,17 @@ select {
     right: 85px;
     cursor: pointer;
 }
+
+.no-spin::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.no-calendar::-webkit-calendar-picker-indicator {
+    display: none;
+}
+
+.unstyled::-webkit-inner-spin-button,
+.unstyled::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}

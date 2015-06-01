@@ -156,90 +156,6 @@ function getEdit(objectId) {
 
 
 
-function creat() {
-
-    var userObjId = Parse.User.current().id;
-
-    event.preventDefault();
-
-    console.log("invoking creat");
-
-    var metal = document.getElementById("metalField");
-    var type = document.getElementById("typeField");
-    var purchaseDate = document.getElementById("purchaseDateField");
-    var qty = document.getElementById("qtyField");
-    var premium = document.getElementById("premiumField");
-    var unitPrice = document.getElementById("unitPriceField");
-    var total = document.getElementById("totalField").textContent;
-    var weightg;
-    var weightau;
-
-    
-    var page = "dashboard.html";
-
-    if (metal.options[metal.selectedIndex].text == "Gold") {
-        weightg = 1.244;
-        weightau = 0.917;
-        page = "goldoverview.html";
-        
-    }
-    
-    if (metal.options[metal.selectedIndex].text == "Silver") {
-        weightg = 2.48;
-        weightau = 2.260416;
-        page = "silveroverview.html";
-    }
-
-    
-      if (metal.options[metal.selectedIndex].text == "Platinum") {
-        weightg = 28.3495;
-        weightau = 0.911;
-        page = "platinumoverview.html";
-    }
-    
-    
-    var Item = Parse.Object.extend("item");
-    var thing = new Item();
-
-    console.log(premium.value);
-    console.log(userObjId);
-
-    thing.set("userObjId", userObjId);
-    thing.set("metal", metal.options[metal.selectedIndex].text);
-    thing.set("type", type.options[type.selectedIndex].text);
-
-    thing.set("qty", Number(qty.value));
-    thing.set("premium", Number(premium.value));
-    thing.set("unitPrice", Number(unitPrice.value));
-    thing.set("total", Number(total));
-
-    thing.set("weightg", weightg);
-    thing.set("weightau", weightau);
-
-    thing.save(null, {
-        success: function (thing) {
-            // Execute any logic that should take place after the object is saved.
-            //    alert('New object created with objectId: ' + thing.id);
-                                    location.reload();
-
-   
-            window.location.href = page;
-            
-
-        },
-        error: function (thing, error) {
-            // Execute any logic that should take place if the save fails.
-            // error is a Parse.Error with an error code and message.
-            location.reload();
-
-            //  alert('Failed to create new object, with error code: ' + error.message);
-            window.location.href = "dashboard.html";
-
-
-        }
-    });
-};
-
 function updateItem() {
     console.log("invoking update");
 
@@ -261,6 +177,11 @@ function updateItem() {
     var unitPrice = document.getElementById("unitPriceField");
     var total = document.getElementById("totalField").textContent;
 
+    
+    
+    
+    
+    
     var weightg;
     var weightau;
     if (metal.options[metal.selectedIndex].text == "Gold") {
@@ -309,38 +230,34 @@ function updateItem() {
 
 function deleteItem() {
 
+    
+    //Delete needs ot be able to handle redirect to the previous page,
+    //currently just goes back to dashboard.
     "use strict";
 
     var objectId;
-    var navPage;
 
     objectId = getId();
     
-    
-
     var Item = Parse.Object.extend("item");
 
     var THING = new Parse.Object("item");
-    // var query = new Parse.Query(Item);
     
     THING.id = objectId;
 
     
     THING.destroy({
         success: function () {
+            
+            window.location.href = "dashboard.html";
 
-            //   console.log("success delete");
-            //location.reload();
         },
         error: function (error) {
             console.log(error.message);
-
-
         }
     });
 
 };
-
 
 function untilOpen(){
 	//calculate
@@ -426,14 +343,12 @@ function generateGold() {
                     "total": temp.total
 
                 };
-                console.log(data);
+               // console.log(data);
 
             }
         
             table.push(data);
-            // console.log(table);
-            //console.log(data);
-
+      
             var tr;
             $(document).ready(function () {
                 for (var i = 0; i < data.length; i++) {
@@ -458,7 +373,7 @@ function generateGold() {
                     tr.append("<td>" + data[i].total + "</td>" + "</a>");
                     // tr.onClick = set(123);
                     totalValue = totalValue + data[i].total;
-                    console.log(totalValue);
+                 //   console.log(totalValue);
 
                     $('#goldTable').append(tr);
                     $(tr).click(function () {
@@ -507,9 +422,8 @@ function generateGold() {
         }
     });
 
-
-
 };
+
 
 function generatePlatinum() {
     var data = [];
@@ -521,8 +435,7 @@ function generatePlatinum() {
     console.log(Parse.User.current());
          if(Parse.User.current() == null){
             
-                 return window.location.href = "../index.html";
-    
+             return window.location.href = "../index.html";
          }
     
     var objectId = Parse.User.current().id;
@@ -560,7 +473,7 @@ function generatePlatinum() {
                     "total": temp.total
 
                 };
-                console.log(data);
+              //  console.log(data);
 
             }
         
@@ -592,7 +505,7 @@ function generatePlatinum() {
                     tr.append("<td>" + data[i].total + "</td>" + "</a>");
                     // tr.onClick = set(123);
                     totalValue = totalValue + data[i].total;
-                    console.log(totalValue);
+                 //   console.log(totalValue);
 
                     $('#platinumTable').append(tr);
                     $(tr).click(function () {
@@ -858,6 +771,8 @@ function update() {
 function getDetails() {
     var currentUser = Parse.User.current();
 
-    console.log(currentUser);
+    //console.log(currentUser);
 
 };
+
+

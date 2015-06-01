@@ -10,6 +10,49 @@ function register() {
     person.set("username", username);
     person.set("password", pw);
     person.set("email", mail);
+    
+    
+    person.set("totalGold", 0);
+    
+        person.set("totalSilver", 0);   
+    person.set("totaPlatinum", 0);
+    
+    
+    
+        person.set("totaPlatinum", 0);
+
+    
+    
+    var now = new Date();
+    var year = now.getFullYear();
+    var month = now.getMonth();
+    var day = now.getDate();
+    
+    
+    month = parseInt(month + 1);
+    if(month < 10) month = "0" + month;
+     if(day < 10) day = "0" + day;
+    
+    
+    var date = year + "-" + month + "-" + day;
+    
+    var blankDate = [];
+    
+    
+    blankDate.push(date);
+    
+    blank = ["0","0","0","0","0","0","0","0","0","0",
+             "0","0","0","0","0","0","0","0","0","0",
+             "0","0","0","0","0","0","0","0","0","0"];
+    
+    
+    person.set("goldDateTotal", blankDate);
+    person.set("goldValueTotal", blank);
+    person.set("silverValueTotal", blank);
+   person.set("platinumValueTotal", blank);
+
+
+
 
     person.signUp(null, {success: function(user){
         console.log("Successful sign up");
