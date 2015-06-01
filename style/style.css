@@ -926,6 +926,21 @@ select {
     border: 1px solid #68CEDE
 }
 
+#cancel {
+    background: #1C3A3F;
+    border: 1px solid #151515;
+    color: white;
+    text-decoration: none;
+    width: 275px;
+    height: 40px;
+    line-height: 40px;
+    margin-top: 15px
+}
+
+#cancel:hover {
+    border: 1px solid #68CEDE
+}
+
 #de-cancel {
     background: #1C3A3F;
     border: 1px solid #151515;
