@@ -228,37 +228,6 @@ function updateItem() {
 
 };
 
-function deleteItem() {
-
-    
-    //Delete needs ot be able to handle redirect to the previous page,
-    //currently just goes back to dashboard.
-    "use strict";
-
-    var objectId;
-
-    objectId = getId();
-    
-    var Item = Parse.Object.extend("item");
-
-    var THING = new Parse.Object("item");
-    
-    THING.id = objectId;
-
-    
-    THING.destroy({
-        success: function () {
-            
-            window.location.href = "dashboard.html";
-
-        },
-        error: function (error) {
-            console.log(error.message);
-        }
-    });
-
-};
-
 function untilOpen(){
 	//calculate
 	var now = new Date();
@@ -291,9 +260,6 @@ function untilOpen(){
 	
 }
 
-
-
-
 function generateGold() {
     var data = [];
     var table = [];
@@ -324,10 +290,6 @@ function generateGold() {
     //console.log("sup");
     query.find({
         success: function (results) {
-
-             console.log(results[0].attributes);
-
-
 
             for (var i = 0; i < results.length; i++) {
                 temp = results[i].attributes;
