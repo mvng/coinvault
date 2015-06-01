@@ -85,4 +85,7 @@ Internet Explorer:
 KNOWN ERRORS
 index.html - When resizing the website to a small page, the buttons on the Log in and Sign up pages clump up together. It is not optimized for smaller screens.
 
+
+When adding coins/bullions from the platinum or silver page, it will redirect the user to Gold Overview. The coin does get properly added to the appropriate stack however.
+
 Dashboard.html/ goldoverview.html - The webpages shows the number ~24k (dashboard) and ~18k (goldoverview) before immediately changing back to the actual numbers for each user. Not sure why this issue is occuring as it is. I believe it 
