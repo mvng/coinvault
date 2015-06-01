@@ -430,6 +430,7 @@ function generatePlatinum() {
                 data[i] = {
                     "objectId": id,
                     "type": temp.type,
+                    "date": temp.purchaseDate,
                     "metal": temp.metal,
                     "qty": temp.qty,
                     "value": temp.total,
@@ -462,7 +463,10 @@ function generatePlatinum() {
                     tr.append("<td hidden>" + id + "</td>");
 
                     tr.append("<td>" + data[i].metal + "</td>");                    // tr.append("<a  href= " + "../src/myitem.html" + ">" + "<td>" + data[i].objectId + "</td>");
+                    tr.append("<td>" + data[i].date + "</td>");
+
                     tr.append("<td>" + data[i].type + "</td>");
+
                     tr.append("<td>" + data[i].qty + "</td>");
 
                     tr.append("<td>" + data[i].weightg + "</td>");
@@ -565,6 +569,7 @@ function generateSilver() {
                 data[i] = {
                     "objectId": id,
                     "type": temp.type,
+                    "date": temp.purchaseDate,
                     "metal": temp.metal,
                     "qty": temp.qty,
                     "value": temp.total,
@@ -598,7 +603,10 @@ function generateSilver() {
 
                     tr.append("<td>" + data[i].metal + "</td>");
                     // tr.append("<a  href= " + "../src/myitem.html" + ">" + "<td>" + data[i].objectId + "</td>");
+                    tr.append("<td>" + data[i].date + "</td>");
+
                     tr.append("<td>" + data[i].type + "</td>");
+
                     tr.append("<td>" + data[i].qty + "</td>");
 
                     tr.append("<td>" + data[i].weightg + "</td>");

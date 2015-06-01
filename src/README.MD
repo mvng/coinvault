@@ -10,6 +10,13 @@ We initially had difficulty implementing the graph on our website as we tried to
 
 Assumption - We didn't know the exact times for bullion trading so we made the open and close times from 6am to 1pm. 
 
+GRAPH - When adding coins, the user must specify the purchase date. Since quandl does not include weekends, if the user specifies a coin with a purchase date on the weekend, no change will be present on the graph until the next weekday.
+
+We had an incredibly hard time making the graphs dynamic when adding new coins. Since we had to reverse some of the data due to the nature it was originally received, and used that reversed data in another method to fill the graph, we were having syncing problems. One would sometimes finish before the other and cause the dynamic graph results to be reversed. This only happens sometimes and we are looking for a solution to this.
+
+
+The My Gold page graph is fully functional, however we are having trouble converting the same graph for the silver and platinum pages. You can still create, update, and delete for all three types of metals, but the dynamic graphs are not fully functional like the gold graph is. We are looking for a solution to this as well.
+
 **************************************************************************************************************
 NAVIGATION
 
@@ -26,7 +33,7 @@ VALIDATION ISSUES
 (Same issues as stated in DREAM TEAM's initial pages.)
 
 HTML:
-	All the HTML validation checked out so there was no problem there.
+	The HTML validation errors that we have are existing ones that came with the Dream Team's wireframes.
 
 CSS:
 	The errors in CCS validation were broken down into only two problems:
