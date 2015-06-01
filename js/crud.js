@@ -325,7 +325,7 @@ function generateGold() {
     query.find({
         success: function (results) {
 
-            // console.log(results[0].attributes);
+             console.log(results[0].attributes);
 
 
 
@@ -335,6 +335,7 @@ function generateGold() {
                 data[i] = {
                     "objectId": id,
                     "type": temp.type,
+                    "date": temp.purchaseDate,
                     "metal": temp.metal,
                     "qty": temp.qty,
                     "value": temp.total,
@@ -365,6 +366,8 @@ function generateGold() {
            tr.append("<td hidden>" + id + "</td>");
 
                     tr.append("<td>" + data[i].metal + "</td>");                    // tr.append("<a  href= " + "../src/myitem.html" + ">" + "<td>" + data[i].objectId + "</td>");
+                    tr.append("<td>" + data[i].date + "</td>");
+
                     tr.append("<td>" + data[i].type + "</td>");
                     tr.append("<td>" + data[i].qty + "</td>");
 
@@ -750,7 +753,7 @@ function update() {
     var premium = document.getElementById("premiumField").value;
 
     var unitPrice = document.getElementById("unitPriceField").value;
-
+    
     if (!qty) qty = 1;
     if (!premium) premium = 47;
     if (!unitPrice) unitPrice = 1250.60;
