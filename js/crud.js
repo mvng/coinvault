@@ -641,7 +641,7 @@ function generateSilver() {
                     )
                     .then(
                         function (user) {
-                            console.log('gold updated', user);
+                            //console.log('gold updated', user);
                         },
                         function (error) {
                             console.log('Something went wrong', error);
