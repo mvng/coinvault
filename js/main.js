@@ -24,7 +24,6 @@ var userGoldTotal = [];
 
 
 
-
 function loadTopNav() {
 
     if (Parse.User.current() == null) {
@@ -139,9 +138,6 @@ function loadFooter() {
 }
 
 function drawDashboardGraph() {
-
-
-
 
     var pointStroke = "rgba(255,255,255,0.6)";
     var pointHighlightFill = "#fff";
@@ -280,7 +276,9 @@ function drawDashboardGraph() {
 
 function addCoinGraph ( purchaseDate, value){
     
-    alert("adding");
+  //  alert("adding");
+    
+  // event.preventDefault();
     purchaseDate = String(purchaseDate);
     
     var user = Parse.User.current();
@@ -295,7 +293,7 @@ var i =0;
     for( i = 0; i < tempGoldDate.length; i++){
         
         
-        console.log(i+" "  + purchaseDate +"  " + tempGoldDate[i] );
+       // console.log(i+" "  + purchaseDate +"  " + tempGoldDate[i] );
         
         
         if(strcmp (purchaseDate ,tempGoldDate[i]) == 0)
@@ -304,8 +302,6 @@ var i =0;
             userGoldTotal[i] =Number(userGoldTotal[i]) +  Number(value);
                         console.log("MATCHED" +  userGoldTotal[i]);
             
-            alert("matched");
-
         }
         
     }
@@ -315,9 +311,20 @@ var i =0;
     user.save(null,{
         success: function(user){
             
-            console.log(userGoldTotal);
+            //console.log(userGoldTotal);
+            
+            
+            window.location.assign("goldoverview.html");
+                  //      location.reload();
+
+            
+            
         },
         error: function(user,error){
+                        location.reload();
+
+            window.location.assign("goldoverview.html");
+            location.reload();
         }
     });
     
@@ -332,9 +339,11 @@ function strcmp(a, b) {
     if (a.toString() < b.toString()) return -1;
     if (a.toString() > b.toString()) return 1;
     return 0;
-}function drawGoldGraph() {
+}
 
 
+
+function drawGoldGraph() {
 
     var pointStroke = "rgba(255,255,255,0.6)";
     var pointHighlightFill = "#fff";
@@ -862,7 +871,6 @@ $(window).load(function () {
    function creat() {
 
         
-        alert("ur mom");
     var userObjId = Parse.User.current().id;
 
     event.preventDefault();
@@ -879,8 +887,6 @@ $(window).load(function () {
     var weightg;
     var weightau; 
     
-    addCoinGraph(purchaseDate.value,total);
-
     console.log("hello" + purchaseDate.value);
     
     var page = "dashboard.html";
@@ -909,8 +915,10 @@ $(window).load(function () {
     var Item = Parse.Object.extend("item");
     var thing = new Item();
 
-    console.log(premium.value);
-    console.log(userObjId);
+       addCoinGraph(purchaseDate.value,total)
+
+    //console.log(premium.value);
+   // console.log(userObjId);
 
     thing.set("userObjId", userObjId);
     thing.set("metal", metal.options[metal.selectedIndex].text);
@@ -927,16 +935,19 @@ $(window).load(function () {
     thing.set("weightg", weightg);
     thing.set("weightau", weightau);
 
-    
+
     
     thing.save(null, {
         success: function (thing) {
             // Execute any logic that should take place after the object is saved.
             //    alert('New object created with objectId: ' + thing.id);
-                                    location.reload();
+                                   
+            
+            setTimeout(hold,40045646564564560);
+            location.reload();
+            
 
-   
-            window.location.href = page;
+         window.location.href = page;
             
 
         },
@@ -953,6 +964,7 @@ $(window).load(function () {
     });
 };
 
+function hold(){};
 function metal(value) {
 
     "use strict";
