@@ -2,7 +2,7 @@ Team Pentapod CSE 134B
 **************************************************************************************************************
 TASKS AND PROBLEMS WE RAN INTO
 
-Our team implemented a new Sign Up and Log in Process with Javascript and Parse database. We also gave our customers the options of signing in through their Facebook and Google accounts to have a easier and faster tool to sign up. After creating an account with an unique username and email, it will direct the user to the main dashboard where the user will be able to see the current prices for Gold, Silver, and Platinum as well as their current Gold Totals. 
+Our team implemented a new Sign Up and Log in Process with Javascript and Parse database. We also gave our customers an additional options of signing in through their Facebook account to have an easier and faster tool to sign up. After creating an account with an unique username and email, it will direct the user to the main dashboard where the user will be able to see the current prices for Gold, Silver, and Platinum as well as their current Gold Totals. 
 
 In order to build the CRUD for our assignment, we utilized Parse and our own API to handle our backend applications as well as the operations on our webpage. We initially ran into problems using Parse, for example we had difficulties generating tables from read items, querying the right object, handling where an object exists, passing objects between different pages, etc. Additionally, a big issue we ran into was creating user's individual stacks and figuring out how to deal with the issue when Parse was deleting items too fast which caused some syncing issues.
 
