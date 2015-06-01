@@ -707,14 +707,6 @@ $(window).load(function () {
             tempSilverValue = query.get("silverValue");
             tempPlatinumValue = query.get("platinumValue");
             
-            
-            
-            
-            
-            
-            
-            //console.log(testingDate);
-            
             gb = query.get("gbid");
             ga = query.get("gask");
             gc = query.get("gchange").toFixed(2);
@@ -730,7 +722,7 @@ $(window).load(function () {
             
             
             if (page == "dashboard.html"){
-              window.setTimeout(  drawDashboardGraph(),1000);
+              window.setTimeout(  drawDashboardGraph(),10);
                       document.getElementById("gbid").innerHTML = gb;
                 document.getElementById("gask").innerHTML = ga;
                 document.getElementById("gchange").innerHTML = gc;
@@ -748,6 +740,7 @@ $(window).load(function () {
             }
             if (page == "goldoverview.html"){
                 
+                window.setTimeout(drawGoldGraph(),10);
                 
                 document.getElementById("bid").innerHTML = gb;
                  document.getElementById("ask").innerHTML = ga;
