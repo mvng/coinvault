@@ -528,6 +528,85 @@ function generatePlatinum() {
 };
 
 
+
+function overallUpdate( numb ){
+    
+    var user = Parse.User.current();
+    
+    
+    
+    var updateAt = user.updatedAt.toString();
+    //alert(updateAt);
+    
+    
+    
+    
+    
+
+    
+    
+    
+    var now = new Date();
+ 
+   //if( now.getHours() > updateAt )
+    
+    
+    //alert(res);
+    //updatedAt
+    //day today
+    
+    console.log("HELLO");
+                
+                var res = updateAt.split(" ");
+
+    
+    
+    
+    var before = res[4];
+    
+    var a = before.split(':');
+
+    var seconds = (+a[0]) * 60 * 60 + (+a[1]) * 60 + (+a[2]); 
+    
+    
+    var hour = Number(now.getHours());
+    var minute = Number(now.getHours());
+
+     var sec = Number(now.getHours());
+
+    
+    var NEWSECONDS = hour * 3600 + minute * 60 + sec; 
+
+    
+   //  alert (NEWSECONDS);
+    
+    var split = NEWSECONDS - seconds;
+    
+            
+        var user = Parse.User.current();
+    
+        var tolGold=  user.get("totalGold");
+        var tolSilver=  user.get("totalSilver");
+
+          var tolPlatinum=  user.get("totalPlatinum");
+    
+    
+    
+    if(numb == 0)
+    
+            document.getElementById("chgb").innerHTML = "+2.8%";
+    else if(numb == 1)
+            document.getElementById("chgb").innerHTML = "+0.8%";
+    else if(numb == 2)
+             document.getElementById("chgb").innerHTML = "+0.23%";
+    else if (numb == 3)
+                    
+            document.getElementById("chgb").innerHTML = "+1.7%";
+
+    
+}
+
+
 function generateSilver() {
     var data = [];
     var table = [];
