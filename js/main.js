@@ -22,6 +22,14 @@ var testingDate = [];
 
 var userGoldTotal = [];
 
+var userSilverTotal = [];
+var userPlatinumTotal = [];
+
+
+
+var tempSilverDate = [];
+var tempPlatinumDate = [];
+
 
 
 function loadTopNav() {
@@ -145,6 +153,9 @@ function drawDashboardGraph() {
 
     var user = Parse.User.current();
     var userGoldTotal = user.get("goldValueTotal");
+    var userSilverTotal = user.get("silverValueTotal");
+    var userPlatinumTotal = user.get("platinumValueTotal");
+
 
     var data = {
         labels: tempGoldDate.reverse(),
@@ -167,7 +178,7 @@ function drawDashboardGraph() {
  					pointStrokeColor: pointStroke,
  					pointHighlightFill: pointHighlightFill,
  					pointHighlightStroke: pointHighlightStroke,
- 					data: [467, 555, 490, 550, 555, 560, 660]
+ 					data: userPlatinumTotal.reverse()
  				},
  				{
  					label: "Silver Total",
@@ -177,8 +188,7 @@ function drawDashboardGraph() {
  					pointStrokeColor: pointStroke,
  					pointHighlightFill: pointHighlightFill,
  					pointHighlightStroke: pointHighlightStroke,
- 					data: [200, 350, 300, 389, 330, 400, 488]
-
+ 					data: userSilverTotal.reverse()
  				},
             {
                 label: "1oz Gold",
@@ -274,29 +284,19 @@ function drawDashboardGraph() {
 };
 
 
-function addCoinGraph ( purchaseDate, value){
-    
-  //  alert("adding");
-    
-  // event.preventDefault();
+function addGoldGraph ( purchaseDate, value){
+
     purchaseDate = String(purchaseDate);
     
     var user = Parse.User.current();
     
- 
 
-    console.log("Parameters = " + purchaseDate  +" "+ value);
-    
-
-    
 var i =0;
+    
     for( i = 0; i < tempGoldDate.length; i++){
         
         
-       // console.log(i+" "  + purchaseDate +"  " + tempGoldDate[i] );
-        
-        
-        if(strcmp (purchaseDate ,tempGoldDate[i]) == 0)
+        if(purchaseDate === tempGoldDate[i])
         {
         
             userGoldTotal[i] =Number(userGoldTotal[i]) +  Number(value);
@@ -305,7 +305,6 @@ var i =0;
         }
         
     }
-    
     
     user.set("totalGoldValue",userGoldTotal);
     user.save(null,{
@@ -333,6 +332,106 @@ var i =0;
     
     
 };
+
+
+
+function addSilverGraph ( purchaseDate, value){
+
+    purchaseDate = String(purchaseDate);
+    
+    var user = Parse.User.current();
+    
+    console.log(tempSilverDate);
+
+    //console.log("Parameters = " + purchaseDate  +" "+ value);
+    
+
+var i =0;
+    
+    for( i = 0; i < tempSilverDate.length; i++){
+        
+        console.log(i+" "  + purchaseDate +"  " + tempGoldDate[i] );
+        
+        if(purchaseDate  === tempGoldDate[i])
+        {
+        
+            userSilverTotal[i] = Number(userSilverTotal[i]) +  Number(value);
+                alert("match");            
+        }
+        
+    }
+    
+    user.set("silverValueTotal",userSilverTotal);
+    user.save(null,{
+        success: function(user){
+            
+           // location.reload();
+            window.location.assign("silveroverview.html");
+
+        },
+        error: function(user,error){
+                        //location.reload();
+
+            window.location.assign("silveroverview.html");
+          //  location.reload();
+        }
+    });
+    
+};
+
+
+
+
+
+
+
+function addPlatinumGraph ( purchaseDate, value){
+
+    purchaseDate = String(purchaseDate);
+    
+    var user = Parse.User.current();
+    
+
+var i =0;
+    
+    for( i = 0; i < tempGoldDate.length; i++){
+        
+        
+        if(purchaseDate === tempGoldDate[i])
+        {
+        
+        userPlatinumTotal[i] =Number(userPlatinumTotal[i]) +  Number(value);
+            
+        }
+        
+    }
+    
+    user.set("platinumValueTotal",userPlatinumTotal);
+    user.save(null,{
+        success: function(user){
+            
+            //console.log(userGoldTotal);
+            
+            
+            window.location.assign("platinumoverview.html");
+                  //      location.reload();
+            
+            
+        },
+        error: function(user,error){
+
+                console.log(error);
+            window.location.assign("platinumoverview.html");
+        }
+    });
+    
+    
+    
+    
+    
+};
+
+
 
 
 function strcmp(a, b) {
@@ -444,7 +543,7 @@ function drawGoldGraph() {
 function drawSilverGraph() {
     
     
-    console.log("drawing silver graph");
+    //console.log("drawing silver graph");
 
 
     var pointStroke = "rgba(255,255,255,0.6)";
@@ -452,12 +551,14 @@ function drawSilverGraph() {
     var pointHighlightStroke = "#fff";
 
     var user = Parse.User.current();
-    var userGoldTotal = user.get("goldValueTotal");
+    var userSilverTotal = user.get("silverValueTotal");
 
     var data = {
         labels: tempGoldDate.reverse(),
         datasets: [
             {
+                
+                
  					label: "Silver Total",
  					fillColor: "rgba(104, 206, 222, 0.05)",
  					strokeColor: "#F3FF88",
@@ -465,7 +566,7 @@ function drawSilverGraph() {
  					pointStrokeColor: pointStroke,
  					pointHighlightFill: pointHighlightFill,
  					pointHighlightStroke: pointHighlightStroke,
- 					data: [200, 350, 300, 389, 330, 400, 488]
+ 					data: userSilverTotal.reverse()
 
      },
             {
@@ -555,7 +656,7 @@ function drawPlatinumGraph() {
     var pointHighlightStroke = "#fff";
 
     var user = Parse.User.current();
-    var userGoldTotal = user.get("goldValueTotal");
+    var userPlatinumTotal = user.get("platinumValueTotal");
 
     var data = {
         labels: tempGoldDate.reverse(),
@@ -568,7 +669,7 @@ function drawPlatinumGraph() {
  					pointStrokeColor: pointStroke,
  					pointHighlightFill: pointHighlightFill,
  					pointHighlightStroke: pointHighlightStroke,
- 					data: [467, 555, 490, 550, 555, 560, 660]
+ 					data: userPlatinumTotal.reverse()
 
      },
             {
@@ -670,32 +771,12 @@ $(window).load(function () {
     testingDate = Parse.User.current().get("goldDateTotal");
             
         }
-    /*
-    var userQuery = new Parse.Query(Parse.User);
-    
-    userQuery.equalTo("objectId", currentUser.getObjectId);
-    userQuery.find({
-        success: function(q){
-            
-            
-            testingDate = userQuery.get("goldDateTotal");
-            console.log(testingDate + " wat " );
-        }
-    });
-    
-    */
-    console.log(testingDate + "ayyy");
-    
-    
-    
-    
 
     var data = Parse.Object.extend("graph");
     
     
     var query = new Parse.Query(data);
     
-
         
     query.get("PlycS4oIZR", {
         success: function (query) {
@@ -703,6 +784,12 @@ $(window).load(function () {
 
             //temproraily cache entrys on parse for faster queries in drawing the graph! hell yes =)
             tempGoldDate = query.get("goldDate");
+            
+            
+            tempSilverDate = query.get("goldDate");
+            tempPlatinumDate = query.get("goldDate");
+            
+            
             tempGoldValue = query.get("goldValue");
             tempSilverValue = query.get("silverValue");
             tempPlatinumValue = query.get("platinumValue");
@@ -723,7 +810,8 @@ $(window).load(function () {
             
             if (page == "dashboard.html"){
               window.setTimeout(  drawDashboardGraph(),10);
-                      document.getElementById("gbid").innerHTML = gb;
+                
+                document.getElementById("gbid").innerHTML = gb;
                 document.getElementById("gask").innerHTML = ga;
                 document.getElementById("gchange").innerHTML = gc;
                 
@@ -752,19 +840,19 @@ $(window).load(function () {
             
             if(page == "silveroverview.html"){
                 
-                  drawSilverGraph();
+                drawSilverGraph();
 
-                  document.getElementById("bid").innerHTML = sb;
-                 document.getElementById("ask").innerHTML = sa;
+                document.getElementById("bid").innerHTML = sb;
+                document.getElementById("ask").innerHTML = sa;
                 document.getElementById("change").innerHTML = sc;
                 
             }
             
             if(page == "platinumoverview.html"){
                 
-                    drawPlatinumGraph();
-                    document.getElementById("bid").innerHTML = pb;
-                 document.getElementById("ask").innerHTML = pa;
+                drawPlatinumGraph();
+                document.getElementById("bid").innerHTML = pb;
+                document.getElementById("ask").innerHTML = pa;
                 document.getElementById("change").innerHTML = pc;
                 
             }
@@ -889,12 +977,18 @@ $(window).load(function () {
         weightau = 0.917;
         page = "goldoverview.html";
         
+        addGoldGraph(purchaseDate.value,total);
+
+        
     }
     
     if (metal.options[metal.selectedIndex].text == "Silver") {
         weightg = 2.48;
         weightau = 2.260416;
         page = "silveroverview.html";
+        
+        addSilverGraph(purchaseDate.value,total);
+
     }
 
     
@@ -902,13 +996,20 @@ $(window).load(function () {
         weightg = 28.3495;
         weightau = 0.911;
         page = "platinumoverview.html";
+          
+        addPlatinumGraph(purchaseDate.value,total);
+
     }
     
     
     var Item = Parse.Object.extend("item");
     var thing = new Item();
+      // 
+       // addSilverGraph(purchaseDate.value,total);
 
-       addCoinGraph(purchaseDate.value,total)
+        //addPlatinumGraph(purchaseDate.value,total);
+
+
 
     //console.log(premium.value);
    // console.log(userObjId);
@@ -1202,7 +1303,9 @@ function runSilverJSON() {
 };
 
 function arrGenSilverJSON(arr) {
-
+    
+    
+    alert("hello");
     var i = 0;
 
     // console.log(arr.data.length);
@@ -1218,7 +1321,7 @@ function arrGenSilverJSON(arr) {
     var date = new golddates();
 
     date.set("objectId", "PlycS4oIZR");
-   // date.set("silverDate", silverDate);
+    date.set("silverDate", silverDate);
     date.set("silverValue", silverValue);
 
     date.save(null, {
@@ -1281,13 +1384,11 @@ function arrGenPlatJSON(arr) {
 function runSilverJSONBid() {
 
     
-    console.log("RUNNING JSON");
     var xmlhttp = new XMLHttpRequest();
     var url = "https://www.quandl.com/api/v1/datasets/PERTH/SLVR_USD_D.json?auth_token=yNHhNn-3_J2TMae97Dza";
 
 
     xmlhttp.onreadystatechange = function () {
-        console.log("start...");
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             var myArr = JSON.parse(xmlhttp.responseText);
             arrGenSilverBid(myArr);
@@ -1310,11 +1411,9 @@ function arrGenSilverBid(arr) {
     
     var chg = change.toFixed(2);
   
-  //  document.getElementById("bid").innerHTML = bid;
-  //  document.getElementById("ask").innerHTML = ask;
-  //  document.getElementById("change").innerHTML = chg;
+
     
-    console.log("Silver Details " + bid + " " + ask + " " + chg);
+   // console.log("Silver Details " + bid + " " + ask + " " + chg);
     
     var silver = Parse.Object.extend("graph");
 
