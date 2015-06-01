@@ -730,7 +730,7 @@ $(window).load(function () {
             
             
             if (page == "dashboard.html"){
-                drawDashboardGraph();
+              window.setTimeout(  drawDashboardGraph(),1000);
                       document.getElementById("gbid").innerHTML = gb;
                 document.getElementById("gask").innerHTML = ga;
                 document.getElementById("gchange").innerHTML = gc;
@@ -747,7 +747,7 @@ $(window).load(function () {
 
             }
             if (page == "goldoverview.html"){
-                drawGoldGraph();
+                
                 
                 document.getElementById("bid").innerHTML = gb;
                  document.getElementById("ask").innerHTML = ga;
@@ -943,7 +943,6 @@ $(window).load(function () {
             //    alert('New object created with objectId: ' + thing.id);
                                    
             
-            setTimeout(hold,40045646564564560);
             location.reload();
             
 
@@ -963,6 +962,40 @@ $(window).load(function () {
         }
     });
 };
+
+
+
+function deleteItem() {
+
+    
+    //Delete needs ot be able to handle redirect to the previous page,
+    //currently just goes back to dashboard.
+    "use strict";
+
+    var objectId;
+
+    objectId = getId();
+    
+    var Item = Parse.Object.extend("item");
+
+    var THING = new Parse.Object("item");
+    
+    THING.id = objectId;
+
+    
+    THING.destroy({
+        success: function () {
+            
+            window.location.href = "dashboard.html";
+
+        },
+        error: function (error) {
+            console.log(error.message);
+        }
+    });
+
+};
+
 
 function hold(){};
 function metal(value) {
