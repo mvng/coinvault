@@ -61,7 +61,9 @@ Safari:
 	the drop down calendar bar for the purchase date was not compatible in
 	Safari. 
 	However one thing I did notice is that there were a few physical differences
-	between the two browsers. 
+	between the two browsers. The fonts between the two looked slightly 
+	different as well as the shades of whites/gray were different as well.
+	This wasn't a big issue by any means but worth reporting. 
 
 	Another thing we noticed is that Safari renders fonts a little bit 
 	differently from all the other browsers, and especially font-size. We used
@@ -70,8 +72,7 @@ Safari:
 	white-space: nowrap so that our mobile toggling selectors didn't overflow.
 
 Internet Explorer:
-ic class and styled it the same
-	as we had with the "main" element.
+
 
 **************************************************************************************************************
 KNOWN ERRORS
