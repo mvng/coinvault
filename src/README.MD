@@ -12,7 +12,7 @@ Assumption - We didn't know the exact times for bullion trading so we made the o
 
 GRAPH - When adding coins, the user must specify the purchase date. Since quandl does not include weekends, if the user specifies a coin with a purchase date on the weekend, no change will be present on the graph until the next weekday.
 
-We had an incredibly hard time making the graphs dynamic when adding new coins. Since we had to reverse some of the data due to the nature it was originally received, and used that reversed data in another method to fill the graph, we were having syncing problems. One would sometimes finish before the other and cause the dynamic graph results to be reversed. This only happens sometimes and we are looking for a solution to this.
+We had an incredibly hard time making the graphs dynamic when adding new coins. Since we had to reverse some of the data due to the nature it was originally received, and used that reversed data with parse, we were having syncing problems. One would sometimes finish before the other and cause the dynamic graph results to be reversed. This only happens sometimes, and is dependent on how fast parse responds, and we are looking for a solution to this.
 
 
 The My Gold page graph is fully functional, however we are having trouble converting the same graph for the silver and platinum pages. You can still create, update, and delete for all three types of metals, but the dynamic graphs are not fully functional like the gold graph is. We are looking for a solution to this as well.
@@ -96,4 +96,9 @@ Opera:
 KNOWN ERRORS
 index.html - When resizing the website to a small page, the buttons on the Log in and Sign up pages clump up together. It is not optimized for smaller screens.
 
+GRAPH - sometimes when adding new coins to the stack, the graph will not show the new total until you refresh the page.
+
+When calculating daily percentage, we weren't able to figure out how to achieve/preserve the previous days total amount to calculate the percentage.
+
+>>>>>>> Stashed changes
 When adding coins/bullions from the platinum or silver page, it will redirect the user to Gold Overview. The coin does get properly added to the appropriate stack however.
