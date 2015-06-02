@@ -177,11 +177,11 @@ function updateItem() {
     var unitPrice = document.getElementById("unitPriceField");
     var total = document.getElementById("totalField").textContent;
 
-    
-    
-    
-    
-    
+
+
+
+
+
     var weightg;
     var weightau;
     if (metal.options[metal.selectedIndex].text == "Gold") {
@@ -228,36 +228,35 @@ function updateItem() {
 
 };
 
-function untilOpen(){
-	//calculate
-	var now = new Date();
-	var hoursleft = 23-now.getHours();
-	var minutesleft = 59-now.getMinutes();
-	var secondsleft = 59-now.getSeconds();
-	//format 0 prefixes
-	if(minutesleft<10) minutesleft = "0"+minutesleft;
-	if(secondsleft<10) secondsleft = "0"+secondsleft;
+function untilOpen() {
+    //calculate
+    var now = new Date();
+    var hoursleft = 23 - now.getHours();
+    var minutesleft = 59 - now.getMinutes();
+    var secondsleft = 59 - now.getSeconds();
+    //format 0 prefixes
+    if (minutesleft < 10) minutesleft = "0" + minutesleft;
+    if (secondsleft < 10) secondsleft = "0" + secondsleft;
 
-	//display
+    //display
 
-    if (now.getHours() > 6 && now.getHours() < 13){
-        
+    if (now.getHours() > 6 && now.getHours() < 13) {
+
         var hoursLeft2 = 13 - now.getHours();
-        
-        
+
+
         $('#openOrClose').html("Market is open");
-        $('#HMSremaining').html("Closes in: "+hoursLeft2+"h "+minutesleft+"min");
-    }
-    else{
+        $('#HMSremaining').html("Closes in: " + hoursLeft2 + "h " + minutesleft + "min");
+    } else {
 
         $('#openOrClose').html("Market is closed");
-        var hoursLeft2 = 29 - now.getHours();     
-        if( hoursLeft2 > 23){
-            hoursLeft2 = hoursLeft2 - 23;   
+        var hoursLeft2 = 29 - now.getHours();
+        if (hoursLeft2 > 23) {
+            hoursLeft2 = hoursLeft2 - 23;
         }
-        $('#HMSremaining').html("Opens in: "+hoursLeft2+"h "+minutesleft+"min");
+        $('#HMSremaining').html("Opens in: " + hoursLeft2 + "h " + minutesleft + "min");
     }
-	
+
 }
 
 function generateGold() {
@@ -265,19 +264,19 @@ function generateGold() {
     var table = [];
     var id;
     var temp = {};
-    
-    
+
+
     console.log(Parse.User.current());
-         if(Parse.User.current() == null){
-            
-                 return window.location.href = "../index.html";
-    
-         }
-    
+    if (Parse.User.current() == null) {
+
+        return window.location.href = "../index.html";
+
+    }
+
     var objectId = Parse.User.current().id;
 
-    
-    
+
+
     var totalValue = 0;
     var mydiv = document.getElementById("totalGoldValue");
 
@@ -306,12 +305,12 @@ function generateGold() {
                     "total": temp.total
 
                 };
-               // console.log(data);
+                // console.log(data);
 
             }
-        
+
             table.push(data);
-      
+
             var tr;
             $(document).ready(function () {
                 for (var i = 0; i < data.length; i++) {
@@ -321,13 +320,13 @@ function generateGold() {
 
                     var id = data[i].objectId;
 
-                    if(data[i].metal == "Silver" ||  data[i].metal == "Platinum" ){
-                        continue;   
+                    if (data[i].metal == "Silver" || data[i].metal == "Platinum") {
+                        continue;
                     }
                     //    tr.append("<a onclick = " + "get('id')" + ">" + id);
-           tr.append("<td hidden>" + id + "</td>");
+                    tr.append("<td hidden>" + id + "</td>");
 
-                    tr.append("<td>" + data[i].metal + "</td>");                    // tr.append("<a  href= " + "../src/myitem.html" + ">" + "<td>" + data[i].objectId + "</td>");
+                    tr.append("<td>" + data[i].metal + "</td>"); // tr.append("<a  href= " + "../src/myitem.html" + ">" + "<td>" + data[i].objectId + "</td>");
                     tr.append("<td>" + data[i].date + "</td>");
 
                     tr.append("<td>" + data[i].type + "</td>");
@@ -338,7 +337,7 @@ function generateGold() {
                     tr.append("<td>" + data[i].total + "</td>" + "</a>");
                     // tr.onClick = set(123);
                     totalValue = totalValue + data[i].total;
-                 //   console.log(totalValue);
+                    //   console.log(totalValue);
 
                     $('#goldTable').append(tr);
                     $(tr).click(function () {
@@ -395,18 +394,18 @@ function generatePlatinum() {
     var table = [];
     var id;
     var temp = {};
-    
-    
+
+
     console.log(Parse.User.current());
-         if(Parse.User.current() == null){
-            
-             return window.location.href = "../index.html";
-         }
-    
+    if (Parse.User.current() == null) {
+
+        return window.location.href = "../index.html";
+    }
+
     var objectId = Parse.User.current().id;
 
-    
-    
+
+
     var totalValue = 0;
     var mydiv = document.getElementById("totalPlatinumValue");
 
@@ -439,10 +438,10 @@ function generatePlatinum() {
                     "total": temp.total
 
                 };
-              //  console.log(data);
+                //  console.log(data);
 
             }
-        
+
             table.push(data);
             // console.log(table);
             //console.log(data);
@@ -456,13 +455,13 @@ function generatePlatinum() {
 
                     var id = data[i].objectId;
 
-                    if(data[i].metal == "Silver" ||  data[i].metal == "Gold" ){
-                        continue;   
+                    if (data[i].metal == "Silver" || data[i].metal == "Gold") {
+                        continue;
                     }
                     //    tr.append("<a onclick = " + "get('id')" + ">" + id);
                     tr.append("<td hidden>" + id + "</td>");
 
-                    tr.append("<td>" + data[i].metal + "</td>");                    // tr.append("<a  href= " + "../src/myitem.html" + ">" + "<td>" + data[i].objectId + "</td>");
+                    tr.append("<td>" + data[i].metal + "</td>"); // tr.append("<a  href= " + "../src/myitem.html" + ">" + "<td>" + data[i].objectId + "</td>");
                     tr.append("<td>" + data[i].date + "</td>");
 
                     tr.append("<td>" + data[i].type + "</td>");
@@ -474,7 +473,7 @@ function generatePlatinum() {
                     tr.append("<td>" + data[i].total + "</td>" + "</a>");
                     // tr.onClick = set(123);
                     totalValue = totalValue + data[i].total;
-                 //   console.log(totalValue);
+                    //   console.log(totalValue);
 
                     $('#platinumTable').append(tr);
                     $(tr).click(function () {
@@ -533,19 +532,19 @@ function generateSilver() {
     var table = [];
     var id;
     var temp = {};
-    
-    
+
+
     console.log(Parse.User.current());
-         if(Parse.User.current() == null){
-            
-                 return window.location.href = "../index.html";
-    
-         }
-    
+    if (Parse.User.current() == null) {
+
+        return window.location.href = "../index.html";
+
+    }
+
     var objectId = Parse.User.current().id;
 
-    
-    
+
+
     var totalValue = 0;
     var mydiv = document.getElementById("totalSilverValue");
 
@@ -578,7 +577,7 @@ function generateSilver() {
                     "total": temp.total
 
                 };
-               // console.log(data);
+                // console.log(data);
 
             }
             table.push(data);
@@ -594,11 +593,11 @@ function generateSilver() {
 
                     var id = data[i].objectId;
 
-                    if(data[i].metal == "Gold" ||  data[i].metal == "Platinum" ){
-                        continue;   
+                    if (data[i].metal == "Gold" || data[i].metal == "Platinum") {
+                        continue;
                     }
 
-                         tr.append("<td hidden>" + id + "</td>");
+                    tr.append("<td hidden>" + id + "</td>");
 
                     tr.append("<td>" + data[i].metal + "</td>");
                     // tr.append("<a  href= " + "../src/myitem.html" + ">" + "<td>" + data[i].objectId + "</td>");
@@ -613,7 +612,7 @@ function generateSilver() {
                     tr.append("<td>" + data[i].total + "</td>" + "</a>");
                     // tr.onClick = set(123);
                     totalValue = totalValue + data[i].total;
-                   // console.log(totalValue);
+                    // console.log(totalValue);
 
                     $('#silverTable').append(tr);
                     $(tr).click(function () {
@@ -722,7 +721,7 @@ function update() {
     var premium = document.getElementById("premiumField").value;
 
     var unitPrice = document.getElementById("unitPriceField").value;
-    
+
     if (!qty) qty = 1;
     if (!premium) premium = 47;
     if (!unitPrice) unitPrice = 1250.60;
@@ -740,11 +739,52 @@ function update() {
     //  console.log(sum);
 };
 
-function getDetails() {
-    var currentUser = Parse.User.current();
-
-    //console.log(currentUser);
-
-};
 
 
+function getDateRange() {
+
+    var today = new Date();
+    var mm = today.getMonth();
+    var dd = today.getDate();
+    var yyyy = today.getFullYear();
+
+    if (dd < 10) {
+        dd = '0' + dd;
+    }
+
+    if (mm < 10) {
+        mm = '0' + mm;
+    }
+    
+    var d = new Date();
+    
+    d.setDate(d.getDate() - 30);
+
+    var dmm = d.getMonth() ;
+    var ddd = d.getDate();
+    var dyyyy = d.getFullYear();
+
+    if (ddd < 10) {
+        ddd = '0' + ddd;
+    }
+
+    if (dmm < 10) {
+        dmm = '0' + dmm;
+    }
+    var startDate = new Date(dyyyy, dmm, ddd);
+
+    var endDate = new Date(yyyy, mm, dd);
+
+    var newDate = startDate;
+    var dateStrings = new Array()
+
+    while (newDate <= endDate) {
+        str = newDate.getFullYear() + "-" +
+            (newDate.getMonth() + 1) + "-" +
+            newDate.getDate();
+        dateStrings.push(str);
+        newDate.setDate(newDate.getDate() + 1);
+    }
+
+    //console.log(dateStrings);
+}
