@@ -4,4 +4,5 @@
 - Currently Date is being handled by quandl JSON aka there are no weekends.
 - Highlighting SIDE NAV BAR does not do it correctly from every page
 - USER - DATA -graph , User Gold Total = how much gold they've had and incriment it to the right ---> such that $5 at the begining of time = $5 included at the end of they have not removed it. Deleting an item only removes from current Date. Updating an item is the trickiest
+- On Generating DATE for the user, IF they dont have a range of -30, then create it Else create the date range from what they have, THEN Create a -30
 
