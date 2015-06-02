@@ -32,6 +32,10 @@ var tempPlatinumDate = [];
 
 
 
+var dateRanges;
+
+
+
 function loadTopNav() {
 
     if (Parse.User.current() == null) {
@@ -290,7 +294,7 @@ function addGraph(purchaseDate, value, metal) {
     purchaseDate = String(purchaseDate);
 
 
-   // console.log(tempGoldDate);
+    // console.log(tempGoldDate);
 
     var user = Parse.User.current();
 
@@ -298,8 +302,8 @@ function addGraph(purchaseDate, value, metal) {
     var i = 0;
 
     for (i = 0; i < tempGoldDate.length; i++) {
-        
-        
+
+
         console.log(i + " " + purchaseDate + " " + tempGoldDate[i] + " ");
 
         if (purchaseDate === tempGoldDate[i]) {
@@ -388,7 +392,7 @@ function drawGoldGraph() {
     var userGoldTotal = user.get("goldValueTotal");
 
     var data = {
-        labels: tempGoldDate,
+        labels: dateRanges,
         datasets: [
             {
                 label: "Gold Total",
@@ -696,7 +700,6 @@ $(window).load(function () {
     var page = path.split("/").pop();
     var user = Parse.User.current();
 
-
     if (Parse.User.current() != null) {
         userGoldTotal = user.get("goldValueTotal");
 
@@ -738,6 +741,8 @@ $(window).load(function () {
             pb = query.get("pbid");
             pa = query.get("pask");
             pc = query.get("pchange").toFixed(2);
+            
+            dateRanges = query.get("dateRange");
 
 
 
@@ -1091,17 +1096,17 @@ function run() {
 function runGoldJSON() {
 
     //Determing many points to plot on the graph
-    var FREQUENCY = 30;
-    
-    
+    var FREQUENCY = 31;
+
+
     var xmlhttp = new XMLHttpRequest();
-    
+
     //URL for Gold Data
     var url = "https://www.quandl.com/api/v1/datasets/BUNDESBANK/BBK01_WT5511.json?auth_token=yNHhNn-3_J2TMae97Dza&sort_order=asc";
 
     xmlhttp.onreadystatechange = function () {
-      //  console.log("start...");
-        
+        //  console.log("start...");
+
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 
             var arr = JSON.parse(xmlhttp.responseText);
@@ -1127,10 +1132,10 @@ function runGoldJSON() {
 
             date.save(null, {
                 success: function (date) {
-                
-                   // console.log("success");
-                
-                
+
+                    // console.log("success");
+
+
                 },
                 error: function (date, error) {
 
@@ -1415,3 +1420,67 @@ function arrGenPlatinumBid(arr) {
     });
 
 };
+
+
+function getDateRange() {
+
+        var today = new Date();
+        var mm = today.getMonth();
+        var dd = today.getDate();
+        var yyyy = today.getFullYear();
+
+        if (dd < 10) {
+            dd = '0' + dd;
+        }
+
+        if (mm < 10) {
+            mm = '0' + mm;
+        }
+
+        var d = new Date();
+
+        d.setDate(d.getDate() - 30);
+
+        var dmm = d.getMonth();
+        var ddd = d.getDate();
+        var dyyyy = d.getFullYear();
+
+        if (ddd < 10) {
+            ddd = '0' + ddd;
+        }
+
+        if (dmm < 10) {
+            dmm = '0' + dmm;
+        }
+        var startDate = new Date(dyyyy, dmm, ddd);
+
+        var endDate = new Date(yyyy, mm, dd);
+
+        var newDate = startDate;
+        var dateStrings = new Array()
+
+        while (newDate <= endDate) {
+            str = newDate.getFullYear() + "-" +
+                (newDate.getMonth() + 1) + "-" +
+                newDate.getDate();
+            dateStrings.push(str);
+            newDate.setDate(newDate.getDate() + 1);
+        }
+
+
+        var graph = Parse.Object.extend("graph");
+
+        var graphObject = new graph();
+
+        graphObject.set("objectId", "PlycS4oIZR");
+        graphObject.set("dateRange", dateStrings);
+        graphObject.save(null, {
+                success: function (graphObject) {
+                    console.log("Date Range: Success");
+                },
+                error: function (graphObject, error) {
+                    console.log("Date Range: error" + error);
+                }
+            });
+
+        }
