@@ -623,8 +623,8 @@ function showLogin() {
     var loginEmailText = document.getElementById("login-email-text");
     var loginUserText = document.getElementById("login-username-text");
     var facebookButton = document.getElementById("facebook-login");
-    var googleButton = document.getElementById("google-login");
-
+    var googleButton = document.getElementById("google-login");    
+    
     setTimeout(function () {
         $(login)
             .velocity({

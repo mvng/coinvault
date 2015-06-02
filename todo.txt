@@ -1,0 +1,7 @@
+- 1. in additem.html - Need to restrict user date so that the user cannot add a coin past "today". I suggest possibly looking into this https://github.com/amsul/pickadate.js as it kinda looks nice compared to jquery date ui
+- Need to scale Silver and Platinum with gold
+- Handle JSON Parsing with Parse cloud code? Benefits -> Faster renders.
+- Currently Date is being handled by quandl JSON aka there are no weekends.
+- Highlighting SIDE NAV BAR does not do it correctly from every page
+- USER - DATA -graph , User Gold Total = how much gold they've had and incriment it to the right ---> such that $5 at the begining of time = $5 included at the end of they have not removed it. Deleting an item only removes from current Date. Updating an item is the trickiest
+

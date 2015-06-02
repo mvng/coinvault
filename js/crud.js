@@ -733,10 +733,7 @@ function update() {
 
     document.getElementById("totalField").innerHTML = sum;
 
-    //  console.log(qty);
-    //  console.log(premium);
-    //  console.log(unitPrice);
-    //  console.log(sum);
+
 };
 
 
@@ -786,5 +783,5 @@ function getDateRange() {
         newDate.setDate(newDate.getDate() + 1);
     }
 
-    //console.log(dateStrings);
+    //console.log(ateStrings);
 }

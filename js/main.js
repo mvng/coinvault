@@ -155,7 +155,7 @@ function drawDashboardGraph() {
 
 
     var data = {
-        labels: tempGoldDate.reverse(),
+        labels: tempGoldDate,
         datasets: [
             {
                 label: "Gold Total",
@@ -165,7 +165,7 @@ function drawDashboardGraph() {
                 pointStrokeColor: pointStroke,
                 pointHighlightFill: pointHighlightFill,
                 pointHighlightStroke: pointHighlightStroke,
-                data: userGoldTotal.reverse()
+                data: userGoldTotal
 
      }, {
                 label: "Platinum Total",
@@ -175,7 +175,7 @@ function drawDashboardGraph() {
                 pointStrokeColor: pointStroke,
                 pointHighlightFill: pointHighlightFill,
                 pointHighlightStroke: pointHighlightStroke,
-                data: userPlatinumTotal.reverse()
+                data: userPlatinumTotal
      },
             {
                 label: "Silver Total",
@@ -185,7 +185,7 @@ function drawDashboardGraph() {
                 pointStrokeColor: pointStroke,
                 pointHighlightFill: pointHighlightFill,
                 pointHighlightStroke: pointHighlightStroke,
-                data: userSilverTotal.reverse()
+                data: userSilverTotal
      },
             {
                 label: "1oz Gold",
@@ -195,8 +195,7 @@ function drawDashboardGraph() {
                 pointStrokeColor: pointStroke,
                 pointHighlightFill: pointHighlightFill,
                 pointHighlightStroke: pointHighlightStroke,
-                data: tempGoldValue.reverse()
-
+                data: tempGoldValue
             }, {
                 label: "1oz Platinum",
                 fillColor: "rgba(104, 206, 222, 0.05)",
@@ -205,7 +204,7 @@ function drawDashboardGraph() {
                 pointStrokeColor: pointStroke,
                 pointHighlightFill: pointHighlightFill,
                 pointHighlightStroke: pointHighlightStroke,
-                data: tempPlatinumValue.reverse()
+                data: tempPlatinumValue
      },
             {
                 label: "1oz Silver",
@@ -215,7 +214,7 @@ function drawDashboardGraph() {
                 pointStrokeColor: pointStroke,
                 pointHighlightFill: pointHighlightFill,
                 pointHighlightStroke: pointHighlightStroke,
-                data: tempSilverValue.reverse()
+                data: tempSilverValue
      }
     ]
     };
@@ -282,32 +281,32 @@ function drawDashboardGraph() {
 
 function addGraph(purchaseDate, value, metal) {
 
-    
-      if(purchaseDate == "")
-            return;
 
-    
+    if (purchaseDate == "")
+        return;
+
+
     alert(metal + " " + purchaseDate + " " + value);
     purchaseDate = String(purchaseDate);
-    
-    
-    console.log(tempGoldDate);
-    
+
+
+   // console.log(tempGoldDate);
+
     var user = Parse.User.current();
 
 
     var i = 0;
 
     for (i = 0; i < tempGoldDate.length; i++) {
-
+        
+        
+        console.log(i + " " + purchaseDate + " " + tempGoldDate[i] + " ");
 
         if (purchaseDate === tempGoldDate[i]) {
 
             userGoldTotal[i] = Number(userGoldTotal[i]) + Number(value);
             console.log("MATCHED" + userGoldTotal[i]);
-
         }
-
     }
 
     user.set("totalGoldValue", userGoldTotal);
@@ -320,9 +319,6 @@ function addGraph(purchaseDate, value, metal) {
 
         }
     });
-
-
-
 
 
 };
@@ -369,10 +365,6 @@ function addPlatinumGraph(purchaseDate, value) {
         }
     });
 
-
-
-
-
 };
 
 
@@ -396,7 +388,7 @@ function drawGoldGraph() {
     var userGoldTotal = user.get("goldValueTotal");
 
     var data = {
-        labels: tempGoldDate.reverse(),
+        labels: tempGoldDate,
         datasets: [
             {
                 label: "Gold Total",
@@ -406,7 +398,7 @@ function drawGoldGraph() {
                 pointStrokeColor: pointStroke,
                 pointHighlightFill: pointHighlightFill,
                 pointHighlightStroke: pointHighlightStroke,
-                data: userGoldTotal.reverse()
+                data: userGoldTotal
 
      },
             {
@@ -417,7 +409,7 @@ function drawGoldGraph() {
                 pointStrokeColor: pointStroke,
                 pointHighlightFill: pointHighlightFill,
                 pointHighlightStroke: pointHighlightStroke,
-                data: tempGoldValue.reverse()
+                data: tempGoldValue
 
     }
     ]
@@ -498,7 +490,7 @@ function drawSilverGraph() {
     var userSilverTotal = user.get("silverValueTotal");
 
     var data = {
-        labels: tempGoldDate.reverse(),
+        labels: tempGoldDate,
         datasets: [
             {
 
@@ -510,7 +502,7 @@ function drawSilverGraph() {
                 pointStrokeColor: pointStroke,
                 pointHighlightFill: pointHighlightFill,
                 pointHighlightStroke: pointHighlightStroke,
-                data: userSilverTotal.reverse()
+                data: userSilverTotal()
 
      },
             {
@@ -521,7 +513,7 @@ function drawSilverGraph() {
                 pointStrokeColor: pointStroke,
                 pointHighlightFill: pointHighlightFill,
                 pointHighlightStroke: pointHighlightStroke,
-                data: tempSilverValue.reverse()
+                data: tempSilverValue()
 
     }
     ]
@@ -599,7 +591,7 @@ function drawPlatinumGraph() {
     var userPlatinumTotal = user.get("platinumValueTotal");
 
     var data = {
-        labels: tempGoldDate.reverse(),
+        labels: tempGoldDate,
         datasets: [
             {
                 label: "Platinum Total",
@@ -609,7 +601,7 @@ function drawPlatinumGraph() {
                 pointStrokeColor: pointStroke,
                 pointHighlightFill: pointHighlightFill,
                 pointHighlightStroke: pointHighlightStroke,
-                data: userPlatinumTotal.reverse()
+                data: userPlatinumTotal()
 
      },
             {
@@ -620,7 +612,7 @@ function drawPlatinumGraph() {
                 pointStrokeColor: pointStroke,
                 pointHighlightFill: pointHighlightFill,
                 pointHighlightStroke: pointHighlightStroke,
-                data: tempPlatinumValue.reverse()
+                data: tempPlatinumValue()
 
     }
     ]
@@ -821,7 +813,7 @@ $(window).load(function () {
     	 	$(this).find('a')[0].click();
     	 });
          */
-    
+
     /* * * * * * * * * * * * * *
      *                         *
      *        GRAPHING         *
@@ -906,7 +898,7 @@ function creat() {
     var weightg;
     var weightau;
 
-   // console.log("hello" + purchaseDate.value);
+    // console.log("hello" + purchaseDate.value);
 
     var page = "dashboard.html";
 
@@ -1045,7 +1037,7 @@ function metalgu(value) {
     "use strict";
 
     if (value == 1) {
-     //   console.log("gold gu");
+        //   console.log("gold gu");
         return "Gold g/u";
     }
     if (value == 2) {
@@ -1067,11 +1059,11 @@ function metaloz(value) {
     "use strict";
 
     if (value == 1) {
-      //  console.log("gold oz");
+        //  console.log("gold oz");
         return "Gold ozt/u";
     }
     if (value == 2) {
-       // console.log("silver oz");
+        // console.log("silver oz");
         return "Silver ozt/u";
     }
     if (value == 3) {
@@ -1086,7 +1078,7 @@ function metaloz(value) {
 
 function run() {
 
-  //  console.log("invoking run");
+    //  console.log("invoking run");
     initialMetal = document.getElementById("metalField").value;
     document.getElementById("metalDetails").innerHTML = metal(initialMetal);
     document.getElementById("gu").innerHTML = metalgu(initialMetal);
@@ -1094,17 +1086,58 @@ function run() {
 };
 
 
+
+//Method Assigns Gold Date with Gold Value --
 function runGoldJSON() {
 
+    //Determing many points to plot on the graph
+    var FREQUENCY = 30;
+    
+    
     var xmlhttp = new XMLHttpRequest();
-    var url = "https://www.quandl.com/api/v1/datasets/BUNDESBANK/BBK01_WT5511.json?auth_token=yNHhNn-3_J2TMae97Dza";
-
+    
+    //URL for Gold Data
+    var url = "https://www.quandl.com/api/v1/datasets/BUNDESBANK/BBK01_WT5511.json?auth_token=yNHhNn-3_J2TMae97Dza&sort_order=asc";
 
     xmlhttp.onreadystatechange = function () {
-        console.log("start...");
+      //  console.log("start...");
+        
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            var myArr = JSON.parse(xmlhttp.responseText);
-            arrGenGoldJSON(myArr);
+
+            var arr = JSON.parse(xmlhttp.responseText);
+
+            var i = arr.data.length - FREQUENCY;
+            var c = 0;
+
+            for (i; i < arr.data.length; i++) {
+
+
+                goldDate[c] = arr.data[i][0];
+                goldValue[c] = arr.data[i][1];
+                c++;
+            }
+
+            var golddates = Parse.Object.extend("graph");
+
+            var date = new golddates();
+
+            date.set("objectId", "PlycS4oIZR");
+            date.set("goldDate", goldDate);
+            date.set("goldValue", goldValue);
+
+            date.save(null, {
+                success: function (date) {
+                
+                   // console.log("success");
+                
+                
+                },
+                error: function (date, error) {
+
+                    console.log(error + "GOLD DATE LENGTH" + goldDate.length);
+
+                }
+            });
 
         }
     }
@@ -1113,37 +1146,6 @@ function runGoldJSON() {
 
 };
 
-function arrGenGoldJSON(arr) {
-
-    var i = 0;
-
-    // console.log(arr.data.length);
-
-    //ASSIGN HOW MANY PLOT POINTS HERE
-    for (i = 0; i < 30; i++) {
-
-        // console.log(i);
-        console.log(arr.data[i][0] + " " + arr.data[i][1]);
-
-
-        goldDate[i] = arr.data[i][0];
-        goldValue[i] = arr.data[i][1];
-    }
-
-    var golddates = Parse.Object.extend("graph");
-
-    var date = new golddates();
-
-    date.set("objectId", "PlycS4oIZR");
-    date.set("goldDate", goldDate);
-    date.set("goldValue", goldValue);
-
-    date.save(null, {
-        success: function (date) {},
-        error: function (date, error) {}
-    });
-
-};
 
 function runGoldJSONBid() {
 
