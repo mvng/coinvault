@@ -1198,48 +1198,54 @@ function runSilverJSON() {
 function runPlatinumJSON() {
 
     var xmlhttp = new XMLHttpRequest();
-    var url = "https://www.quandl.com/api/v1/datasets/PERTH/PLAT_USD_D.json?auth_token=MozKdjXWdsbMFLxbDSfr";
+    var url = "https://www.quandl.com/api/v1/datasets/WSJ/PL_MKT.json?auth_token=yNHhNn-3_J2TMae97Dza&sort_order=asc";
 
+    
+    var FREQUENCY = 31;
+    var platinumValue = [];
 
+    
     xmlhttp.onreadystatechange = function () {
         console.log("start...");
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            var myArr = JSON.parse(xmlhttp.responseText);
-            arrGenPlatJSON(myArr);
+            var arr = JSON.parse(xmlhttp.responseText);
+            
+    
+            var i = arr.data.length - FREQUENCY;
+            var c = 0;
+
+            for (i; i < arr.data.length; i++) {
+
+
+               // goldDate[c] = arr.data[i][0];
+                platinumValue[c] = arr.data[i][1];
+                c++;
+            }
+
+            var platinumdates = Parse.Object.extend("graph");
+
+            var date = new platinumdates();
+
+            date.set("objectId", "PlycS4oIZR");
+            date.set("platinumValue", platinumValue);
+
+            date.save(null, {
+                success: function (date) {
+                     console.log("Platinum Data Updated");
+
+                },
+                error: function (date, error) {
+
+                    console.log(error + platinumValue);
+
+                }
+            });
+
 
         }
     }
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
-
-};
-
-function arrGenPlatJSON(arr) {
-
-    var i = 0;
-
-    var platinumValue;
-    //ASSIGN HOW MANY PLOT POINTS HERE
-    for (i = 0; i < 30; i++) {
-
-        platinumValue[i] = arr.data[i][1];
-    }
-
-    var golddates = Parse.Object.extend("graph");
-
-    var date = new golddates();
-
-    date.set("objectId", "PlycS4oIZR");
-    // date.set("silverDate", silverDate);
-    date.set("platinumValue", platinumValue);
-
-    date.save(null, {
-        success: function (date) {},
-        error: function (date, error) {
-
-            console.log(error);
-        }
-    });
 
 };
 
@@ -1273,10 +1279,6 @@ function arrGenSilverBid(arr) {
     change = bid - ask;
 
     var chg = change.toFixed(2);
-
-
-
-    // console.log("Silver Details " + bid + " " + ask + " " + chg);
 
     var silver = Parse.Object.extend("graph");
 

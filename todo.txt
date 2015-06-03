@@ -1,12 +1,12 @@
-- Need to scale Silver and Platinum with gold
++ Need to scale Silver and Platinum with gold
 - Handle JSON Parsing with Parse cloud code? Benefits -> Faster renders. ref: https://parse.com/questions/processing-json-in-cloud-code
-- Currently Date is being handled by quandl JSON aka there are no weekends.
++ Currently Date is being handled by quandl JSON aka there are no weekends.
 - Highlighting SIDE NAV BAR does not do it correctly from every page
 - Include Analytics -- Google Analytics maybe?
 
 # AddItem.html
 - ADDITEM.html - need to grab "unit price" from the graph such that each page will have a real unit price and then do math from there.
-- 1. in additem.html - Need to restrict user date so that the user cannot add a coin past "today". I suggest possibly looking into this https://github.com/amsul/pickadate.js as it kinda looks nice compared to jquery date ui
++ 1. in additem.html - Need to restrict user date so that the user cannot add a coin past "today". I suggest possibly looking into this https://github.com/amsul/pickadate.js as it kinda looks nice compared to jquery date ui
 - Image included maybe? --- recolor based on type of metal selected would prolly work too
 
 # Charting
