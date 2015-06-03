@@ -9,14 +9,30 @@
     <meta name=viewport content="width=device-width, initial-scale=.8, minimum-scale = .8, user-scalable=yes">
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    
+    <link rel="stylesheet" href="../css/datepicker.css">
+    <script src="../js/jquery-1.11.2.min.js"></script>
        
+    <script src="../js/jquery-ui.js"></script>
+    
     <script src ="../js/parse-1.4.2.js"> </script>
 
-    <script src="../js/jquery-1.11.2.min.js"></script>
     <script src="../js/velocity.min.js"></script>
     
     <script src ="../js/main.js"></script>
     
+    <script>
+    
+    $(function () {
+        $("#datepicker").datepicker({maxDate: '0', dateFormat: 'yy-mm-dd'});
+    });
+    </script>
+    
+    
+    
+
+
+
     
         <!-- CHANGE THIS SHIT TO LOCAL PLS -->
 
@@ -93,8 +109,10 @@
                         <tr>
                             <td>Purchase Date</td>
                             <td>
-                                <input id = "purchaseDateField"  class = ".datepick" type = "date"  onchange = "update()" />
-                        
+                                <div class = "datepicker" id = "datepick">  
+                                 <input type="text" id="datepicker">
+                                </div>
+                                
                             </td>
                         </tr>
                         <tr>

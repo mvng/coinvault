@@ -22,6 +22,9 @@ NAVIGATION
 
 Pretty Straight forward
 
+
+all html files besides index.html are in the src folder.
+
 Index.html - Start Page, where everyone can sign up and login 
 Dashboard.html - Home page after login. Users can see the bullion prices and the total costs 
 goldoverview.html - This page along with platinum and silver overview are for those specific metals.
@@ -100,5 +103,5 @@ GRAPH - sometimes when adding new coins to the stack, the graph will not show th
 
 When calculating daily percentage, we weren't able to figure out how to achieve/preserve the previous days total amount to calculate the percentage.
 
->>>>>>> Stashed changes
+
 When adding coins/bullions from the platinum or silver page, it will redirect the user to Gold Overview. The coin does get properly added to the appropriate stack however.
