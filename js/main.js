@@ -59,6 +59,10 @@ function loadTopNavPersist() {
 }
 
 function loadSideNav(selected) {
+
+
+
+    
     document.write("    <aside>");
     document.write("        <a href=\"dashboard.html\">");
     if (selected == 0)
@@ -105,6 +109,8 @@ function loadSideNav(selected) {
     document.write("        <\/figure>");
     document.write("        <\/a> ");
     document.write("    <\/aside>");
+    
+        
 }
 
 function loadFooter() {
@@ -926,33 +932,176 @@ function addGraph(purchaseDate, value, metal) {
 
 function deleteItem() {
 
-
+    event.preventDefault();
+$
     //Delete needs ot be able to handle redirect to the previous page,
     //currently just goes back to dashboard.
     "use strict";
-
+var oldURL = document.referrer;
     var objectId;
+    var user = Parse.User.current();
+    var userMetalTotal = [];
 
     objectId = getId();
 
     var Item = Parse.Object.extend("item");
 
+    var stuff = new Item();
     var THING = new Parse.Object("item");
 
     THING.id = objectId;
+    var obId = objectId;
+    console.log(obId);
+    var query = new Parse.Query("item");
+    
+        var page = "dashboard.html";
 
+
+
+    query.get(obId,{
+        success: function(object){
+            stuff = object.get("purchaseDate")
+
+
+            var value = object.get("total");
+            var metal = object.get("metal");
+            console.log(stuff);
+            var dateRanges = getDateRange();
+
+            deletGraph(stuff,value, metal, dateRanges);
+            
+        },
+        error: function(object,error){
+            console.log(error);
+        }
+    });
 
     THING.destroy({
         success: function () {
-
-            window.location.href = "dashboard.html";
-
+            window.location.href = oldURL;
         },
         error: function (error) {
             console.log(error.message);
         }
     });
 
+};
+
+function deletGraph(purchaseDate, value, metal, dateRanges) {
+
+
+    if (purchaseDate == "")
+        return;
+    
+    //FOR SOME REASON ADDING A DATE BEFORE ERQUIRES EXTRA REFRESH CYCLE.
+     if(purchaseDate <= dateRanges[0]){
+        console.log("early date");
+        purchaseDate = dateRanges[0];
+    }
+    
+   // alert(metal + " " + purchaseDate + " " + value);
+    purchaseDate = String(purchaseDate);
+
+    var user = Parse.User.current();
+    var userMetalTotal = [];
+    
+    
+    
+    
+    //getting array slots.
+    
+    if(metal == "Gold"){
+        userMetalTotal = user.get("goldValueTotal");
+        
+    }
+    if(metal == "Silver"){
+        userMetalTotal = user.get("silverValueTotal");
+       // console.log("What am i here? " + userMetalTotal);
+    }  
+    if(metal == "Platinum"){
+        userMetalTotal = user.get("platinumValueTotal");
+    }
+    
+    
+
+    var i = 0;
+   
+
+    for (i = 0; i < dateRanges.length; i++) {
+
+
+      //  console.log(i + " " + purchaseDate + " " + dateRanges[i] + " ");
+
+        if (purchaseDate === dateRanges[i]) {
+
+            //TODO
+            
+            // When date is entered before the oldest date on graph set the date entered
+            
+            var k = i;
+            
+            for (k; k< dateRanges.length; k++){
+            
+            userMetalTotal[k] = Number(userMetalTotal[k]) - Number(value);
+            }
+            alert("Updating Graph ... ");
+        }
+        
+    }
+    
+    if(metal == "Gold"){
+        user.set("goldValueTotal", userMetalTotal);
+        
+        
+        console.log("attempting to save TotalGoldValue" + userMetalTotal);
+        console.log(user);
+        user.save(null).then(
+            function (user) {
+             
+            
+                return;
+         },
+             function (error) {
+                 location.reload();
+                console.log("Failed to Update Gold Graph " + error.message);
+            
+        });
+    }
+    
+
+    
+        if(metal == "Silver"){
+        user.set("silverValueTotal", userMetalTotal);
+        user.save(null, {
+         success: function (user) {
+             
+
+             
+           //  console.log("Im saving this..." + userMetalTotal);
+         },
+            error: function (user, error) {
+                console.log("Failed to Update Silver Graph");
+            }
+        });
+    }
+    
+    if(metal == "Platinum"){
+        user.set("platinumValueTotal", userMetalTotal);
+        user.save(null, {
+         success: function (user) {
+             
+
+             
+            // console.log("Im saving this..." + userMetalTotal);
+         },
+            error: function (user, error) {
+                console.log("Failed to Update Platinum Graph");
+            }
+        });
+    }
+    
+    return 0;
+    
 };
 
 
@@ -1455,4 +1604,7 @@ function getDateRange() {
         }
     });
 
+    
+    
+    return dateStrings;
 }

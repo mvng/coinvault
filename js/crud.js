@@ -1,6 +1,6 @@
 //Objects to edit in Parse
 //Type, unitPrice, premium Total createdAt, metal
-//Parse.initialize("uuMKgtd7piSYYS1OIicbKekLesPHKKerHp21X3Zk", "J10xkBbtYfn4EPD9TQzp0BNJI7sQ2UXmJqY0Dkgu");
+Parse.initialize("uuMKgtd7piSYYS1OIicbKekLesPHKKerHp21X3Zk", "J10xkBbtYfn4EPD9TQzp0BNJI7sQ2UXmJqY0Dkgu");
 
 function set(objectId) {
     "use strict";
@@ -14,7 +14,7 @@ function set(objectId) {
 
     //  document.cookie = "id=" + objectId;
 
-    localStorage.id = objectId;
+  localStorage.id = objectId;
 
 
 }
@@ -42,6 +42,30 @@ function getId() {
 
     return localStorage.getItem("id");
 }
+/*
+function setMetal(objectId){
+    
+    var query = new Parse.Query("item");
+    
+    query.get(objectId, {
+      success: function (object) {
+          var metal = object.get("metal");
+console.log(metal);
+          if (metal === "Gold")
+  localStorage.metal = 1;
+          if (metal === "Silver")
+  localStorage.metal = 2;
+          if (metal === "Platinum")
+  localStorage.metal = 3;
+      },
+      error: function (error) {
+
+      }
+  });
+    
+}*/
+
+
 
 function numberWithCommas(x) {
     var parts = x.toString().split(".");
