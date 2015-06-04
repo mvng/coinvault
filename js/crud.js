@@ -718,6 +718,11 @@ function dashboardTotal() {
 
 function update() {
 
+    
+    
+    
+    
+    
 
     var qty = document.getElementById("qtyField").value;
 

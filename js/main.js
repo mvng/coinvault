@@ -812,6 +812,11 @@ function addGraph(purchaseDate, value, metal) {
     if (purchaseDate == "")
         return;
     
+    //FOR SOME REASON ADDING A DATE BEFORE ERQUIRES EXTRA REFRESH CYCLE.
+     if(purchaseDate <= dateRanges[0]){
+        console.log("early date");
+        purchaseDate = dateRanges[0];
+    }
     
    // alert(metal + " " + purchaseDate + " " + value);
     purchaseDate = String(purchaseDate);
@@ -839,6 +844,7 @@ function addGraph(purchaseDate, value, metal) {
     
 
     var i = 0;
+   
 
     for (i = 0; i < dateRanges.length; i++) {
 
@@ -847,9 +853,19 @@ function addGraph(purchaseDate, value, metal) {
 
         if (purchaseDate === dateRanges[i]) {
 
-            userMetalTotal[i] = Number(userMetalTotal[i]) + Number(value);
+            //TODO
+            
+            // When date is entered before the oldest date on graph set the date entered
+            
+            var k = i;
+            
+            for (k; k< dateRanges.length; k++){
+            
+            userMetalTotal[k] = Number(userMetalTotal[k]) + Number(value);
+            }
             alert("Updating Graph ... ");
         }
+        
     }
     
     if(metal == "Gold"){

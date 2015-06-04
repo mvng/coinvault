@@ -3,6 +3,7 @@
 + Currently Date is being handled by quandl JSON aka there are no weekends.
 - Highlighting SIDE NAV BAR does not do it correctly from every page
 - Include Analytics -- Google Analytics maybe?
+- grab real time value from "update"
 
 # AddItem.html
 - ADDITEM.html - need to grab "unit price" from the graph such that each page will have a real unit price and then do math from there.
@@ -15,4 +16,7 @@
 
 # Bugs
 - HTML5 Date picker does not work in Safari
+- On FRESH USERS -- all graph functions require an extra refresh cycle
+- Adding date BEFORE the 30 day chart, requires an extra reload cycle
+- Tomorrow = NEW DAY. Graph does not reflect this...
 
