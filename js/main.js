@@ -1,6 +1,8 @@
 Parse.initialize("uuMKgtd7piSYYS1OIicbKekLesPHKKerHp21X3Zk", "J10xkBbtYfn4EPD9TQzp0BNJI7sQ2UXmJqY0Dkgu");
 
 
+
+
 function loadTopNav() {
 
     if (Parse.User.current() == null) {
@@ -171,11 +173,9 @@ drawGraph = function (){
             
             sb = query.get("sbid");
             sa = query.get("sask");
-           // sc = query.get("schange").toFixed(2);
+            //sc = query.get("schange").toFixed(2);
             
-            
-            sb=0;sa=0;
-            sc=0;
+            sc = (sb-sa).toFixed(2);
 
             pb = query.get("pbid");
             pa = query.get("pask");
@@ -336,7 +336,7 @@ drawGraph = function (){
 
                 
                 
-                console.log("Graphing... " + userGoldTotal);
+              //  console.log("Graphing... " + userGoldTotal);
 
                 document.getElementById("bid").innerHTML = gb;
                 document.getElementById("ask").innerHTML = ga;
@@ -711,11 +711,9 @@ drawGraph();
 
 
 
-
 function creat() {
         event.preventDefault();
 
-    
     
     var user = Parse.User.current();
     var userObjId = user.id;
@@ -737,7 +735,7 @@ function creat() {
         weightg = 1.244;
         weightau = 0.917;
         page = "goldoverview.html";
-       addGraph(purchaseDate.value, total, "Gold");
+     addGraph(purchaseDate.value, total, "Gold");
           
     }
 
@@ -777,33 +775,34 @@ function creat() {
     thing.set("weightau", weightau);
 
 
-    thing.save(null, {
-        success: function (thing) {
-            // Execute any logic that should take place after the object is saved.
-            //    alert('New object created with objectId: ' + thing.id);
+    console.log("HI");
+  thing.save(null).then(function (thing) {
+      // Execute any logic that should take place after the object is saved.
+      //    alert('New object created with objectId: ' + thing.id);
+      // total = yield total;
 
-            console.log("Finishg Save on Parse");
-           // alert("WHO FINISHES FIRST???");
+      console.log("Finishg Save on Parse");
 
-
-        },
-        error: function (thing, error) {
-            // Execute any logic that should take place if the save fails.
-            // error is a Parse.Error with an error code and message.
-            location.reload();
-
-              console.log('Failed to save in creat' + error.message);
-         //   window.location.href = "dashboard.html";
+      location.reload();
+          window.location.replace(page);
 
 
-        }
-    });    
-    
- //   hold();
-    
+    },
+      function (error) {
+          // Execute any logic that should take place if the save fails.
+          // error is a Parse.Error with an error code and message.
+          // location.reload();
+
+          console.log('Failed to save in creat  ' + error.message);
+          //   window.location.href = "dashboard.html";
+
+
+
+      });
+
 
     //THIS WINDOW.LOCATION.REPLACE IS FUCKING SHIT UP.
-//window.location.replace(page);
+    
 };
 
 
@@ -849,7 +848,7 @@ function addGraph(purchaseDate, value, metal) {
         if (purchaseDate === dateRanges[i]) {
 
             userMetalTotal[i] = Number(userMetalTotal[i]) + Number(value);
-          //  alert("MATCHED" + userMetalTotal[i]);
+            alert("Updating Graph ... ");
         }
     }
     
@@ -858,18 +857,17 @@ function addGraph(purchaseDate, value, metal) {
         
         
         console.log("attempting to save TotalGoldValue" + userMetalTotal);
-        
-        user.save(null, {
-         success: function (user) {
+        console.log(user);
+        user.save(null).then(
+            function (user) {
              
-             
-            // drawGraph();
-             console.log("Successfully saved TotalGoldValue");
-             location.reload();
+            
+                return;
          },
-            error: function (user, error) {
-                console.log("failed to save totalGoldValue" + error.message);
-            }
+             function (error) {
+                 location.reload();
+                console.log("Failed to Update Gold Graph " + error.message);
+            
         });
     }
     
@@ -882,10 +880,10 @@ function addGraph(purchaseDate, value, metal) {
              
 
              
-             console.log("Im saving this..." + userMetalTotal);
+           //  console.log("Im saving this..." + userMetalTotal);
          },
             error: function (user, error) {
-                console.log("failed to save totalSilverValue");
+                console.log("Failed to Update Silver Graph");
             }
         });
     }
@@ -900,10 +898,11 @@ function addGraph(purchaseDate, value, metal) {
             // console.log("Im saving this..." + userMetalTotal);
          },
             error: function (user, error) {
-                console.log("failed to save totalSilverValue");
+                console.log("Failed to Update Platinum Graph");
             }
         });
     }
+    
     return 0;
     
 };
