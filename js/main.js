@@ -23,10 +23,9 @@ function loadTopNav() {
     document.write("                <title>cog<\/title>");
     document.write("                <path class=\"path1\" d=\"M933.79 610.25c-53.726-93.054-21.416-212.304 72.152-266.488l-100.626-174.292c-28.75 16.854-62.176 26.518-97.846 26.518-107.536 0-194.708-87.746-194.708-195.99h-201.258c0.266 33.41-8.074 67.282-25.958 98.252-53.724 93.056-173.156 124.702-266.862 70.758l-100.624 174.292c28.97 16.472 54.050 40.588 71.886 71.478 53.638 92.908 21.512 211.92-71.708 266.224l100.626 174.292c28.65-16.696 61.916-26.254 97.4-26.254 107.196 0 194.144 87.192 194.7 194.958h201.254c-0.086-33.074 8.272-66.57 25.966-97.218 53.636-92.906 172.776-124.594 266.414-71.012l100.626-174.29c-28.78-16.466-53.692-40.498-71.434-71.228zM512 719.332c-114.508 0-207.336-92.824-207.336-207.334 0-114.508 92.826-207.334 207.336-207.334 114.508 0 207.332 92.826 207.332 207.334-0.002 114.51-92.824 207.334-207.332 207.334z\"><\/path>");
     document.write("            <\/symbol>");
-    document.write("            <use switchxlink:href=\"#icon-cog\"><\/use>");
+    document.write("            <use xlink:href=\"#icon-cog\"><\/use>");
     document.write("        <\/svg>");
     document.write("    <\/nav>");
-
 }
 
 function loadTopNavPersist() {
@@ -1600,34 +1599,20 @@ function getDateRange() {
 }
 
 function changeTheme() {
-    var main = document.getElementById("main");
-    var theme = getCookie();
+    // Determines if the User's browser supports local storage
+    if(typeof(Storage) !== "undefined") {
+        var theme = document.getElementById("main");
+        localStorage.setItem("css", main.getAttribute("href"));
 
-    if (theme == "../style/style.css") {
-        main.href = "../style/altstyle.css";
-        setCookie(main.getAttribute("href"));
-    } else { 
-        main.href = "../style/style.css";
-        setCookie(main.getAttribute("href"));
+        // Converts the theme to the default
+        if (localStorage.getItem("css") == "../style/altstyle.css") {
+            localStorage.setItem("css", "../style/style.css");
+            theme.href = localStorage.getItem("css");
+        } else if (localStorage.getItem("css") == "../style/style.css") {
+            localStorage.setItem("css", "../style/altstyle.css");
+            theme.href = localStorage.getItem("css");
+        }
+    } else {
+        alert("Your Browser does not support local storage and cannot change themes")
     }
-}
-
-function setCookie(css) {
-    deleteCookie();
-    document.cookie = "href=" + css + ";";
-}
-
-function getCookie() {
-    var css = document.cookie.split(";")
-    var i = 0;
-
-    while (css[0].charAt(i) != ';') {
-        i++;
-    }
-
-    return c.substring(5, i);
-}
-
-function deleteCookie() {
-    document.cookie = "expires=Thu, 01 Jan 1970 00:00:00 UTC";
 }
