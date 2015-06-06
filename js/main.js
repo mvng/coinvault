@@ -3,10 +3,11 @@ Parse.initialize("uuMKgtd7piSYYS1OIicbKekLesPHKKerHp21X3Zk", "J10xkBbtYfn4EPD9TQ
 function loadTopNav() {
 
     if (Parse.User.current() == null) {
-
         return window.location.href = "../index.html";
-
     }
+
+    // Applies the theme
+    setTheme(getTheme());
 
     document.write("    <nav>");
     document.write("        <svg class=\"icon-spinner2\">");
@@ -29,6 +30,10 @@ function loadTopNav() {
 }
 
 function loadTopNavPersist() {
+
+    // Applies the theme
+    setTheme(getTheme());
+
     document.write("    <nav style='display: block; visibility: visible;'>");
     document.write("        <svg class=\"icon-spinner2\">");
     document.write("            <symbol id=\"icon-spinner2\" viewBox=\"0 0 1024 1024\">");
@@ -1599,20 +1604,23 @@ function getDateRange() {
 }
 
 function changeTheme() {
-    // Determines if the User's browser supports local storage
-    if(typeof(Storage) !== "undefined") {
-        var theme = document.getElementById("main");
-        localStorage.setItem("css", main.getAttribute("href"));
+    var temp = document.getElementById("main");
 
-        // Converts the theme to the default
-        if (localStorage.getItem("css") == "../style/altstyle.css") {
-            localStorage.setItem("css", "../style/style.css");
-            theme.href = localStorage.getItem("css");
-        } else if (localStorage.getItem("css") == "../style/style.css") {
-            localStorage.setItem("css", "../style/altstyle.css");
-            theme.href = localStorage.getItem("css");
-        }
-    } else {
-        alert("Your Browser does not support local storage and cannot change themes")
+    if (new String (temp.getAttribute("href")) == "../style/style.css") {
+        setTheme("../style/altstyle.css");
+    } else if (temp.getAttribute("href") == "../style/altstyle.css") {
+        setTheme("../style/style.css");
+    }
+}
+
+function getTheme() {
+    return localStorage.getItem("css");
+}
+
+function setTheme(href) {
+    if (href != null) {
+        var theme = document.getElementById("main");
+        localStorage.setItem("css", href);
+        theme.href = href;
     }
 }

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta name="description" content="bullion management site, rare coins, gold, silver, platinum">
@@ -19,13 +18,11 @@
     <script src ="../js/crud.js"> </script>
     <title>Home - Coin Vault</title>
 </head>
-
 <body>
     <script type="text/javascript">loadTopNavPersist();</script>
     <script type="text/javascript">loadSideNav(0);</script>
 
     <section class="main-section">
-
      <section class="coin_wrapper">
             <section class="overview-panel">
                 <section class="total-value">
@@ -55,13 +52,9 @@
                 </section>
                 <section class="market-status">
                     <div class="market-open" id="openOrClose"></div>
-                    
-                    
                     <div class="market-time" id="HMSremaining"></div>
-                        
                 </section>
                 <section class="market-list">
-
                     <a href="goldoverview.html">
                         <section class="market-item-header">
                             Gold
@@ -88,8 +81,6 @@
                             </tr>
                         </table>
                     </section>
-
-
                     <a href="silveroverview.html">
                         <section class="market-item-header">
                             Silver
@@ -144,7 +135,6 @@
                     </section>
                 </section>
             </section>
-
             <section class="graph-panel">
                 <section class="chart-legend">
                     <div class="legend-left-half">
@@ -181,24 +171,13 @@
                 <section class="chart-wrap">
                     <canvas id="total-chart"></canvas>
                 </section>
-
             </section>
         </section>
-
     </section>
-
     <script type="text/javascript">
-
-        
         dashboardTotal();
-        
         untilOpen();
-        
-        
-        loadFooter();
-        
-        
+        loadFooter(); 
     </script>
 </body>
-
 </html>
