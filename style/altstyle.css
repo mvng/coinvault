@@ -81,7 +81,7 @@ body {
 }
 
 body {
-    background: #EDEDED;
+    background: #E9EAED;
     font-family: "monster_h", sans-serif;
     font-weight: 600;
     color: #FFFFFF
@@ -102,7 +102,7 @@ nav {
     width: 100%;
     height: 60px;
     line-height: 60px;
-    background: #272E32;
+    background: #3B5998;
     font-size: 1.5em;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -120,7 +120,7 @@ nav {
 nav svg {
     width: 30px;
     height: 30px;
-    fill: #55B7C5;
+    fill: #FFF8DC;
     position: absolute;
     top: 50%;
     margin-top: -15px;
@@ -131,7 +131,7 @@ nav svg {
 }
 
 nav svg:hover {
-    fill: #77EDFF;
+    fill: #FFF8AC;
     -webkit-transform: scale(1.05);
     -moz-transform: scale(1.05);
     -ms-transform: scale(1.05);
@@ -159,7 +159,7 @@ nav a {
     width: 100%;
     height: 60px;
     line-height: 60px;
-    background: #272E32;
+    background: #3B5998;
     font-size: 1.5em;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -190,7 +190,7 @@ nav a {
 }
 
 .mobile-nav svg:hover {
-    fill: #77EDFF;
+    fill: #FFF8AC;
     -webkit-transform: scale(1.05);
     -moz-transform: scale(1.05);
     -ms-transform: scale(1.05);
@@ -213,7 +213,7 @@ aside {
     height: -webkit-calc(100% - 96px);
     height: calc(100% - 96px);
     width: 100px;
-    background: #272E32;
+    background: #3B5998;
     border-radius: 0px
 }
 
@@ -226,7 +226,7 @@ aside figure {
     height: 100px;
     border-bottom: 3px solid #1D1D1D;
     cursor: pointer;
-    color: #55B7C5;
+    color: #FFF8DC;
     text-align: center;
     line-height: 80px;
     font-size: 2.5em;
@@ -245,7 +245,7 @@ aside figure figcaption {
 }
 
 aside figure svg {
-    fill: #55B7C5;
+    fill: #FFF8DC;
     width: 50px;
     height: 50px;
     position: absolute;
@@ -259,21 +259,21 @@ aside figure svg {
 }
 
 aside figure:hover {
-    color: #77EDFF;
+    color: #FFF8AC;
     background: rgba(255, 255, 255, 0.1)
 }
 
 aside figure:hover svg {
-    fill: #77EDFF
+    fill: #FFF8AC
 }
 
 .nav-selected {
-    color: #77EDFF;
+    color: #FFF8DC;
     background: rgba(255, 255, 255, 0.1)
 }
 
 .nav-selected svg {
-    fill: #77EDFF
+    fill: #FFF8DC
 }
 
 footer {
@@ -285,9 +285,9 @@ footer {
     bottom: 0px;
     left: 0;
     color: #FFFFFF;
-    background: #272E32;
+    background: #3B5998;
     font-size: 1em;
-    border-top: 3px solid #1D1D1D;
+    border-top: 3px solid #3B5998;
     border-top-left-radius: 0px;
     border-top-right-radius: 0px
 }
@@ -347,23 +347,23 @@ a:visited {
 }
 
 #sign-up-button {
-    background: #1C3A3F;
+    background: #578843;
     border: 1px solid #151515;
     cursor: pointer;
 }
 
 #sign-up-button:hover {
-    border: 1px solid #68CEDE
+    border: 1px solid #3B5DD9
 }
 
 #log-in-button {
-    background: #397C86;
+    background: #3B5999;
     border: 1px solid #151515;
     cursor: pointer;
 }
 
 #log-in-button:hover {
-    border: 1px solid #68CEDE
+    border: 1px solid #3B5998
 }
 
 #w1-right {
@@ -434,16 +434,17 @@ a:visited {
 .overview-panel .total-value {
     width: 100%;
     height: 80px;
-    background: #272E32;
+    background: #3B5998;
+    border-radius: 7px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     padding: 10px 20px
 }
 
-.overview-panel .total-value>div {
+.overview-panel .total-value div {
     display: inline-block;
-    vertical-align: bottom
+    vertical-align: bottom;
 }
 
 .overview-panel .total-value .total-dollars {
@@ -500,11 +501,17 @@ a:visited {
     width: 100%;
     height: 20px;
     margin-top: 20px;
-    font-size: 1.05em
+    font-size: 1.05em;
+    background-color: #FFFFFF;
+    border-radius: 7px;
+    border-top: 9px solid #FFFFFF;
+    border-left: 3px solid #FFFFFF;
+    border-bottom: 9px solid #FFFFFF;
+    border-right: 3px solid #FFFFFF;
 }
 
 .overview-panel .market-status>div {
-    display: inline-block
+    display: inline-block;
 }
 
 .overview-panel .market-status .market-open {
@@ -517,7 +524,7 @@ a:visited {
 
 .overview-panel .market-list {
     width: 100%;
-    margin-top: 20px
+    margin-top: 20px;
 }
 
 .overview-panel .market-list .market-item-header {
@@ -537,11 +544,11 @@ a:visited {
 }
 
 .overview-panel .market-list .market-item-header:hover {
-    color: #77EDFF
+    color: #3B5DD9
 }
 
 .overview-panel .market-list .market-item-header:hover svg {
-    fill: #77EDFF
+    fill: #3B5DD9
 }
 
 .overview-panel .market-list #current-spot {
@@ -561,11 +568,11 @@ a:visited {
 }
 
 .overview-panel .market-list .market-item-stats table {
-    width: 100%
+    width: 100%;
 }
 
 .overview-panel .market-list .market-item-stats table tr:first-child {
-    color: #68CEDE
+    color: #3B5DD9
 }
 
 .overview-panel .market-list .market-item-stats td {
@@ -576,7 +583,7 @@ a:visited {
 }
 
 .overview-panel .pos-change {
-    color: #A7FF8B !important
+    color: #009900 !important
 }
 
 .overview-panel .neg-change {
@@ -599,9 +606,12 @@ a:visited {
     position: relative
 }
 
-.graph-panel>section {
+.graph-panel section {
     display: inline-block;
-    vertical-align: top
+    vertical-align: top;
+    background: #FFFFFF;
+    border-radius: 7px;
+    border: 4px solid #FFFFFF;
 }
 
 .graph-panel .chart-wrap {
@@ -614,6 +624,7 @@ a:visited {
     position: absolute;
     width: 400px;
     text-align: center;
+    color: #000000;
     -webkit-transform-origin: top left;
     -moz-transform-origin: top left;
     -ms-transform-origin: top left;
@@ -645,7 +656,7 @@ a:visited {
     margin-bottom: 5px;
     height: 20px;
     line-height: 20px;
-    color: #B1B1B1
+    color: #000000
 }
 
 .graph-panel .legend-item-color {
@@ -707,7 +718,9 @@ a:visited {
 
 .my_stack {
     clear: both;
-    margin-top: 30px
+    margin-top: 70px;
+    background-color: #FFFFFF;
+    border-radius: 7px;
 }
 
 .my_stack table {
@@ -755,13 +768,17 @@ a:visited {
 .my_stack table caption section .stack_ctrl input {
     width: 215px;
     border-radius: 0;
+    margin-top: 8px;
     margin-right: 15px;
     padding-left: 5px
 }
 
 .my_stack table caption section .stack_ctrl svg {
     margin-bottom: -7px;
-    cursor: pointer
+    margin-top: 10px;
+    cursor: pointer;
+    background-color: #DBDBDB;
+    border: 1px solid #DBDBDB
 }
 
 .coin_mini {
@@ -796,11 +813,11 @@ a:visited {
 }
 
 .coin_main .breadcrumb:hover {
-    color: #68CEDE
+    color: #3B5DD9
 }
 
 .coin_main .breadcrumb:hover svg {
-    fill: #68CEDE
+    fill: #3B5DD9
 }
 
 .coin_image {
@@ -848,7 +865,7 @@ a:visited {
 
 .coin_detail tr>td:nth-child(2) {
     text-align: left;
-    color: #68CEDE
+    color: #3B5DD9
 }
 
 .img_box {
@@ -878,12 +895,12 @@ strong {
 }
 
 input {
-    background-color: #4c4c4c;
+    background-color: #DBDBDB;
     width: 125px;
     height: 27px;
     padding: 0 10px;
     border: none;
-    color: white;
+    color: #000000;
     font-family: "monster_h";
     font-size: 12px;
     border-radius: 5px;
@@ -891,7 +908,7 @@ input {
 }
 
 input:focus {
-    outline: 2px solid #68CEDE
+    outline: 2px solid #3B5DD9
 }
 
 select {
@@ -915,7 +932,7 @@ select {
 }
 
 #save {
-    background: #397C86;
+    background: #3B5999;
     border: 1px solid #151515;
     color: white;
     text-decoration: none;
@@ -923,11 +940,11 @@ select {
 }
 
 #save:hover {
-    border: 1px solid #68CEDE
+    border: 1px solid #3B5998
 }
 
 #cancel {
-    background: #1C3A3F;
+    background: #578843;
     border: 1px solid #151515;
     color: white;
     text-decoration: none;
@@ -938,11 +955,11 @@ select {
 }
 
 #cancel:hover {
-    border: 1px solid #68CEDE
+    border: 1px solid #3B5998
 }
 
 #e-cancel {
-    background: #1C3A3F;
+    background: #578843;
     border: 1px solid #151515;
     color: white;
     text-decoration: none;
@@ -953,11 +970,11 @@ select {
 }
 
 #e-cancel:hover {
-    border: 1px solid #68CEDE
+    border: 1px solid #3B5998
 }
 
 #de-cancel {
-    background: #1C3A3F;
+    background: #578843;
     border: 1px solid #151515;
     color: white;
     text-decoration: none;
@@ -968,11 +985,11 @@ select {
 }
 
 #de-cancel:hover {
-    border: 1px solid #68CEDE
+    border: 1px solid #3B5998
 }
 
 #up-cancel {
-    background: #1C3A3F;
+    background: #578843;
     border: 1px solid #151515;
     color: white;
     text-decoration: none;
@@ -983,11 +1000,11 @@ select {
 }
 
 #up-cancel:hover {
-    border: 1px solid #68CEDE
+    border: 1px solid #3B5998
 }
 
 #edit-button {
-    background: #397C86;
+    background: #3B5999;
     border: 1px solid #151515;
     margin-bottom: 10px
 }
@@ -1143,7 +1160,7 @@ select {
 }
 
 #login-button {
-    background: #1C3A3F;
+    background: #578843;
     border: 1px solid #151515;
     cursor: pointer;
 }
@@ -1209,7 +1226,7 @@ select {
 }
 
 #register-button {
-    background: #1C3A3F;
+    background: #578843;
     border: 1px solid #151515;
     cursor: pointer;
 }
@@ -1314,6 +1331,11 @@ h1, h2, h3, h4, table {
 
 .market-list section {
     color: #000000;
+    background-color: #FFFFFF;
+    border: 8px solid #FFFFFF;
+    border-right: 3px solid #FFFFFF;
+    border-left: 3px solid #FFFFFF;
+    border-radius: 7px;
 }
 
 .market-status div {
