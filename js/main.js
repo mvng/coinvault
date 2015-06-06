@@ -6,8 +6,10 @@ function loadTopNav() {
         return window.location.href = "../index.html";
     }
 
-    // Applies the theme
-    setTheme(getTheme());
+    // Applies the theme if the browser allows it
+    if(typeof(Storage) !== "undefined") {
+        setTheme(getTheme());
+    }
 
     document.write("    <nav>");
     document.write("        <svg class=\"icon-spinner2\">");
@@ -31,8 +33,10 @@ function loadTopNav() {
 
 function loadTopNavPersist() {
 
-    // Applies the theme
-    setTheme(getTheme());
+    // Applies the theme if the browser allows it
+    if(typeof(Storage) !== "undefined") {
+        setTheme(getTheme());
+    }
 
     document.write("    <nav style='display: block; visibility: visible;'>");
     document.write("        <svg class=\"icon-spinner2\">");
@@ -1604,12 +1608,16 @@ function getDateRange() {
 }
 
 function changeTheme() {
-    var temp = document.getElementById("main");
+    if(typeof(Storage) !== "undefined") {
+        var temp = document.getElementById("main");
 
-    if (new String (temp.getAttribute("href")) == "../style/style.css") {
-        setTheme("../style/altstyle.css");
-    } else if (temp.getAttribute("href") == "../style/altstyle.css") {
-        setTheme("../style/style.css");
+        if (new String (temp.getAttribute("href")) == "../style/style.css") {
+            setTheme("../style/altstyle.css");
+        } else if (temp.getAttribute("href") == "../style/altstyle.css") {
+            setTheme("../style/style.css");
+        }
+    } else {
+        alert ("The browser is unable to change themes because it does not support local storage.");
     }
 }
 
