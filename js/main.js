@@ -959,6 +959,7 @@ function creat() {
           // Execute any logic that should take place if the save fails.
           // error is a Parse.Error with an error code and message.
           // location.reload();
+            trackJs.track('Failed to save in create' + error.message);
 
           console.log('Failed to save in creat  ' + error.message);
           //   window.location.href = "dashboard.html";
@@ -1067,6 +1068,8 @@ function addGraph(purchaseDate, value, metal) {
              function (error) {
                  location.reload();
                 console.log("Failed to Update Gold Graph " + error.message);
+                trackJs.track('Failed to Update Gold Graph' + error.message);
+
             
         });
     }
@@ -1085,6 +1088,8 @@ function addGraph(purchaseDate, value, metal) {
          },
             error: function (user, error) {
                 console.log("Failed to Update Silver Graph");
+                trackJs.track('Failed to Update Silver Graph' + error.message);
+
             }
         });
     }
@@ -1103,6 +1108,8 @@ function addGraph(purchaseDate, value, metal) {
          },
             error: function (user, error) {
                 console.log("Failed to Update Platinum Graph");
+                                trackJs.track('Failed to Update Platinum Graph' + error.message);
+
             }
         });
     }
@@ -1164,6 +1171,8 @@ var oldURL = document.referrer;
         },
         error: function (error) {
             console.log(error.message);
+             trackJs.track( error.message);
+
         }
     });
 
@@ -1248,6 +1257,8 @@ function deletGraph(purchaseDate, value, metal, dateRanges) {
              function (error) {
                  location.reload();
                 console.log("Failed to Update Gold Graph " + error.message);
+                              trackJs.track( error.message);
+
             
         });
     }
@@ -1269,6 +1280,8 @@ function deletGraph(purchaseDate, value, metal, dateRanges) {
          },
             error: function (user, error) {
                 console.log("Failed to Update Silver Graph");
+                             trackJs.track( error.message);
+
             }
         });
     }
@@ -1287,6 +1300,8 @@ function deletGraph(purchaseDate, value, metal, dateRanges) {
          },
             error: function (user, error) {
                 console.log("Failed to Update Platinum Graph");
+                             trackJs.track( error.message);
+
             }
         });
     }
@@ -1337,7 +1352,10 @@ function metalgu(value) {
     }
 
 
-    console.log("Error: G/U Selector tag not returning any value");
+    console.log("Error: G/U Selector tag not returning any value");            
+    trackJs.track( "Error: G/U Selector tag not returning any value");
+
+    
 
 };
 
@@ -1360,6 +1378,7 @@ function metaloz(value) {
 
 
     console.log("Error: OZ Selector tag not returning any value");
+    trackJs.track('Error: OZ Selector tag not returning any value');
 
 };
 
@@ -1383,15 +1402,7 @@ query.get("PlycS4oIZR", {
       var currentPlatinum = data.get("platinumValue");
   
       
-      
-     // console.log(currentGold[currentGold.length -1 ]);
-    //  console.log(currentSilver[currentSilver.length -1]);
-    //  console.log(currentPlatinum[currentPlatinum.length -1]);
 
-  //unitPriceField
-      
-      
-      //console.log(initialMetal);
       if (initialMetal == 1){
           document.getElementById("unitPriceField").defaultValue = currentGold[currentGold.length - 1];
        
@@ -1422,7 +1433,7 @@ query.get("PlycS4oIZR", {
           
        
            
-                    document.getElementById("numberweight").innerHTML = 28.3495;
+          document.getElementById("numberweight").innerHTML = 28.3495;
           document.getElementById("numbergu").innerHTML = 28.35;
           document.getElementById("numberozt").innerHTML = 31.10;
           document.getElementById("numberozt2").innerHTML = 31.10;
@@ -1437,6 +1448,7 @@ query.get("PlycS4oIZR", {
       
       
       console.log(error);
+      trackJs.track(error);
   }
 });
     
@@ -1497,6 +1509,7 @@ function runGoldJSON() {
                 error: function (date, error) {
 
                     console.log(error + "GOLD DATE LENGTH" + goldValue.length);
+                    trackJs.track(error);
 
                 }
             });
@@ -1620,6 +1633,7 @@ function runSilverJSON() {
                 error: function (date, error) {
 
                     console.log(error + silverValue);
+                    trackJs.track(error);
 
                 }
             });
@@ -1681,6 +1695,7 @@ function runPlatinumJSON() {
                 error: function (date, error) {
 
                     console.log(error + platinumValue);
+                    trackJs.track(error);
 
                 }
             });
@@ -1738,6 +1753,7 @@ function arrGenSilverBid(arr) {
         error: function (date, error) {
 
             console.log(error);
+            trackJs.track(error);
         }
     });
 
@@ -1774,9 +1790,7 @@ function arrGenPlatinumBid(arr) {
 
     var chg = change.toFixed(2);
 
-    //  document.getElementById("bid").innerHTML = bid;
-    //  document.getElementById("ask").innerHTML = ask;
-    //  document.getElementById("change").innerHTML = chg;
+
 
     console.log("Platinum Details " + bid + " " + ask + " " + chg);
 
@@ -1794,6 +1808,7 @@ function arrGenPlatinumBid(arr) {
         error: function (date, error) {
 
             console.log(error);
+            trackJs.track(error);
         }
     });
 
@@ -1877,6 +1892,7 @@ localStorage["dateRanges"] = JSON.stringify(dateStrings);
         },
         error: function (graphObject, error) {
             console.log("Date Range: error" + error);
+            trackJs.track(error);
         }
     });
     
@@ -1894,6 +1910,7 @@ function changeTheme() {
         }
     } else {
         alert ("The browser is unable to change themes because it does not support local storage.");
+        trackJs.track("theme change error");
     }
 }
 
