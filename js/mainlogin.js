@@ -113,13 +113,27 @@ function facebookLogin() {
     Parse.FacebookUtils.logIn(null, {
         success: function(user) {
             if (!user.existed()) {
-                alert("User signed up and logged in through Facebook!");
+                //alert("User signed up and logged in through Facebook!");
                 //window.location.assign("src/dashboard.html");
                 //window.location.assign("https://coinvault.herokuapp.com/src/dashboard.html");
                                 window.location.assign("./src/dashboard.html");
+                
+                
+                FB.api('/me',function(response){
+                    if(!response.error){
+                        user.set("displayName", response.name);
+                        user.save(null,{
+                            success: function(user){
+                            },
+                            error: function(user, error){
+                                console.log(error);
+                            }
+                        });
+                    }
+                }
 
             } else {
-                alert("User logged in through Facebook!");
+               // alert("User logged in through Facebook!");
                                 window.location.assign("./src/dashboard.html");
 
             }
