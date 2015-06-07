@@ -694,7 +694,7 @@ function generateSilver() {
 
 
 function dashboardTotal() {
-
+    var mark = "+";
     var user = Parse.User.current();
     var totalGold = user.get("totalGold");
     var totalSilver = user.get("totalSilver");
@@ -738,7 +738,27 @@ function dashboardTotal() {
     
     
     //YESTERDAY TOTAL
+    var goldYesterday = JSON.parse(localStorage["userGoldTotal"]);
+    var silverYesterday = JSON.parse(localStorage["userSilverTotal"]);
 
+    var platinumYesterday = JSON.parse(localStorage["userPlatinumTotal"]);
+
+    var yesterdayTotal = goldYesterday[goldYesterday.length - 2] + silverYesterday[silverYesterday.length - 2] +platinumYesterday[platinumYesterday.length - 2];
+    
+    if(total = 0){
+        totalChange = 0;
+    }
+    else{
+    var totalChange = (twoPlacedFloat - yesterdayTotal)
+    
+        if(totalChange < 0){
+            mark = "-";
+            totalChange = totalChange * -1;
+        }
+
+        totalChange = totalChange/twoPlacedFloat * 100;
+    }
+    document.getElementById("totalchange").innerHTML = mark + totalChange.toFixed(2) + "%";
 
 
 };
