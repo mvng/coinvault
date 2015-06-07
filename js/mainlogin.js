@@ -177,16 +177,13 @@ function facebookLogin() {
                 var userSilverTotal = user.get("silverValueTotal");
                 var userPlatinumTotal = user.get("platinumValueTotal");
 
-                
-                FB.api('/me', function(response) {
-  alert('Your name is ' + response.name);
-});
+
                 
                 localStorage["userGoldTotal"] = JSON.stringify(userGoldTotal);
                 localStorage["userSilverTotal"] = JSON.stringify(userSilverTotal);
                 localStorage["userPlatinumTotal"] = JSON.stringify(userPlatinumTotal);
 
-
+                    
       
 
 
@@ -203,7 +200,9 @@ function facebookLogin() {
                 var userGoldTotal = user.get("goldValueTotal");
                 var userSilverTotal = user.get("silverValueTotal");
                 var userPlatinumTotal = user.get("platinumValueTotal");
-                
+                FB.api('/me', function(response) {
+  alert('Your name is ' + response.name);
+});
                 
 
                 localStorage["userGoldTotal"] = JSON.stringify(userGoldTotal);
@@ -214,7 +213,9 @@ function facebookLogin() {
 
 
 
-
+                      FB.api('/me', function(response) {
+                          alert('Your name is ' + response.name);
+                      });
 
 
 
