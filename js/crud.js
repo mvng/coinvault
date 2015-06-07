@@ -741,8 +741,12 @@ function dashboardTotal() {
 
     var yesterdayTotal = goldYesterday[goldYesterday.length - 2] + silverYesterday[silverYesterday.length - 2] +platinumYesterday[platinumYesterday.length - 2];
     
-    if(total === 0){
+    
+    
+    if(total <= 0 || total === null){
         totalChange = 0;
+        
+
     }
     else{
     var totalChange = (twoPlacedFloat - yesterdayTotal);
@@ -755,7 +759,8 @@ function dashboardTotal() {
         totalChange = totalChange/twoPlacedFloat * 100;
         
             document.getElementById("totalchange").innerHTML = mark + totalChange.toFixed(2) + "%";
-
+            
+            //console.log(totalChange +  "   " + twoPlacedFloat);
     }
 
 

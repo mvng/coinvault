@@ -15,11 +15,10 @@ function register() {
     person.set("totalGold", 0);
     
         person.set("totalSilver", 0);   
-    person.set("totaPlatinum", 0);
     
     
     
-        person.set("totaPlatinum", 0);
+        person.set("totalPlatinum", 0);
 
     
     
@@ -133,8 +132,7 @@ function facebookLogin() {
                 user.set("totalGold", 0);
 
                 user.set("totalSilver", 0);
-                user.set("totaPlatinum", 0);
-                user.set("totaPlatinum", 0);
+                user.set("totalPlatinum", 0);
 
 
 
