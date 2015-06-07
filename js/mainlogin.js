@@ -78,6 +78,21 @@ function login() {
         //window.location.assign("src/dashboard.html");
         //window.location.assign("https://coinvault.herokuapp.com/src/dashboard.html");
           
+          
+              
+    var user = Parse.User.current();
+    
+          
+        console.log("setting user shit");
+     var userGoldTotal = user.get("goldValueTotal");
+    var userSilverTotal = user.get("silverValueTotal");
+    var userPlatinumTotal = user.get("platinumValueTotal");
+
+        
+    localStorage["userGoldTotal"] = JSON.stringify(userGoldTotal);
+    localStorage["userSilverTotal"] = JSON.stringify(userSilverTotal);
+    localStorage["userPlatinumTotal"] = JSON.stringify(userPlatinumTotal);
+
                           window.location.assign("./src/dashboard.html");
 
       },

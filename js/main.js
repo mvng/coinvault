@@ -1,5 +1,94 @@
 Parse.initialize("uuMKgtd7piSYYS1OIicbKekLesPHKKerHp21X3Zk", "J10xkBbtYfn4EPD9TQzp0BNJI7sQ2UXmJqY0Dkgu");
 
+storage();
+
+
+
+            //dateRanges = JSON.parse(localStorage["dateRanges"]);
+
+    
+
+    /*
+            userGoldTotal = JSON.parse(localStorage["userGoldTotal"]);
+            userSilverTotal = JSON.parse(localStorage["userSilverTotal"]);
+            userPlatinumTotal = JSON.parse(localStorage["userPlatinumTotal"]);
+
+*/
+
+
+            tempGoldValue = JSON.parse(localStorage["tempGoldValue"]);
+            tempSilverValue = JSON.parse(localStorage["tempSilverValue"]);
+            tempPlatinumValue = JSON.parse(localStorage["tempPlatinumValue"]);
+
+
+
+
+
+
+var optionsNoAnimation = {
+    animation: false,
+    ///Boolean - Whether grid lines are shown across the chart
+    scaleShowGridLines: true,
+
+    //String - Colour of the grid lines
+    scaleGridLineColor: "rgba(104, 206, 222, 0.1)",
+
+    //Number - Width of the grid lines
+    scaleGridLineWidth: 1,
+
+    //Boolean - Whether to show horizontal lines (except X axis)
+    scaleShowHorizontalLines: true,
+
+    //Boolean - Whether to show vertical lines (except Y axis)
+    scaleShowVerticalLines: true,
+
+    //Boolean - Whether the line is curved between points
+    bezierCurve: true,
+
+    //Number - Tension of the bezier curve between points
+    bezierCurveTension: 0.4,
+
+    //Boolean - Whether to show a dot for each point
+    pointDot: true,
+
+    //Number - Radius of each point dot in pixels
+    pointDotRadius: 4,
+
+    //Number - Pixel width of point dot stroke
+    pointDotStrokeWidth: 1,
+
+    //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
+    pointHitDetectionRadius: 20,
+
+    //Boolean - Whether to show a stroke for datasets
+    datasetStroke: true,
+
+    //Number - Pixel width of dataset stroke
+    datasetStrokeWidth: 2,
+
+    //Boolean - Whether to fill the dataset with a colour
+    datasetFill: true,
+
+    //String - A legend template
+    legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>",
+
+    responsive: true,
+
+    maintainAspectRatio: false,
+
+}
+
+addEvent(window, 'load', storage);
+//addEvent(window, 'load', function(){ some_methods_2() });
+
+function addEvent(element, eventName, fn) {
+    if (element.addEventListener)
+        element.addEventListener(eventName, fn, false);
+    else if (element.attachEvent)
+        element.attachEvent('on' + eventName, fn);
+}
+
+
 function loadTopNav() {
 
     if (Parse.User.current() == null) {
@@ -120,13 +209,61 @@ function loadFooter() {
 }
 
 
+    
+function storage() {
 
-var drawGraph;
+getDateRange();
+    var data = Parse.Object.extend("graph");
+    var query = new Parse.Query(data);
+
+
+
+    var graph = Parse.Object.extend("graph");
+    var query = new Parse.Query(graph);
+    query.get("PlycS4oIZR", {
+        success: function (query) {
+
+            var tempGoldValue = query.get("goldValue");
+            var tempSilverValue = query.get("silverValue");
+            var tempPlatinumValue = query.get("platinumValue");
+
+
+            localStorage["tempGoldValue"] = JSON.stringify(tempGoldValue);
+            localStorage["tempSilverValue"] = JSON.stringify(tempSilverValue);
+            localStorage["tempPlatinumValue"] = JSON.stringify(tempPlatinumValue);
+            
+            
+
+
+        },
+        error: function (object, error) {
+            // The object was not retrieved successfully.
+            // error is a Parse.Error with an error code and message.
+        }
+    });
+
+
+
+}
+
+var delay = ( function() {
+    var timer = 0;
+    return function(callback, ms) {
+        clearTimeout (timer);
+        timer = setTimeout(callback, ms);
+    };
+})();
+    
 
  // executes when complete page is fully loaded, including all frames, objects and images
 $(window).load(function () {
 
 
+    
+    
+    
+    
+   
      var path = window.location.pathname;
     var page = path.split("/").pop();
     
@@ -139,22 +276,21 @@ drawGraph = function (){
     var user = Parse.User.current();
 
     if (Parse.User.current() == null) {
-     //   userGoldTotal = user.get("goldValueTotal");
 
-//        testingDate = Parse.User.current().get("goldDateTotal");
-       // window.location.href ="index.html";
+        
+        
+        
 
     }
 
-    var data = Parse.Object.extend("graph");
-    var query = new Parse.Query(data);
 
 
-    query.get("PlycS4oIZR", {
-        success: function (query) {
+
 
 
             //temproraily cache entrys on parse for faster queries in drawing the graph! hell yes =)
+           
+            /*
             var tempGoldDate = query.get("goldDate");
 
             var tempSilverDate = query.get("goldDate");
@@ -166,12 +302,15 @@ drawGraph = function (){
             var tempPlatinumValue = query.get("platinumValue");
             
             
+            if(user.get("goldValueTotal" == null)){} else{
             var userGoldTotal = user.get("goldValueTotal");
              
             var userSilverTotal = user.get("silverValueTotal");
-          var userPlatinumTotal = user.get("platinumValueTotal");
+            var userPlatinumTotal = user.get("platinumValueTotal");
+            
+            */
 
-
+            /*
             gb = query.get("gbid");
             ga = query.get("gask");
             gc = query.get("gchange").toFixed(2);
@@ -188,10 +327,17 @@ drawGraph = function (){
             pc = query.get("pchange").toFixed(2);
 
          //   dateRanges = query.get("dateRange");
+         
+         
+         */
             dateRanges = JSON.parse(localStorage["dateRanges"]);
+            userGoldTotal = JSON.parse(localStorage["userGoldTotal"]);
+            userSilverTotal = JSON.parse(localStorage["userSilverTotal"]);
+            userPlatinumTotal = JSON.parse(localStorage["userPlatinumTotal"]);
+            tempGoldValue = JSON.parse(localStorage["tempGoldValue"]);
+            tempSilverValue = JSON.parse(localStorage["tempSilverValue"]);
+            tempPlatinumValue = JSON.parse(localStorage["tempPlatinumValue"]);
 
-            
-            
 
 
 
@@ -338,6 +484,13 @@ drawGraph = function (){
                 var coinChart = new Chart(ctx).Line(data, options);
                 coinChart.update();
 
+                setInterval(function () {
+                    //storage();
+   // updateData(data);
+            var ctx = document.getElementById("total-chart").getContext("2d");
+                var coinChart = new Chart(ctx).Line(data, optionsNoAnimation);
+                coinChart.update();        console.log("upodated :) ");
+}, 2000);
 
 
             }
@@ -437,8 +590,18 @@ drawGraph = function (){
                 var coinChart = new Chart(ctx).Line(data, options);
                 coinChart.update();
 
-
-
+                
+                /*
+               setInterval(function () {
+                   //storage();
+                   // updateData(data);
+                   var ctx = document.getElementById("total-chart").getContext("2d");
+                   var coinChart = new Chart(ctx).Line(data, optionsNoAnimation);
+                   coinChart.update();
+                   console.log("Updated :) ");
+               }, 2000);
+               
+               */
 
             }
 
@@ -631,25 +794,20 @@ drawGraph = function (){
                 var coinChart = new Chart(ctx).Line(data, options);
                 coinChart.update();
 
+setInterval(function () {
+   // updateData(data);
+    coinChart.update();
+        console.log("upodated :) ");
+}, 2000);
 
 
 
-            }
-
-
-            //   drawGoldGraph();
-        },
-        error: function (query, error) {
-
-        }
-    });
     
 }
 
+}
 
 drawGraph();
-
-
     /* * * * * * * * * * * * * *
      *                         *
      *        GENERAL          *
@@ -718,35 +876,6 @@ drawGraph();
 
 });
 
-function storage(){
-    
-    var user = Parse.User.current();
-    
-    
-     var data = Parse.Object.extend("graph");
-    var query = new Parse.Query(data);
-
-
-            //temproraily cache entrys on parse for faster queries in drawing the graph! hell yes =)
-          //  var tempGoldDate = query.get("goldDate");
-
-        //    var tempSilverDate = query.get("goldDate");
-        //    var tempPlatinumDate = query.get("goldDate");
-
-            var userGoldTotal = user.get("goldValueTotal");
-             
-            var userSilverTotal = user.get("silverValueTotal");
-          var userPlatinumTotal = user.get("platinumValueTotal");
-            
-            
-            
-            localStorage.userGoldValueTotal = userGoldTotal;
-            localStorage.userSilverTotal = userSilverTotal;
-            localStorage.userPlatinumTotal = userPlatinumTotal;
-
-    
-    
-}
 
 function creat() {
         event.preventDefault();
@@ -861,24 +990,26 @@ function addGraph(purchaseDate, value, metal) {
     var user = Parse.User.current();
     var userMetalTotal = [];
     
-    
+
     
     
     //getting array slots.
     
     if(metal == "Gold"){
-        userMetalTotal = user.get("goldValueTotal");
+        userMetalTotal = JSON.parse(localStorage["userGoldTotal"]);
         
     }
     if(metal == "Silver"){
-        userMetalTotal = user.get("silverValueTotal");
+        userMetalTotal = JSON.parse(localStorage["userSilverTotal"]);
        // console.log("What am i here? " + userMetalTotal);
     }  
     if(metal == "Platinum"){
-        userMetalTotal = user.get("platinumValueTotal");
+        userMetalTotal = JSON.parse(localStorage["userPlatinumTotal"]);
     }
     
     
+    
+    //console.log("PRE" + userMetalTotal);
 
     var i = 0;
    
@@ -886,11 +1017,11 @@ function addGraph(purchaseDate, value, metal) {
     for (i = 0; i < dateRanges.length; i++) {
 
 
-      //  console.log(i + " " + purchaseDate + " " + dateRanges[i] + " ");
+       // console.log(i + " " + purchaseDate + " " + dateRanges[i] + " ");
 
         if (purchaseDate === dateRanges[i]) {
 
-            //TODO
+      //      console.log("MATCHED BITCHES");
             
             // When date is entered before the oldest date on graph set the date entered
             
@@ -900,12 +1031,25 @@ function addGraph(purchaseDate, value, metal) {
             
             userMetalTotal[k] = Number(userMetalTotal[k]) + Number(value);
             }
-            alert("Updating Graph ... ");
         }
         
     }
     
+       // console.log("AFTER " + userMetalTotal);
+
+    
     if(metal == "Gold"){
+        
+        //SAVING TO HTML5 STORAGE.
+        
+        
+        
+                    localStorage["userGoldTotal"] = JSON.stringify(userMetalTotal);
+
+        
+   
+        
+        
         user.set("goldValueTotal", userMetalTotal);
         
         
@@ -927,11 +1071,12 @@ function addGraph(purchaseDate, value, metal) {
 
     
         if(metal == "Silver"){
+            
+                        localStorage["userSilverTotal"] = JSON.stringify(userMetalTotal);
+
         user.set("silverValueTotal", userMetalTotal);
         user.save(null, {
          success: function (user) {
-             
-
              
            //  console.log("Im saving this..." + userMetalTotal);
          },
@@ -942,6 +1087,9 @@ function addGraph(purchaseDate, value, metal) {
     }
     
     if(metal == "Platinum"){
+        
+                            localStorage["userPlatinumTotal"] = JSON.stringify(userMetalTotal);
+
         user.set("platinumValueTotal", userMetalTotal);
         user.save(null, {
          success: function (user) {
@@ -964,7 +1112,7 @@ function addGraph(purchaseDate, value, metal) {
 function deleteItem() {
 
     event.preventDefault();
-$
+
     //Delete needs ot be able to handle redirect to the previous page,
     //currently just goes back to dashboard.
     "use strict";
@@ -1026,7 +1174,7 @@ function deletGraph(purchaseDate, value, metal, dateRanges) {
     
     //FOR SOME REASON ADDING A DATE BEFORE ERQUIRES EXTRA REFRESH CYCLE.
      if(purchaseDate <= dateRanges[0]){
-        console.log("early date");
+       // console.log("early date");
         purchaseDate = dateRanges[0];
     }
     
@@ -1042,16 +1190,17 @@ function deletGraph(purchaseDate, value, metal, dateRanges) {
     //getting array slots.
     
     if(metal == "Gold"){
-        userMetalTotal = user.get("goldValueTotal");
+        userMetalTotal = JSON.parse(localStorage["userGoldTotal"]);
         
     }
     if(metal == "Silver"){
-        userMetalTotal = user.get("silverValueTotal");
+        userMetalTotal = JSON.parse(localStorage["userSilverTotal"]);
        // console.log("What am i here? " + userMetalTotal);
     }  
     if(metal == "Platinum"){
-        userMetalTotal = user.get("platinumValueTotal");
+        userMetalTotal = JSON.parse(localStorage["userPlatinumTotal"]);
     }
+    
     
     
 
@@ -1075,7 +1224,7 @@ function deletGraph(purchaseDate, value, metal, dateRanges) {
             
             userMetalTotal[k] = Number(userMetalTotal[k]) - Number(value);
             }
-            alert("Updating Graph ... ");
+          //  alert("Updating Graph ... ");
         }
         
     }
@@ -1083,7 +1232,8 @@ function deletGraph(purchaseDate, value, metal, dateRanges) {
     if(metal == "Gold"){
         user.set("goldValueTotal", userMetalTotal);
         
-        
+                            localStorage["userGoldTotal"] = JSON.stringify(userMetalTotal);
+
         console.log("attempting to save TotalGoldValue" + userMetalTotal);
         console.log(user);
         user.save(null).then(
@@ -1102,6 +1252,10 @@ function deletGraph(purchaseDate, value, metal, dateRanges) {
 
     
         if(metal == "Silver"){
+            
+            
+        localStorage["userSilverTotal"] = JSON.stringify(userMetalTotal);
+
         user.set("silverValueTotal", userMetalTotal);
         user.save(null, {
          success: function (user) {
@@ -1117,6 +1271,9 @@ function deletGraph(purchaseDate, value, metal, dateRanges) {
     }
     
     if(metal == "Platinum"){
+        
+                                                localStorage["userPlatinumTotal"] = JSON.stringify(userMetalTotal);
+
         user.set("platinumValueTotal", userMetalTotal);
         user.save(null, {
          success: function (user) {
@@ -1244,6 +1401,11 @@ function runGoldJSON() {
                 goldValue[c] = arr.data[i][1];
                 c++;
             }
+            
+            
+            
+           // localStorage["tempGoldValue"] = JSON.stringify(goldValue);
+
 
             var golddates = Parse.Object.extend("graph");
 
@@ -1372,6 +1534,9 @@ function runSilverJSON() {
             date.set("objectId", "PlycS4oIZR");
             date.set("silverValue", silverValue);
 
+              
+                         // localStorage["tempSilverValue"] = JSON.stringify(silverValue);
+
             date.save(null, {
                 success: function (date) {
 
@@ -1430,6 +1595,10 @@ function runPlatinumJSON() {
 
             date.set("objectId", "PlycS4oIZR");
             date.set("platinumValue", platinumValue);
+
+            
+            
+                        //localStorage["tempPlatinumValue"] = JSON.stringify(platinumValue);
 
             date.save(null, {
                 success: function (date) {
