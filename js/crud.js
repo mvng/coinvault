@@ -290,7 +290,7 @@ function generateGold() {
 
 
     console.log(Parse.User.current());
-    if (Parse.User.current() == null) {
+    if (Parse.User.current() === null) {
 
         return window.location.href = "../index.html";
 
@@ -315,7 +315,7 @@ function generateGold() {
 
             for (var i = 0; i < results.length; i++) {
                 temp = results[i].attributes;
-                id = results[i].id
+                id = results[i].id;
                 data[i] = {
                     "objectId": id,
                     "type": temp.type,
@@ -396,7 +396,7 @@ function generateGold() {
                     );
 
                 //Fixing the number value
-                var twoPlacedFloat = parseFloat(totalValue).toFixed(2)
+                var twoPlacedFloat = parseFloat(totalValue).toFixed(2);
 
                 //Assigning it to the HTML page
                 mydiv.innerHTML = "$" + numberWithCommas(twoPlacedFloat);
@@ -409,7 +409,7 @@ function generateGold() {
         }
     });
 
-};
+}
 
 
 function generatePlatinum() {
@@ -420,7 +420,7 @@ function generatePlatinum() {
 
 
     console.log(Parse.User.current());
-    if (Parse.User.current() == null) {
+    if (Parse.User.current() === null) {
 
         return window.location.href = "../index.html";
     }
@@ -448,7 +448,7 @@ function generatePlatinum() {
 
             for (var i = 0; i < results.length; i++) {
                 temp = results[i].attributes;
-                id = results[i].id
+                id = results[i].id;
                 data[i] = {
                     "objectId": id,
                     "type": temp.type,
@@ -532,7 +532,7 @@ function generatePlatinum() {
                     );
 
                 //Fixing the number value
-                var twoPlacedFloat = parseFloat(totalValue).toFixed(2)
+                var twoPlacedFloat = parseFloat(totalValue).toFixed(2);
 
                 //Assigning it to the HTML page
                 mydiv.innerHTML = "$" + numberWithCommas(twoPlacedFloat);
@@ -547,7 +547,7 @@ function generatePlatinum() {
 
 
 
-};
+}
 
 
 function generateSilver() {
@@ -558,7 +558,7 @@ function generateSilver() {
 
 
     console.log(Parse.User.current());
-    if (Parse.User.current() == null) {
+    if (Parse.User.current() === null) {
 
         return window.location.href = "../index.html";
 
@@ -587,7 +587,7 @@ function generateSilver() {
 
             for (var i = 0; i < results.length; i++) {
                 temp = results[i].attributes;
-                id = results[i].id
+                id = results[i].id;
                 data[i] = {
                     "objectId": id,
                     "type": temp.type,
@@ -671,7 +671,7 @@ function generateSilver() {
                     );
 
                 //Fixing the number value
-                var twoPlacedFloat = parseFloat(totalValue).toFixed(2)
+                var twoPlacedFloat = parseFloat(totalValue).toFixed(2);
 
                 //Assigning it to the HTML page
                 mydiv.innerHTML = "$" + numberWithCommas(twoPlacedFloat);
@@ -686,7 +686,7 @@ function generateSilver() {
 
 
 
-};
+}
 
 
 function dashboardTotal() {
@@ -697,9 +697,9 @@ function dashboardTotal() {
     var totalPlatinum = user.get("totalPlatinum");
 
 
-    if (totalGold == null) totalGold = 0;
-    if (totalSilver == null) totalSilver = 0;
-    if (totalPlatinum == null) totalPlatinum = 0;
+    if (totalGold === null) totalGold = 0;
+    if (totalSilver === null) totalSilver = 0;
+    if (totalPlatinum === null) totalPlatinum = 0;
 
 
 
@@ -727,7 +727,7 @@ function dashboardTotal() {
 
 
     //Makes it 2 decimal places
-    var twoPlacedFloat = parseFloat(total).toFixed(2)
+    var twoPlacedFloat = parseFloat(total).toFixed(2);
 
     //assigns the value on dashboard.
     mydiv.innerHTML = "$" + numberWithCommas(twoPlacedFloat);
@@ -741,11 +741,11 @@ function dashboardTotal() {
 
     var yesterdayTotal = goldYesterday[goldYesterday.length - 2] + silverYesterday[silverYesterday.length - 2] +platinumYesterday[platinumYesterday.length - 2];
     
-    if(total = 0){
+    if(total === 0){
         totalChange = 0;
     }
     else{
-    var totalChange = (twoPlacedFloat - yesterdayTotal)
+    var totalChange = (twoPlacedFloat - yesterdayTotal);
     
         if(totalChange < 0){
             mark = "-";
@@ -753,11 +753,13 @@ function dashboardTotal() {
         }
 
         totalChange = totalChange/twoPlacedFloat * 100;
+        
+            document.getElementById("totalchange").innerHTML = mark + totalChange.toFixed(2) + "%";
+
     }
-    document.getElementById("totalchange").innerHTML = mark + totalChange.toFixed(2) + "%";
 
 
-};
+}
 
 function update() {
 
@@ -783,4 +785,4 @@ function update() {
     document.getElementById("totalField").innerHTML = sum;
 
 
-};
+}

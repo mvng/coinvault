@@ -74,7 +74,7 @@ function register() {
     }});
     
      event.preventDefault(); 
-};
+}
 
 // Attempts to login User
 function login() {
@@ -108,7 +108,7 @@ function login() {
         alert(error.message);
       }
     });
-};
+}
 
 // Logs current user out
 function logout() {
@@ -238,21 +238,21 @@ function signupButton() {
     hideHome();
     hideLogin();
     showSignup();
-};
+}
 
 // Performs the animations in the home screen when login is pressed
 function loginButton() {
     hideHome();
     hideSignup();
     showLogin();
-};
+}
 
 // Performs the animations in the home screen when home is pressed
 function homeButton() {
     hideLogin();
     hideSignup();
     showHome();
-};
+}
 
 // Hides the elements associated with the home page
 function hideHome() {
@@ -270,7 +270,7 @@ function hideHome() {
                 opacity: 0
             }, {
                 duration: 0
-            })
+            });
     }, 0);
 
     setTimeout(function () {
@@ -279,7 +279,7 @@ function hideHome() {
                 opacity: 0
             }, {
                 duration: 0
-            })
+            });
     }, 0);
 }
 
@@ -300,7 +300,7 @@ function showHome() {
                 opacity: 0
             }, {
                 duration: 0
-            })
+            });
     }, 0);
 
     setTimeout(function () {
@@ -309,7 +309,7 @@ function showHome() {
                 opacity: 0
             }, {
                 duration: 0
-            })
+            });
     }, 0);
 
     setTimeout(function () {
@@ -318,7 +318,7 @@ function showHome() {
                 opacity: 1
             }, {
                 duration: 350
-            })
+            });
     }, 0);
 
     setTimeout(function () {
@@ -327,7 +327,7 @@ function showHome() {
                 opacity: 1
             }, {
                 duration: 350
-            })
+            });
     }, 0);
 }
 
@@ -365,7 +365,7 @@ function hideSignup(){
             }, {
                 duration: 0,
                 display: "block"
-            })
+            });
     }, 0);
 
     setTimeout(function () {
@@ -375,7 +375,7 @@ function hideSignup(){
             }, {
                 duration: 0,
                 display: "block"
-            })
+            });
     }, 0);
 
     setTimeout(function () {
@@ -385,7 +385,7 @@ function hideSignup(){
             }, {
                 duration: 0,
                 display: "block"
-            })
+            });
     }, 0);
 
     setTimeout(function () {
@@ -395,7 +395,7 @@ function hideSignup(){
             }, {
                 duration: 0,
                 display: "block"
-            })
+            });
     }, 0);
 
     setTimeout(function () {
@@ -405,7 +405,7 @@ function hideSignup(){
             }, {
                 duration: 0,
                 display: "block"
-            })
+            });
     }, 0);
 
     setTimeout(function () {
@@ -415,7 +415,7 @@ function hideSignup(){
             }, {
                 duration: 0,
                 display: "block"
-            })
+            });
     }, 0);
 
     setTimeout(function () {
@@ -425,7 +425,7 @@ function hideSignup(){
             }, {
                 duration: 0,
                 display: "block"
-            })
+            });
     }, 0);
 
     setTimeout(function () {
@@ -435,7 +435,7 @@ function hideSignup(){
             }, {
                 duration: 0,
                 display: "block"
-            })
+            });
     }, 0);
 
     setTimeout(function () {
@@ -445,7 +445,7 @@ function hideSignup(){
             }, {
                 duration: 0,
                 display: "block"
-            })
+            });
     }, 0);
 
     setTimeout(function () {
@@ -455,7 +455,7 @@ function hideSignup(){
             }, {
                 duration: 0,
                 display: "block"
-            })
+            });
     }, 0);
 
 }
@@ -494,7 +494,7 @@ function showSignup(){
             }, {
                 duration: 350,
                 display: "block"
-            })
+            });
     }, 0);
 
     setTimeout(function () {
@@ -504,7 +504,7 @@ function showSignup(){
             }, {
                 duration: 350,
                 display: "block"
-            })
+            });
     }, 0);
 
     setTimeout(function () {
@@ -514,7 +514,7 @@ function showSignup(){
             }, {
                 duration: 350,
                 display: "block"
-            })
+            });
     }, 0);
 
     setTimeout(function () {
@@ -524,7 +524,7 @@ function showSignup(){
             }, {
                 duration: 350,
                 display: "block"
-            })
+            });
     }, 0);
 
     setTimeout(function () {
@@ -534,7 +534,7 @@ function showSignup(){
             }, {
                 duration: 350,
                 display: "block"
-            })
+            });
     }, 0);
 
     setTimeout(function () {
@@ -544,7 +544,7 @@ function showSignup(){
             }, {
                 duration: 350,
                 display: "block"
-            })
+            });
     }, 0);
 
     setTimeout(function () {
@@ -554,7 +554,7 @@ function showSignup(){
             }, {
                 duration: 350,
                 display: "block"
-            })
+            });
     }, 0);
 
 
@@ -565,7 +565,7 @@ function showSignup(){
             }, {
                 duration: 350,
                 display: "block"
-            })
+            });
     }, 0);
 
     setTimeout(function () {
@@ -575,7 +575,7 @@ function showSignup(){
             }, {
                 duration: 350,
                 display: "block"
-            })
+            });
     }, 0);
 
     setTimeout(function () {
@@ -585,7 +585,7 @@ function showSignup(){
             }, {
                 duration: 350,
                 display: "block"
-            })
+            });
     }, 0);
 
     setTimeout(function () {
@@ -595,7 +595,7 @@ function showSignup(){
             }, {
                 duration: 350,
                 display: "block"
-            })
+            });
     }, 0);
 }
 
@@ -603,8 +603,8 @@ function showSignup(){
 function hideLogin() {
     // Disables login buttons
     $("#loginButton").attr("onclick", "return false;");
-    $("#facebook-login").attr("onclick", "return false;")
-    $("#google-login").attr("onclick", "return false;")
+    $("#facebook-login").attr("onclick", "return false;");
+    $("#google-login").attr("onclick", "return false;");
 
     // Moves items around
     $("#login-user").css("top", "0%");
@@ -630,7 +630,7 @@ function hideLogin() {
             }, {
                 duration: 0,
                 display: "block"
-            })
+            });
     }, 0);
 
     setTimeout(function () {
@@ -640,7 +640,7 @@ function hideLogin() {
             }, {
                 duration: 0,
                 display: "block"
-            })
+            });
     }, 0);
 
     setTimeout(function () {
@@ -650,7 +650,7 @@ function hideLogin() {
             }, {
                 duration: 0,
                 display: "block"
-            })
+            });
     }, 0);
 
     setTimeout(function () {
@@ -660,7 +660,7 @@ function hideLogin() {
             }, {
                 duration: 0,
                 display: "block"
-            })
+            });
     }, 0);
 
     setTimeout(function () {
@@ -670,7 +670,7 @@ function hideLogin() {
             }, {
                 duration: 0,
                 display: "block"
-            })
+            });
     }, 0);
 
     setTimeout(function () {
@@ -680,7 +680,7 @@ function hideLogin() {
             }, {
                 duration: 0,
                 display: "block"
-            })
+            });
     }, 0);
 
     setTimeout(function () {
@@ -690,7 +690,7 @@ function hideLogin() {
             }, {
                 duration: 0,
                 display: "block"
-            })
+            });
     }, 0);
 
     setTimeout(function () {
@@ -700,7 +700,7 @@ function hideLogin() {
             }, {
                 duration: 0,
                 display: "block"
-            })
+            });
     }, 0);
 
     setTimeout(function () {
@@ -710,7 +710,7 @@ function hideLogin() {
             }, {
                 duration: 0,
                 display: "block"
-            })
+            });
     }, 0);
 }
 
@@ -745,7 +745,7 @@ function showLogin() {
             }, {
                 duration: 350,
                 display: "block"
-            })
+            });
     }, 0);
 
     setTimeout(function () {
@@ -755,7 +755,7 @@ function showLogin() {
             }, {
                 duration: 350,
                 display: "block"
-            })
+            });
     }, 0);
 
     setTimeout(function () {
@@ -765,7 +765,7 @@ function showLogin() {
             }, {
                 duration: 350,
                 display: "block"
-            })
+            });
     }, 0);
 
     setTimeout(function () {
@@ -775,7 +775,7 @@ function showLogin() {
             }, {
                 duration: 350,
                 display: "block"
-            })
+            });
     }, 0);
 
     setTimeout(function () {
@@ -785,7 +785,7 @@ function showLogin() {
             }, {
                 duration: 350,
                 display: "block"
-            })
+            });
     }, 0);
 
     setTimeout(function () {
@@ -795,7 +795,7 @@ function showLogin() {
             }, {
                 duration: 350,
                 display: "block"
-            })
+            });
     }, 0);
 
     setTimeout(function () {
@@ -805,7 +805,7 @@ function showLogin() {
             }, {
                 duration: 350,
                 display: "block"
-            })
+            });
     }, 0);
 
     setTimeout(function () {
@@ -815,7 +815,7 @@ function showLogin() {
             }, {
                 duration: 350,
                 display: "block"
-            })
+            });
     }, 0);
 
     setTimeout(function () {
@@ -825,6 +825,6 @@ function showLogin() {
             }, {
                 duration: 350,
                 display: "block"
-            })
+            });
     }, 0);
 }

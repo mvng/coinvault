@@ -61,7 +61,7 @@ var optionsNoAnimation = {
 
     maintainAspectRatio: false,
 
-}
+};
 
 
 function addEvent(element, eventName, fn) {
@@ -74,7 +74,7 @@ function addEvent(element, eventName, fn) {
 
 function loadTopNav() {
 
-    if (Parse.User.current() == null) {
+    if (Parse.User.current() === null) {
         return window.location.href = "../index.html";
     }
     var user = Parse.User.current().get("username");
@@ -140,7 +140,7 @@ function loadSideNav(selected) {
     
     document.write("    <aside>");
     document.write("        <a href=\"dashboard.html\">");
-    if (selected == 0)
+    if (selected === 0)
         document.write("        <figure class='nav-selected'>");
     else
         document.write("        <figure>");
