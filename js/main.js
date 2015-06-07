@@ -1998,7 +1998,7 @@ function overallDaily() {
             overall = 0;
         }
 
-        document.getElementById("overall").innerHTML = mark + (overall.toFixed(2) * 100) + "%";
+        document.getElementById("overall").innerHTML = mark + (parseFloat(overall).toFixed(2) * 100) + "%";
 
     }
 
