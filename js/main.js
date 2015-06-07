@@ -332,6 +332,7 @@ query.get("PlycS4oIZR", {
 $(window).load(function () {
 
         setBidAskChange();
+    overallDaily();
 
     
    
@@ -974,12 +975,14 @@ function creat() {
 function addGraph(purchaseDate, value, metal) {
 
 
+    dateRanges = JSON.parse(localStorage["dateRanges"]);
+
     if (purchaseDate == "")
         return;
     
     //FOR SOME REASON ADDING A DATE BEFORE ERQUIRES EXTRA REFRESH CYCLE.
      if(purchaseDate <= dateRanges[0]){
-        console.log("early date");
+        //console.log("early date");
         purchaseDate = dateRanges[0];
     }
     
@@ -1875,4 +1878,77 @@ function setTheme(href) {
         localStorage.setItem("css", href);
         theme.href = href;
     }
+}
+
+function arraySum(array){
+ 
+    var count = 0;
+    
+    
+    for (var i=array.length; i--;) {
+     count+=array[i];
+   }
+    
+    return count;
+    
+}
+
+function overallDaily() {
+
+    var path = window.location.pathname;
+    var page = path.split("/").pop();
+
+    var user = Parse.User.current();
+
+    var userGoldTotal = user.get("goldValueTotal");
+    var userSilverTotal = user.get("silverValueTotal");
+    var userPlatinumTotal = user.get("platinumValueTotal");
+    var mark;
+    var overall;
+    var metalType;
+
+
+    if (page == "goldoverview.html") {
+
+        metalType = userGoldTotal;
+
+
+
+    }
+    if (page == "silveroverview.html") {
+
+        metalType = userSilverTotal;
+    }
+
+    if (page == "platinumoverview.html") {
+
+
+        metalType = userPlatinumTotal;
+    }
+
+    var daily =
+        (metalType[metalType.length - 1] - metalType[metalType.length - 2]) / metalType[metalType.length - 1];
+    
+    if(metalType[metalType.length-1] = 0){
+        daily = 0;
+    }
+    
+
+
+    if (metalType[metalType.length - 1] >= metalType[metalType.length - 2])
+        mark = "+";
+    else
+        mark = "-";
+
+    document.getElementById("daily").innerHTML = mark + (daily.toFixed(2) * 100) + "%";
+
+    
+    overall = metalType[metalType.length - 1] / arraySum(metalType);
+    if(arraySum(metalType) == 0)
+        overall = 0;
+
+    document.getElementById("overall").innerHTML = mark + (overall.toFixed(2) * 100) + "%";
+
+
+
 }
