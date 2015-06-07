@@ -253,66 +253,24 @@ var delay = ( function() {
         timer = setTimeout(callback, ms);
     };
 })();
-    
-
- // executes when complete page is fully loaded, including all frames, objects and images
-$(window).load(function () {
 
 
-        
+
+function setBidAskChange() {
+
     
-    
-    
-   
-     var path = window.location.pathname;
-    var page = path.split("/").pop();
-    
- 
-    
-drawGraph = function (){
-    var gb, ga, gc;
+        var gb, ga, gc;
     var sb, sa, sc;
     var pb, pa, pc;
 
-
-    var user = Parse.User.current();
-
-    if (Parse.User.current() == null) {
-
-        
-        
-        
-
-    }
-
-
-
-
-
-
-            //temproraily cache entrys on parse for faster queries in drawing the graph! hell yes =)
-           
-            /*
-            var tempGoldDate = query.get("goldDate");
-
-            var tempSilverDate = query.get("goldDate");
-            var tempPlatinumDate = query.get("goldDate");
-
-
-            var tempGoldValue = query.get("goldValue");
-            var tempSilverValue = query.get("silverValue");
-            var tempPlatinumValue = query.get("platinumValue");
-            
-            
-            if(user.get("goldValueTotal" == null)){} else{
-            var userGoldTotal = user.get("goldValueTotal");
-             
-            var userSilverTotal = user.get("silverValueTotal");
-            var userPlatinumTotal = user.get("platinumValueTotal");
-            
-            */
-
-            /*
+    
+var data = Parse.Object.extend("graph");
+var query = new Parse.Query(data);
+query.get("PlycS4oIZR", {
+  success: function(query) {
+      
+      
+      
             gb = query.get("gbid");
             ga = query.get("gask");
             gc = query.get("gchange").toFixed(2);
@@ -328,10 +286,102 @@ drawGraph = function (){
             pa = query.get("pask");
             pc = query.get("pchange").toFixed(2);
 
-         //   dateRanges = query.get("dateRange");
-         
-         
-         */
+    
+    var path = window.location.pathname;
+    var page = path.split("/").pop();
+
+
+    if (page == "dashboard.html") {
+        console.log("dashboard.html");
+        document.getElementById("gbid").innerHTML = gb;
+        document.getElementById("gask").innerHTML = ga;
+        document.getElementById("gchange").innerHTML = gc;
+
+        document.getElementById("sbid").innerHTML = sb;
+        document.getElementById("sask").innerHTML = sa;
+        document.getElementById("schange").innerHTML = sc;
+
+
+        document.getElementById("pbid").innerHTML = pb;
+        document.getElementById("pask").innerHTML = pa;
+        document.getElementById("pchange").innerHTML = pc;
+
+
+        
+    }
+    if (page == "goldoverview.html") {
+
+
+        document.getElementById("bid").innerHTML = gb;
+        document.getElementById("ask").innerHTML = ga;
+        document.getElementById("change").innerHTML = gc;
+
+
+    }
+
+    if (page == "silveroverview.html") {
+
+
+
+
+        document.getElementById("bid").innerHTML = sb;
+        document.getElementById("ask").innerHTML = sa;
+        document.getElementById("change").innerHTML = sc;
+
+    }
+
+
+    if (page == "platinumoverview.html") {
+
+        document.getElementById("bid").innerHTML = pb;
+        document.getElementById("ask").innerHTML = pa;
+        document.getElementById("change").innerHTML = pc;
+
+
+
+
+    }
+
+
+  },
+    error: function(error){
+        
+     console.log("SetBidAskChange" + error );
+        
+    }
+});
+
+}
+    
+
+ // executes when complete page is fully loaded, including all frames, objects and images
+$(window).load(function () {
+
+        setBidAskChange();
+
+    
+   
+     var path = window.location.pathname;
+    var page = path.split("/").pop();
+    
+ 
+    
+drawGraph = function (){
+
+
+    var user = Parse.User.current();
+
+    if (Parse.User.current() == null) {
+
+        
+        
+        
+
+    }
+
+
+    
+
             dateRanges = JSON.parse(localStorage["dateRanges"]);
             userGoldTotal = JSON.parse(localStorage["userGoldTotal"]);
             userSilverTotal = JSON.parse(localStorage["userSilverTotal"]);
@@ -349,19 +399,6 @@ drawGraph = function (){
             var pointHighlightStroke = "#fff";
 
             if (page == "dashboard.html") {
-
-                document.getElementById("gbid").innerHTML = gb;
-                document.getElementById("gask").innerHTML = ga;
-                document.getElementById("gchange").innerHTML = gc;
-
-                document.getElementById("sbid").innerHTML = sb;
-                document.getElementById("sask").innerHTML = sa;
-                document.getElementById("schange").innerHTML = sc;
-
-
-                document.getElementById("pbid").innerHTML = pb;
-                document.getElementById("pask").innerHTML = pa;
-                document.getElementById("pchange").innerHTML = pc;
 
 
                 var data = {
@@ -500,12 +537,7 @@ drawGraph = function (){
 
                 
                 
-              //  console.log("Graphing... " + userGoldTotal);
-
-                document.getElementById("bid").innerHTML = gb;
-                document.getElementById("ask").innerHTML = ga;
-                document.getElementById("change").innerHTML = gc;
-
+               
                 var data = {
                     labels: dateRanges,
                     datasets: [
@@ -609,12 +641,6 @@ drawGraph = function (){
 
             if (page == "silveroverview.html") {
 
-
-                
-                console.log(userSilverTotal);
-                document.getElementById("bid").innerHTML = sb;
-                document.getElementById("ask").innerHTML = sa;
-                document.getElementById("change").innerHTML = sc;
                 
                 var data = {
                     labels: dateRanges,
@@ -706,10 +732,7 @@ drawGraph = function (){
 
             if (page == "platinumoverview.html") {
 
-                document.getElementById("bid").innerHTML = pb;
-                document.getElementById("ask").innerHTML = pa;
-                document.getElementById("change").innerHTML = pc;
-            
+                
                 var data = {
                     labels: dateRanges,
                     datasets: [
@@ -1450,8 +1473,6 @@ function runGoldJSON() {
             }
             
             
-            
-           // localStorage["tempGoldValue"] = JSON.stringify(goldValue);
 
 
             var golddates = Parse.Object.extend("graph");
