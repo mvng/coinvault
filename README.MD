@@ -1,4 +1,17 @@
-Team Pentapod CSE 134B
+About Coin Vault Production:
+Current Version: 1.0
+Live: coinvault.herokuapp.com
+
+Data Feed: Quandl
+
+Build: to prepare the files, run gulp in project directory.
+Deploy: Heroku with a php build config deploys a 
+        production version to coinvault.herokuapp.com
+
+Analytics: Keen
+Error Tracking: Track.js
+
+
 **************************************************************************************************************
 TASKS AND PROBLEMS WE RAN INTO
 
