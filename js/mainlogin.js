@@ -126,60 +126,7 @@ function facebookLogin() {
                 //window.location.assign("https://coinvault.herokuapp.com/src/dashboard.html");
                                 window.location.assign("./src/dashboard.html");
                 
-                var person = Parse.User.current();
-                
-            person.set("totalGold", 0);
-    
-        person.set("totalSilver", 0);   
-    person.set("totaPlatinum", 0);
-    
-    
-    
-        person.set("totaPlatinum", 0);
-
-    
-    
-    var now = new Date();
-    var year = now.getFullYear();
-    var month = now.getMonth();
-    var day = now.getDate();
-    
-    
-    month = parseInt(month + 1);
-    if(month < 10) month = "0" + month;
-     if(day < 10) day = "0" + day;
-    
-    
-    var date = year + "-" + month + "-" + day;
-    
-    var blankDate = [];
-    
-    
-    blankDate.push(date);
-    
-    blank = ["0","0","0","0","0","0","0","0","0","0",
-             "0","0","0","0","0","0","0","0","0","0",
-             "0","0","0","0","0","0","0","0","0","0","0"];
-    
-    
-    person.set("goldDateTotal", blankDate);
-    person.set("goldValueTotal", blank);
-    person.set("silverValueTotal", blank);
-   person.set("platinumValueTotal", blank);
-
-          
-     var userGoldTotal = person.get("goldValueTotal");
-    var userSilverTotal = person.get("silverValueTotal");
-    var userPlatinumTotal = person.get("platinumValueTotal");
-
-        
-    localStorage["userGoldTotal"] = JSON.stringify(userGoldTotal);
-    localStorage["userSilverTotal"] = JSON.stringify(userSilverTotal);
-    localStorage["userPlatinumTotal"] = JSON.stringify(userPlatinumTotal);
-
-
-
-                
+                alert("LOGIN v1.0");
                 
                 
                 
@@ -199,18 +146,8 @@ function facebookLogin() {
                 }
                        );
             } else {
-                var person = Parse.User.current();
 
-                     var userGoldTotal = person.get("goldValueTotal");
-    var userSilverTotal = person.get("silverValueTotal");
-    var userPlatinumTotal = person.get("platinumValueTotal");
-
-        
-    localStorage["userGoldTotal"] = JSON.stringify(userGoldTotal);
-    localStorage["userSilverTotal"] = JSON.stringify(userSilverTotal);
-    localStorage["userPlatinumTotal"] = JSON.stringify(userPlatinumTotal);
-
-
+                    alert("LOGIN v2.0");
                 
                 window.location.assign("./src/dashboard.html");
 
