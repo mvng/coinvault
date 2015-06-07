@@ -1756,7 +1756,6 @@ function arrGenSilverBid(arr) {
             trackJs.track(error);
         }
     });
-
 };
 
 function runPlatinumJSONBid() {
