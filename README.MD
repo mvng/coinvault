@@ -12,6 +12,18 @@ Analytics: Keen
 Error Tracking: Track.js
 
 
+Phonegap: Mobile packaging was attempting but Phonegap constantly rejected our valid certificates for iOS 
+        even though valid credientials were generated.
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
 **************************************************************************************************************
 TASKS AND PROBLEMS WE RAN INTO
 
