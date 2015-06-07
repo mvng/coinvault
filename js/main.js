@@ -325,6 +325,7 @@ query.get("PlycS4oIZR", {
         
      console.log("SetBidAskChange" + error );
         
+        
     }
 });
 
@@ -1997,7 +1998,7 @@ function overallDaily() {
             overall = 0;
         }
 
-        document.getElementById("overall").innerHTML = mark + (parseFloat(overall).toFixed(2) * 100) + "%";
+        document.getElementById("overall").innerHTML = mark + parseFloat((overall) * 100).toFixed(1) + "%";
 
     }
 
