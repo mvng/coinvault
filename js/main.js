@@ -259,13 +259,15 @@ var delay = ( function() {
 $(window).load(function () {
 
 
-    
+        
     
     
     
    
      var path = window.location.pathname;
     var page = path.split("/").pop();
+    
+ 
     
 drawGraph = function (){
     var gb, ga, gc;
@@ -1367,6 +1369,51 @@ function run() {
     document.getElementById("metalDetails").innerHTML = metal(initialMetal);
     document.getElementById("gu").innerHTML = metalgu(initialMetal);
     document.getElementById("oz").innerHTML = metaloz(initialMetal);
+    
+    
+var data = Parse.Object.extend("graph");
+var query = new Parse.Query(data);
+query.get("PlycS4oIZR", {
+  success: function(data) {
+
+  
+    var currentGold = data.get("goldValue");
+      var currentSilver = data.get("silverValue");
+      var currentPlatinum = data.get("platinumValue");
+  
+      
+      
+     // console.log(currentGold[currentGold.length -1 ]);
+    //  console.log(currentSilver[currentSilver.length -1]);
+    //  console.log(currentPlatinum[currentPlatinum.length -1]);
+
+  //unitPriceField
+      
+      
+      //console.log(initialMetal);
+      if (initialMetal == 1){
+          document.getElementById("unitPriceField").defaultValue = currentGold[currentGold.length - 1];
+       
+          console.log("attempting to set gold prices");
+      }
+      if (initialMetal == 2)
+          document.getElementById("unitPriceField").defaultValue = currentSilver[currentSilver.length - 1];
+
+      if (initialMetal == 3)
+          document.getElementById("unitPriceField").defaultValue = currentPlatinum[currentPlatinum.length - 1];
+
+      },
+  error: function(object, error) {
+ 
+      
+      
+      console.log(error);
+  }
+});
+    
+    
+    
+    
 };
 
 

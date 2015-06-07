@@ -139,7 +139,7 @@ function getEdit(objectId) {
     //window.location.href = 'myitem.html';
     //  event.preventDefault();
 
-    console.log("ayy lmao " + objectId);
+    //console.log("ayy lmao " + objectId);
 
     //  console.log("ayy lmao");
 
@@ -742,9 +742,7 @@ function dashboardTotal() {
 
 function update() {
 
-    
-    
-    
+  //  console.log("updating....");
     
     
 

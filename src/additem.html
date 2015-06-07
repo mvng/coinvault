@@ -75,7 +75,7 @@
                             <td>Metal</td>
                             <td>
                                 <select id="metalField" onchange="run()">
-                                        <option value="1">Gold </option>
+                                        <option selected value="1">Gold </option>
                                         <option value="2"> Silver</option>
                                         <option value="3"> Platinum</option>
                                 </select>
@@ -115,7 +115,7 @@
                         <tr>
                             <td>Unit Price</td>
                             <td>
-                                <input id="unitPriceField" value="1250.60" onchange ="update()"/>
+                                <input id="unitPriceField" type = "number" value="1250.60" onchange ="update()"/>
                             </td>
                         </tr>
                         <tr>
@@ -171,6 +171,7 @@
         </section>
     </section>
     <script type="text/javascript">
+window.onload = run();
         loadFooter();
     </script>
 </body>
