@@ -126,9 +126,9 @@ function facebookLogin() {
                 //window.location.assign("https://coinvault.herokuapp.com/src/dashboard.html");
                                 window.location.assign("./src/dashboard.html");
                 
+                var person = Parse.User.current();
                 
-                
-                   person.set("totalGold", 0);
+            person.set("totalGold", 0);
     
         person.set("totalSilver", 0);   
     person.set("totaPlatinum", 0);
@@ -199,8 +199,20 @@ function facebookLogin() {
                 }
                        );
             } else {
-               // alert("User logged in through Facebook!");
-                                window.location.assign("./src/dashboard.html");
+                var person = Parse.User.current();
+
+                     var userGoldTotal = person.get("goldValueTotal");
+    var userSilverTotal = person.get("silverValueTotal");
+    var userPlatinumTotal = person.get("platinumValueTotal");
+
+        
+    localStorage["userGoldTotal"] = JSON.stringify(userGoldTotal);
+    localStorage["userSilverTotal"] = JSON.stringify(userSilverTotal);
+    localStorage["userPlatinumTotal"] = JSON.stringify(userPlatinumTotal);
+
+
+                
+                window.location.assign("./src/dashboard.html");
 
             }
         },
