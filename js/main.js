@@ -2,26 +2,11 @@ Parse.initialize("uuMKgtd7piSYYS1OIicbKekLesPHKKerHp21X3Zk", "J10xkBbtYfn4EPD9TQ
 
 storage();
 
+addEvent(window, 'load', storage);
 
-
-            //dateRanges = JSON.parse(localStorage["dateRanges"]);
-
-    
-
-    /*
-            userGoldTotal = JSON.parse(localStorage["userGoldTotal"]);
-            userSilverTotal = JSON.parse(localStorage["userSilverTotal"]);
-            userPlatinumTotal = JSON.parse(localStorage["userPlatinumTotal"]);
-
-*/
-
-
-            tempGoldValue = JSON.parse(localStorage["tempGoldValue"]);
-            tempSilverValue = JSON.parse(localStorage["tempSilverValue"]);
-            tempPlatinumValue = JSON.parse(localStorage["tempPlatinumValue"]);
-
-
-
+tempGoldValue = JSON.parse(localStorage["tempGoldValue"]);
+tempSilverValue = JSON.parse(localStorage["tempSilverValue"]);
+tempPlatinumValue = JSON.parse(localStorage["tempPlatinumValue"]);
 
 
 
@@ -78,8 +63,6 @@ var optionsNoAnimation = {
 
 }
 
-addEvent(window, 'load', storage);
-//addEvent(window, 'load', function(){ some_methods_2() });
 
 function addEvent(element, eventName, fn) {
     if (element.addEventListener)
@@ -246,20 +229,11 @@ getDateRange();
 
 }
 
-var delay = ( function() {
-    var timer = 0;
-    return function(callback, ms) {
-        clearTimeout (timer);
-        timer = setTimeout(callback, ms);
-    };
-})();
-
-
 
 function setBidAskChange() {
 
     
-        var gb, ga, gc;
+    var gb, ga, gc;
     var sb, sa, sc;
     var pb, pa, pc;
 
@@ -1438,7 +1412,6 @@ query.get("PlycS4oIZR", {
     
     
 };
-
 
 
 //Method Assigns Gold Date with Gold Value --
