@@ -77,7 +77,9 @@ function loadTopNav() {
     if (Parse.User.current() == null) {
         return window.location.href = "../index.html";
     }
+    var user = Parse.User.current().get("username");
 
+    
     // Applies the theme if the browser allows it
     if(typeof(Storage) !== "undefined") {
         setTheme(getTheme());
@@ -91,7 +93,7 @@ function loadTopNav() {
     document.write("            <\/symbol>");
     document.write("            <use xlink:href=\"#icon-spinner2\"><\/use>");
     document.write("        <\/svg>");
-    document.write("        <a href=\"dashboard.html\">COIN VAULT<\/a>");
+    document.write("        <a href=\"dashboard.html\">" + user + "<\/a>");
     document.write("                <a onclick=\"logout()\" id=\"logout\">Logout<\/a>");
     document.write("        <svg class=\"icon-cog\">");
     document.write("            <symbol id=\"icon-cog\" viewBox=\"0 0 1024 1024\"onclick=\"changeTheme()\">");
@@ -104,6 +106,7 @@ function loadTopNav() {
 }
 
 function loadTopNavPersist() {
+    var user = Parse.User.current().get("username");
 
     // Applies the theme if the browser allows it
     if(typeof(Storage) !== "undefined") {
@@ -118,7 +121,7 @@ function loadTopNavPersist() {
     document.write("            <\/symbol>");
     document.write("            <use xlink:href=\"#icon-spinner2\"><\/use>");
     document.write("        <\/svg>");
-    document.write("        <a href=\"dashboard.html\">COIN VAULT<\/a>");
+    document.write("        <a href=\"dashboard.html\">" + user + "<\/a>");
     document.write("				<a onclick=\"logout()\" id=\"logout\">Logout<\/a>");
     document.write("        <svg class=\"icon-cog\">");
     document.write("            <symbol id=\"icon-cog\" viewBox=\"0 0 1024 1024\"onclick=\"changeTheme()\">");
