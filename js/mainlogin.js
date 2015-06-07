@@ -119,125 +119,120 @@ function logout() {
 // Login through Facebook account
 function facebookLogin() {
     Parse.FacebookUtils.logIn(null, {
-        success: function(user) {
+        success: function (user) {
             if (!user.existed()) {
                 //alert("User signed up and logged in through Facebook!");
                 //window.location.assign("src/dashboard.html");
                 //window.location.assign("https://coinvault.herokuapp.com/src/dashboard.html");
-                                window.location.assign("./src/dashboard.html");
+                window.location.assign("./src/dashboard.html");
                 //THIS IS A NEW USER
                 //alert("LOGIN v1.0");
-                
-                
-                
+
+
+
                 user.set("totalGold", 0);
-    
-        user.set("totalSilver", 0);   
-    user.set("totaPlatinum", 0);
-    
-    
-    
-        user.set("totaPlatinum", 0);
 
-    
-    
-    var now = new Date();
-    var year = now.getFullYear();
-    var month = now.getMonth();
-    var day = now.getDate();
-    
-    
-    month = parseInt(month + 1);
-    if(month < 10) month = "0" + month;
-     if(day < 10) day = "0" + day;
-    
-    
-    var date = year + "-" + month + "-" + day;
-    
-    var blankDate = [];
-    
-    
-    blankDate.push(date);
-    
-    blank = ["0","0","0","0","0","0","0","0","0","0",
-             "0","0","0","0","0","0","0","0","0","0",
-             "0","0","0","0","0","0","0","0","0","0","0"];
-    
-    
-    user.set("goldDateTotal", blankDate);
-    user.set("goldValueTotal", blank);
-    user.set("silverValueTotal", blank);
-   user.set("platinumValueTotal", blank);
+                user.set("totalSilver", 0);
+                user.set("totaPlatinum", 0);
+                user.set("totaPlatinum", 0);
 
-          
-     var userGoldTotal = user.get("goldValueTotal");
-    var userSilverTotal = user.get("silverValueTotal");
-    var userPlatinumTotal = user.get("platinumValueTotal");
 
-        
-    localStorage["userGoldTotal"] = JSON.stringify(userGoldTotal);
-    localStorage["userSilverTotal"] = JSON.stringify(userSilverTotal);
-    localStorage["userPlatinumTotal"] = JSON.stringify(userPlatinumTotal);
 
-                
-                
-                
-                
-                
+                var now = new Date();
+                var year = now.getFullYear();
+                var month = now.getMonth();
+                var day = now.getDate();
 
-                
-                
-                
 
+                month = parseInt(month + 1);
+                if (month < 10) month = "0" + month;
+                if (day < 10) day = "0" + day;
+
+
+                var date = year + "-" + month + "-" + day;
+
+                var blankDate = [];
+
+
+                blankDate.push(date);
+
+                blank = ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0",
+             "0", "0", "0", "0", "0", "0", "0", "0", "0", "0",
+             "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"];
+
+
+                user.set("goldDateTotal", blankDate);
+                user.set("goldValueTotal", blank);
+                user.set("silverValueTotal", blank);
+                user.set("platinumValueTotal", blank);
                 
-                FB.api('/me',function(response){
-                    if(!response.error){
+                user.save(null,{
+                    success:function(user){},
+                    error:function(user,error){
+                        console.log(error);
+                    }
+                });
+
+                var userGoldTotal = user.get("goldValueTotal");
+                var userSilverTotal = user.get("silverValueTotal");
+                var userPlatinumTotal = user.get("platinumValueTotal");
+
+
+                localStorage["userGoldTotal"] = JSON.stringify(userGoldTotal);
+                localStorage["userSilverTotal"] = JSON.stringify(userSilverTotal);
+                localStorage["userPlatinumTotal"] = JSON.stringify(userPlatinumTotal);
+
+
+      
+
+
+
+
+
+
+                FB.api('/me', function (response) {
+                    if (!response.error) {
                         user.set("username", response.name);
-                        alert(response.name);
-                        user.save(null,{
-                            success: function(user){
-                            },
-                            error: function(user, error){
+                        user.save(null, {
+                            success: function (user) {
+                            console.log("success facebook name");},
+                            error: function (user, error) {
                                 console.log(error);
                             }
                         });
                     }
-                }
-                       );
+                });
             } else {
 
-                    alert("LOGIN v2.0");
+                alert("LOGIN v2.0");
                 //THIS IS A FB USER RETURNING TO LOGIN
-                
-                     var userGoldTotal = user.get("goldValueTotal");
-    var userSilverTotal = user.get("silverValueTotal");
-    var userPlatinumTotal = user.get("platinumValueTotal");
 
-        
-    localStorage["userGoldTotal"] = JSON.stringify(userGoldTotal);
-    localStorage["userSilverTotal"] = JSON.stringify(userSilverTotal);
-    localStorage["userPlatinumTotal"] = JSON.stringify(userPlatinumTotal);
+                var userGoldTotal = user.get("goldValueTotal");
+                var userSilverTotal = user.get("silverValueTotal");
+                var userPlatinumTotal = user.get("platinumValueTotal");
 
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
+
+                localStorage["userGoldTotal"] = JSON.stringify(userGoldTotal);
+                localStorage["userSilverTotal"] = JSON.stringify(userSilverTotal);
+                localStorage["userPlatinumTotal"] = JSON.stringify(userPlatinumTotal);
+
+
+
+
+
+
+
+
+
                 window.location.assign("./src/dashboard.html");
 
             }
         },
-        error: function(user, error) {
+        error: function (user, error) {
             alert("User cancelled the Facebook login or did not fully authorize.");
         }
     });
 }
-
 // Login through Google account
 function googleLogin() {
     alert("I currently do nothing ):");
