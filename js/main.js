@@ -187,8 +187,11 @@ drawGraph = function (){
             pa = query.get("pask");
             pc = query.get("pchange").toFixed(2);
 
-            dateRanges = query.get("dateRange");
+         //   dateRanges = query.get("dateRange");
+            dateRanges = JSON.parse(localStorage["dateRanges"]);
 
+            
+            
 
 
 
@@ -715,7 +718,35 @@ drawGraph();
 
 });
 
+function storage(){
+    
+    var user = Parse.User.current();
+    
+    
+     var data = Parse.Object.extend("graph");
+    var query = new Parse.Query(data);
 
+
+            //temproraily cache entrys on parse for faster queries in drawing the graph! hell yes =)
+          //  var tempGoldDate = query.get("goldDate");
+
+        //    var tempSilverDate = query.get("goldDate");
+        //    var tempPlatinumDate = query.get("goldDate");
+
+            var userGoldTotal = user.get("goldValueTotal");
+             
+            var userSilverTotal = user.get("silverValueTotal");
+          var userPlatinumTotal = user.get("platinumValueTotal");
+            
+            
+            
+            localStorage.userGoldValueTotal = userGoldTotal;
+            localStorage.userSilverTotal = userSilverTotal;
+            localStorage.userPlatinumTotal = userPlatinumTotal;
+
+    
+    
+}
 
 function creat() {
         event.preventDefault();
@@ -1585,8 +1616,11 @@ function getDateRange() {
     }
 
 
-    console.log(dateStrings);
+    //console.log(dateStrings);
+localStorage["dateRanges"] = JSON.stringify(dateStrings);
 
+    
+    
     var graph = Parse.Object.extend("graph");
 
     var graphObject = new graph();
