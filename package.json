@@ -2,9 +2,9 @@
   "name": "coinvault",
   "version": "1.0.0",
   "description": "Coin Vault is a web application that tracks your coin stacks and displays them on a chart along with up to date market prices.",
-  "main": "index.html",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -28,9 +28,4 @@
     "gulp-sass": "^2.0.1",
     "gulp-uglify": "^1.2.0"
   }
-}
-
-"scripts": {
-  "start": "node app",
-  "postinstall": "gulp default"
 }
