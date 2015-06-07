@@ -131,7 +131,7 @@ function facebookLogin() {
                         });
                     }
                 }
-
+                       );
             } else {
                // alert("User logged in through Facebook!");
                                 window.location.assign("./src/dashboard.html");
