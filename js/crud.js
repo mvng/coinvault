@@ -205,10 +205,6 @@ function updateItem() {
     var total = document.getElementById("totalField").textContent;
 
 
-
-
-
-
     var weightg;
     var weightau;
     if (metal.options[metal.selectedIndex].text == "Gold") {

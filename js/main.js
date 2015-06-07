@@ -1396,12 +1396,40 @@ query.get("PlycS4oIZR", {
           document.getElementById("unitPriceField").defaultValue = currentGold[currentGold.length - 1];
        
           console.log("attempting to set gold prices");
-      }
-      if (initialMetal == 2)
-          document.getElementById("unitPriceField").defaultValue = currentSilver[currentSilver.length - 1];
+          
+          document.getElementById("numberweight").innerHTML = 1.244;
+          document.getElementById("numbergu").innerHTML = 0.917;
+          document.getElementById("numberozt").innerHTML = 0.0400;
+          document.getElementById("numberozt2").innerHTML = 0.0400;
 
-      if (initialMetal == 3)
+          
+      }
+      if (initialMetal == 2){
+          document.getElementById("unitPriceField").defaultValue = currentSilver[currentSilver.length - 1];
+      
+      
+          
+          
+                    document.getElementById("numberweight").innerHTML = 2.48;
+          document.getElementById("numbergu").innerHTML = 2.260;
+          document.getElementById("numberozt").innerHTML =  31.10;
+          document.getElementById("numberozt2").innerHTML =  31.10;
+
+
+      }
+      if (initialMetal == 3){
           document.getElementById("unitPriceField").defaultValue = currentPlatinum[currentPlatinum.length - 1];
+          
+       
+           
+                    document.getElementById("numberweight").innerHTML = 28.3495;
+          document.getElementById("numbergu").innerHTML = 28.35;
+          document.getElementById("numberozt").innerHTML = 31.10;
+          document.getElementById("numberozt2").innerHTML = 31.10;
+
+
+          
+      }
 
       },
   error: function(object, error) {
@@ -1899,58 +1927,61 @@ function overallDaily() {
     var path = window.location.pathname;
     var page = path.split("/").pop();
 
-    var user = Parse.User.current();
 
-    var userGoldTotal = user.get("goldValueTotal");
-    var userSilverTotal = user.get("silverValueTotal");
-    var userPlatinumTotal = user.get("platinumValueTotal");
-    var mark;
-    var overall;
-    var metalType;
 
-    if(page == "goldoverview.html" || page == "silveroverview.html" || page == "platinumoverview.html"){
-    if (page == "goldoverview.html") {
-
-        metalType = userGoldTotal;
+    if (page == "goldoverview.html" || page == "silveroverview.html" || page == "platinumoverview.html") {
 
 
 
-    }
-    if (page == "silveroverview.html") {
+        var user = Parse.User.current();
 
-        metalType = userSilverTotal;
-    }
+        var userGoldTotal = user.get("goldValueTotal");
+        var userSilverTotal = user.get("silverValueTotal");
+        var userPlatinumTotal = user.get("platinumValueTotal");
+        var mark;
+        var overall;
+        var metalType;
+        
+        if (page == "goldoverview.html") {
 
-    if (page == "platinumoverview.html") {
+            metalType = userGoldTotal;
+
+        }
+        if (page == "silveroverview.html") {
+
+            metalType = userSilverTotal;
+        }
+
+        if (page == "platinumoverview.html") {
 
 
-        metalType = userPlatinumTotal;
-    }
-
-    
-    console.log(metalType[metalType.length - 1]);
-    var daily =
-        (metalType[metalType.length - 1] - metalType[metalType.length - 2]) / metalType[metalType.length - 1];
-    
-    if(metalType[metalType.length-1] <= 0){
-        daily = 0;
-    }
-    
+            metalType = userPlatinumTotal;
+        }
 
 
-    if (metalType[metalType.length - 1] >= metalType[metalType.length - 2])
-        mark = "+";
-    else
-        mark = "-";
+        console.log(metalType[metalType.length - 1]);
+        var daily =
+            (metalType[metalType.length - 1] - metalType[metalType.length - 2]) / metalType[metalType.length - 1];
 
-    document.getElementById("daily").innerHTML = mark + (daily.toFixed(2) * 100) + "%";
+        if (metalType[metalType.length - 1] <= 0) {
+            daily = 0;
+        }
 
-    overall = metalType[metalType.length - 1] / arraySum(metalType);
-    if(arraySum(metalType) <=0){
-        overall = 0;
-    }
 
-    document.getElementById("overall").innerHTML = mark + (overall.toFixed(2) * 100) + "%";
+
+        if (metalType[metalType.length - 1] >= metalType[metalType.length - 2])
+            mark = "+";
+        else
+            mark = "-";
+
+        document.getElementById("daily").innerHTML = mark + (daily.toFixed(2) * 100) + "%";
+
+        overall = metalType[metalType.length - 1] / arraySum(metalType);
+        if (arraySum(metalType) <= 0) {
+            overall = 0;
+        }
+
+        document.getElementById("overall").innerHTML = mark + (overall.toFixed(2) * 100) + "%";
 
     }
 

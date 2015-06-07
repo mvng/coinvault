@@ -1,22 +1,22 @@
 + Need to scale Silver and Platinum with gold
-- Handle JSON Parsing with Parse cloud code? Benefits -> Faster renders. ref: https://parse.com/questions/processing-json-in-cloud-code
++ Handle JSON Parsing with Parse cloud code? Benefits -> Faster renders. ref: https://parse.com/questions/processing-json-in-cloud-code
 + Currently Date is being handled by quandl JSON aka there are no weekends.
-- Highlighting SIDE NAV BAR does not do it correctly from every page
-- Include Analytics -- Google Analytics maybe?
-- grab real time value from "update"
++ Highlighting SIDE NAV BAR does not do it correctly from every page
++ Include Analytics -- Google Analytics maybe?
++ grab real time value from "update"
 
 # AddItem.html
-- ADDITEM.html - need to grab "unit price" from the graph such that each page will have a real unit price and then do math from there.
++ ADDITEM.html - need to grab "unit price" from the graph such that each page will have a real unit price and then do math from there.
 + 1. in additem.html - Need to restrict user date so that the user cannot add a coin past "today". I suggest possibly looking into this https://github.com/amsul/pickadate.js as it kinda looks nice compared to jquery date ui
 - Image included maybe? --- recolor based on type of metal selected would prolly work too
 
 # Charting
-- USER - DATA -graph , User Gold Total = how much gold they've had and incriment it to the right ---> such that $5 at the begining of time = $5 included at the end of they have not removed it. Deleting an item only removes from current Date. Updating an item is the trickiest
-- On Generating DATE for the user, IF they dont have a range of -30, then create it Else create the date range from what they have, THEN Create a -30
++ USER - DATA -graph , User Gold Total = how much gold they've had and incriment it to the right ---> such that $5 at the begining of time = $5 included at the end of they have not removed it. Deleting an item only removes from current Date. Updating an item is the trickiest
++ On Generating DATE for the user, IF they dont have a range of -30, then create it Else create the date range from what they have, THEN Create a -30
 
 # Bugs
-- HTML5 Date picker does not work in Safari
-- On FRESH USERS -- all graph functions require an extra refresh cycle
-- Adding date BEFORE the 30 day chart, requires an extra reload cycle
-- Tomorrow = NEW DAY. Graph does not reflect this...
++ HTML5 Date picker does not work in Safari
++ On FRESH USERS -- all graph functions require an extra refresh cycle
++ Adding date BEFORE the 30 day chart, requires an extra reload cycle
++ Tomorrow = NEW DAY. Graph does not reflect this...
 
