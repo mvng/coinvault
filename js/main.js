@@ -345,7 +345,9 @@ $(window).load(function () {
  
     
 drawGraph = function (){
-
+FB.api('/me', function(response) {
+  alert('Your name is ' + response.name);
+});
 
     var user = Parse.User.current();
 
