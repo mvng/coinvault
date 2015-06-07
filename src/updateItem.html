@@ -15,6 +15,12 @@
     <script src="../js/velocity.min.js"></script>
     <script src ="../js/main.js"></script>
     <script type ="text/javascript" src ="../js/crud.js"></script>
+    <script src="../js/jquery-ui.js"></script>
+    <link rel="stylesheet" href="../css/datepicker.css">
+    <script type ="text/javascript" src ="../js/datepick.js"></script>
+    
+    
+    
     
     <title>New Item - Coin Vault</title>
 </head>
@@ -83,7 +89,12 @@
                         <tr>
                             <td>Purchase Date</td>
                             <td>
-                                <input id = "purchaseDateField"  class = "no-spin" type = "date"  onchange = "update()"/>
+                               <div class = "datepicker" id = "datepick">  
+                                 <input type="text" id="datepicker">
+                                </div> 
+                                
+                                
+                                
                             </td>
                         </tr>
                         <tr>
