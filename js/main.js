@@ -1907,7 +1907,7 @@ function overallDaily() {
     var overall;
     var metalType;
 
-
+    if(page == "goldoverview.html" || page == "silveroverview.html" || page == "platinumoverview.html"){
     if (page == "goldoverview.html") {
 
         metalType = userGoldTotal;
@@ -1926,10 +1926,12 @@ function overallDaily() {
         metalType = userPlatinumTotal;
     }
 
+    
+    console.log(metalType[metalType.length - 1]);
     var daily =
         (metalType[metalType.length - 1] - metalType[metalType.length - 2]) / metalType[metalType.length - 1];
     
-    if(metalType[metalType.length-1] = 0){
+    if(metalType[metalType.length-1] <= 0){
         daily = 0;
     }
     
@@ -1942,13 +1944,13 @@ function overallDaily() {
 
     document.getElementById("daily").innerHTML = mark + (daily.toFixed(2) * 100) + "%";
 
-    
     overall = metalType[metalType.length - 1] / arraySum(metalType);
-    if(arraySum(metalType) == 0)
+    if(arraySum(metalType) <=0){
         overall = 0;
+    }
 
     document.getElementById("overall").innerHTML = mark + (overall.toFixed(2) * 100) + "%";
 
-
+    }
 
 }

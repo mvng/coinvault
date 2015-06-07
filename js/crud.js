@@ -735,6 +735,9 @@ function dashboardTotal() {
 
     //assigns the value on dashboard.
     mydiv.innerHTML = "$" + numberWithCommas(twoPlacedFloat);
+    
+    
+    //YESTERDAY TOTAL
 
 
 
