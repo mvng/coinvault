@@ -1,0 +1,19 @@
+{
+  "name": "coinvault",
+  "version": "1.0.0",
+  "description": "Coin Vault is a web application that tracks your coin stacks and displays them on a chart along with up to date Market Prices",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mvng/coinvault.git"
+  },
+  "author": "Matthew Nguyen, Dustin Park, Jason Dizon, Jacob Terrado, Anthony Hem",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mvng/coinvault/issues"
+  },
+  "homepage": "https://github.com/mvng/coinvault#readme"
+}
